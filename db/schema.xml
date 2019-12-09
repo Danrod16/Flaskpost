@@ -114,6 +114,10 @@
 <row name="salary_max" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="company_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="companies" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -158,7 +162,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="294.79999923706055" y="432" name="companies">
+<table x="297.79999923706055" y="415" name="companies">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -168,10 +172,6 @@
 <row name="address" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="posting_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="postings" row="id" />
-</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
