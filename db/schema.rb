@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_162529) do
+ActiveRecord::Schema.define(version: 2019_12_09_162722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 2019_12_09_162529) do
     t.index ["posting_id"], name: "index_matches_on_posting_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "match_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_messages_on_match_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "postings", force: :cascade do |t|
     t.string "field"
     t.string "job_title"
@@ -80,5 +90,7 @@ ActiveRecord::Schema.define(version: 2019_12_09_162529) do
   add_foreign_key "applications", "users"
   add_foreign_key "matches", "applications"
   add_foreign_key "matches", "postings"
+  add_foreign_key "messages", "matches"
+  add_foreign_key "messages", "users"
   add_foreign_key "postings", "companies"
 end
