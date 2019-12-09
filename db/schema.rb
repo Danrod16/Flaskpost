@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_161559) do
+ActiveRecord::Schema.define(version: 2019_12_09_162529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,38 @@ ActiveRecord::Schema.define(version: 2019_12_09_161559) do
     t.index ["user_id"], name: "index_applications_on_user_id"
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.string "status"
+    t.bigint "application_id"
+    t.bigint "posting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id"], name: "index_matches_on_application_id"
+    t.index ["posting_id"], name: "index_matches_on_posting_id"
+  end
+
+  create_table "postings", force: :cascade do |t|
+    t.string "field"
+    t.string "job_title"
+    t.string "contract_types"
+    t.string "experience"
+    t.string "languages"
+    t.string "locations"
+    t.string "description"
+    t.integer "salary_max"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_postings_on_company_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -46,4 +78,7 @@ ActiveRecord::Schema.define(version: 2019_12_09_161559) do
   end
 
   add_foreign_key "applications", "users"
+  add_foreign_key "matches", "applications"
+  add_foreign_key "matches", "postings"
+  add_foreign_key "postings", "companies"
 end
