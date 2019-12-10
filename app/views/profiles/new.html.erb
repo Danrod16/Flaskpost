@@ -1,2 +1,17 @@
 <h1>Profiles#new</h1>
 <p>Find me in app/views/profiles/new.html.erb</p>
+
+<h1>Welcome <%= @user.name %>!</h1>
+<p>Let's create your first job hunting deck.</p>
+
+<%= simple_form_for @posting do |f| %>
+  <%= f.input :field, label:'Choose your field of interest:' %>
+  <%= f.input :job_title, label: 'Define your skill set:' %>
+  <%= f.input :experience, label: 'And your skill level', collection: ['Entry', 'Junior', 'Mid', 'Senior'] %>
+  <%= f.input :contract_types, label: "Contract type:", collection: ['Full-time', 'Part-time', 'Freelance'], as: :check_boxes  %>
+  <%= f.input :languages, label: 'What languages does the applicant need to speak?', collection: ['English', 'Spanish', 'French', 'German'], as: :check_boxes %>
+  <%= f.input :locations, label: 'In which locations would the applicatant work?', collection: ['Barcelona', 'Madrid', 'Valencia', 'San Sebastian'], as: :check_boxes %>
+  <%= f.input :description, label: 'Please pitch the job in 180 characters', as: :text %>
+  <%= f.input :salary_min :salary_max, label: 'Your ideal salary', as: :integer %>
+<% end %>
+
