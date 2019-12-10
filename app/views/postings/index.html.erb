@@ -5,6 +5,7 @@
       <%= posting.job_title %>
       <%= posting.company.name %>
       <%= posting.description %>
+      <%= link_to "Edit", edit_posting_path(posting) %>
       <ul>
         <% posting.languages.to_a.each do |language| %>
           <li>

@@ -24,6 +24,11 @@ class PostingsController < ApplicationController
     end
   end
 
+  def edit
+    @posting = Posting.find(params[:id])
+    render :new
+  end
+
   private
 
   def posting_params
