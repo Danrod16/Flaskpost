@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :companies, only: [:new, :create]
-  resources :applications, only: [:index, :new, :create, :edit, :update, :delete]
+  resources :profiles, only: [:index, :new, :create, :edit, :update, :delete]
   resources :postings, only: [:index, :new, :create, :edit, :update, :delete]
 
   resources :messages, only: [:create]
