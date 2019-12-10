@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belongs_to :company
+  belongs_to :company, optional: true
   has_many :messages
   has_many :applications
 end
