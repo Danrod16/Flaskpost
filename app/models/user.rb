@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   belongs_to :company, optional: true
   has_many :messages
-  has_many :applications
+  has_many :profiles
 end
