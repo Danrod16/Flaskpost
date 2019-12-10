@@ -1,6 +1,6 @@
-class CreateApplications < ActiveRecord::Migration[5.2]
+class CreateProfiles < ActiveRecord::Migration[5.2]
   def change
-    create_table :applications do |t|
+    create_table :profiles do |t|
       t.string :field
       t.string :job_title
       t.string :contract_types, array: true

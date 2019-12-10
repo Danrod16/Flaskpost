@@ -15,22 +15,6 @@ ActiveRecord::Schema.define(version: 2019_12_09_162915) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "applications", force: :cascade do |t|
-    t.string "field"
-    t.string "job_title"
-    t.string "contract_types", array: true
-    t.string "experience"
-    t.string "languages", array: true
-    t.string "locations", array: true
-    t.string "description"
-    t.integer "salary_min"
-    t.integer "salary_max"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_applications_on_user_id"
-  end
-
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -40,12 +24,12 @@ ActiveRecord::Schema.define(version: 2019_12_09_162915) do
 
   create_table "matches", force: :cascade do |t|
     t.string "status"
-    t.bigint "application_id"
+    t.bigint "profile_id"
     t.bigint "posting_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["application_id"], name: "index_matches_on_application_id"
     t.index ["posting_id"], name: "index_matches_on_posting_id"
+    t.index ["profile_id"], name: "index_matches_on_profile_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -73,6 +57,22 @@ ActiveRecord::Schema.define(version: 2019_12_09_162915) do
     t.index ["company_id"], name: "index_postings_on_company_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "field"
+    t.string "job_title"
+    t.string "contract_types", array: true
+    t.string "experience"
+    t.string "languages", array: true
+    t.string "locations", array: true
+    t.string "description"
+    t.integer "salary_min"
+    t.integer "salary_max"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -89,11 +89,11 @@ ActiveRecord::Schema.define(version: 2019_12_09_162915) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "applications", "users"
-  add_foreign_key "matches", "applications"
   add_foreign_key "matches", "postings"
+  add_foreign_key "matches", "profiles"
   add_foreign_key "messages", "matches"
   add_foreign_key "messages", "users"
   add_foreign_key "postings", "companies"
+  add_foreign_key "profiles", "users"
   add_foreign_key "users", "companies"
 end
