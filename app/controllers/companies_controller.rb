@@ -10,11 +10,12 @@ class CompaniesController < ApplicationController
       redirect_to "/"
     else
       render :new
+    end
   end
 
   private
 
   def company_params
-    params.require(:params).require(:name, :address)
+    params.require(:company).permit(:name, :address)
   end
 end
