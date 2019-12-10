@@ -1,0 +1,9 @@
+<ul>
+  <% @postings.each do |posting| %>
+    <li>
+      <%#= cl_image_tag posting.photo %>
+      <%= posting.job_title %>
+      <%= posting.company.name %>
+      <%= posting.desciption %>
+    </li>
+</ul>
