@@ -1,6 +1,6 @@
 <%= simple_form_for @posting do |f| %>
-  <%= f.input :job_title, label:'Job title:' %>
-  <%= f.input :field, label: 'Field:' %>
+  <%= f.input :field, label:'Field:' %>
+  <%= f.input :job_title, label: 'Job title:' %>
   <%= f.input :contract_types, label: "Choose contract types:", collection: ['Full-time', 'Part-time', 'Freelance'], as: :check_boxes  %>
   <%= f.input :experience, label: 'What experience are you looking for?', collection: ['Entry', 'Junior', 'Mid', 'Senior'] %>
   <%= f.input :languages, label: 'What languages does the applicant need to speak?', collection: ['English', 'Spanish', 'French', 'German'], as: :check_boxes %>
