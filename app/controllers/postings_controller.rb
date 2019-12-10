@@ -10,11 +10,7 @@ class PostingsController < ApplicationController
 
   def create
     @posting = Posting.new(posting_params)
-
-    @posting.languages = delete_empty_items(@posting.languages)
-    @posting.locations = delete_empty_items(@posting.locations)
-    @posting.contract_types = delete_empty_items(@posting.contract_types)
-
+    clean_array_items
     @posting.company = current_user.company
 
     if @posting.save
@@ -27,6 +23,18 @@ class PostingsController < ApplicationController
   def edit
     @posting = Posting.find(params[:id])
     render :new
+  end
+
+  def update
+    @posting = Posting.find(params[:id])
+
+    if @posting.update(posting_params)
+      clean_array_items
+      @posting.save
+      redirect_to postings_path
+    else
+      render :edit
+    end
   end
 
   private
@@ -46,5 +54,11 @@ class PostingsController < ApplicationController
 
   def delete_empty_items(arr)
     arr.reject { |item| item.empty? }
+  end
+
+  def clean_array_items
+    @posting.languages = delete_empty_items(@posting.languages)
+    @posting.locations = delete_empty_items(@posting.locations)
+    @posting.contract_types = delete_empty_items(@posting.contract_types)
   end
 end
