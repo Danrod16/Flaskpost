@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 2019_12_09_162915) do
   create_table "applications", force: :cascade do |t|
     t.string "field"
     t.string "job_title"
-    t.string "contract_types"
+    t.string "contract_types", array: true
     t.string "experience"
-    t.string "languages"
-    t.string "locations"
+    t.string "languages", array: true
+    t.string "locations", array: true
     t.string "description"
     t.integer "salary_min"
     t.integer "salary_max"
@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(version: 2019_12_09_162915) do
   create_table "postings", force: :cascade do |t|
     t.string "field"
     t.string "job_title"
-    t.string "contract_types"
+    t.string "contract_types", array: true
     t.string "experience"
-    t.string "languages"
-    t.string "locations"
+    t.string "languages", array: true
+    t.string "locations", array: true
     t.string "description"
     t.integer "salary_max"
     t.bigint "company_id"

@@ -1,0 +1,8 @@
+<h1>Companies#new</h1>
+<p>Find me in app/views/companies/new.html.erb</p>
+
+<%= simple_form_for @company do |f| %>
+  <%= f.input :name, label: "Please give the name of your company" %>
+  <%= f.input :address, label: "Please give the address of your company" %>
+  <%= f.submit %>
+<% end %>
