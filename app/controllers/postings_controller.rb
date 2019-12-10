@@ -10,9 +10,13 @@ class PostingsController < ApplicationController
 
   def create
     @posting = Posting.new(posting_params)
+
+    @posting.languages = delete_empty_items(@posting.languages)
+    @posting.locations = delete_empty_items(@posting.locations)
+    @posting.contract_types = delete_empty_items(@posting.contract_types)
+
     @posting.company = current_user.company
 
-    raise
     if @posting.save
       redirect_to postings_path
     else
@@ -26,12 +30,16 @@ class PostingsController < ApplicationController
     params.require(:posting).permit(
       :field,
       :job_title,
-      :contract_types,
       :experience,
-      :languages,
-      :locations,
       :description,
-      :salary_max
+      :salary_max,
+      languages: [],
+      locations: [],
+      contract_types: []
     )
+  end
+
+  def delete_empty_items(arr)
+    arr.reject { |item| item.empty? }
   end
 end

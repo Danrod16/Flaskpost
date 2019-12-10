@@ -4,6 +4,14 @@
       <%#= cl_image_tag posting.photo %>
       <%= posting.job_title %>
       <%= posting.company.name %>
-      <%= posting.desciption %>
+      <%= posting.description %>
+      <ul>
+        <% posting.languages.to_a.each do |language| %>
+          <li>
+            <%= language %>
+          </li>
+        <% end %>
+      </ul>
     </li>
+  <% end %>
 </ul>
