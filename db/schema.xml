@@ -41,7 +41,7 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="533" y="155" name="applications">
+</datatypes><table x="533" y="155" name="profiles">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -131,7 +131,7 @@
 <default>NULL</default></row>
 <row name="application_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="applications" row="id" />
+<default>NULL</default><relation table="profiles" row="id" />
 </row>
 <row name="posting_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -141,7 +141,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="152.79999923706055" y="261" name="users">
+<table x="152" y="261" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -162,7 +162,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="297.79999923706055" y="415" name="companies">
+<table x="297" y="415" name="companies">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -176,7 +176,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="545.7999992370605" y="9" name="messages">
+<table x="539" y="10" name="messages">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
