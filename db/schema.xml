@@ -14,7 +14,7 @@
     <type label="Single precision" length="0" sql="FLOAT" quote=""/>
     <type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
   </group>
-​
+
   <group label="Character" color="rgb(255,200,200)">
     <type label="Char" length="1" sql="CHAR" quote="'"/>
     <type label="Varchar" length="1" sql="VARCHAR" re="CHARACTER VARYING" quote="'"/>
@@ -22,7 +22,7 @@
     <type label="Binary" length="1" sql="BYTEA" quote="'"/>
     <type label="Boolean" length="0" sql="BOOLEAN" quote="'"/>
   </group>
-​
+
   <group label="Date &amp; Time" color="rgb(200,255,200)">
     <type label="Date" length="0" sql="DATE" quote="'"/>
     <type label="Time" length="1" sql="TIME" quote="'"/>
@@ -32,7 +32,7 @@
     <type label="Timestamp w/ TZ" length="0" sql="TIMESTAMP WITH TIME ZONE" quote="'"/>
     <type label="Timestamp wo/ TZ" length="0" sql="TIMESTAMP WITHOUT TIME ZONE" quote="'"/>
   </group>
-​
+
   <group label="Miscellaneous" color="rgb(200,200,255)">
     <type label="XML" length="1" sql="XML" quote="'"/>
     <type label="Bit" length="1" sql="BIT" quote="'"/>
@@ -41,41 +41,41 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="573" y="320" name="flasks">
+</datatypes><table x="533" y="155" name="applications">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="title" null="1" autoincrement="0">
+<row name="field" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="area" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="experience" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="industry" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="languages" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="region" null="1" autoincrement="0">
+<row name="job_title" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="contract_types" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="pitch" null="1" autoincrement="0">
+<row name="experience" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="languages" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="locations" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="description" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="photo" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="min_salary" null="1" autoincrement="0">
+<row name="salary_min" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="id_user" null="1" autoincrement="0">
+<row name="salary_max" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
 </row>
@@ -83,69 +83,65 @@
 <part>id</part>
 </key>
 </table>
-<table x="577" y="25" name="jobs">
+<table x="539" y="479" name="postings">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="title" null="1" autoincrement="0">
+<row name="field" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="area" null="1" autoincrement="0">
+<row name="job_title" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="contract_types" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="experience" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="industry" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
 <row name="languages" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="region" null="1" autoincrement="0">
+<row name="locations" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="contract-type" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="pitch" null="1" autoincrement="0">
+<row name="description" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="photo" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="salary" null="1" autoincrement="0">
+<row name="salary_max" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="id_company" null="1" autoincrement="0">
+<row name="company_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="company" row="id" />
+<default>NULL</default><relation table="companies" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1109" y="277" name="matches">
+<table x="1027" y="265" name="matches">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="id_jobs" null="1" autoincrement="0">
+<row name="status" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="jobs" row="id" />
+<default>NULL</default></row>
+<row name="application_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="applications" row="id" />
 </row>
-<row name="id_flasks" null="1" autoincrement="0">
+<row name="posting_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="flasks" row="id" />
-</row>
-<row name="id_chatrooms" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="chatrooms" row="id" />
+<default>NULL</default><relation table="postings" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="293.79999923706055" y="474" name="users">
+<table x="152.79999923706055" y="261" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -158,23 +154,15 @@
 <row name="email" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="id_company" null="1" autoincrement="0">
+<row name="company_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="company" row="id" />
+<default>NULL</default><relation table="companies" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1100.7999992370605" y="490" name="chatrooms">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="295.79999923706055" y="254" name="company">
+<table x="297.79999923706055" y="415" name="companies">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -184,17 +172,25 @@
 <row name="address" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="creditcard" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="927.7999992370605" y="490" name="messages">
+<table x="545.7999992370605" y="9" name="messages">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="content" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="match_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="matches" row="id" />
+</row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>

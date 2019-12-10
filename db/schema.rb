@@ -10,10 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_140826) do
+ActiveRecord::Schema.define(version: 2019_12_09_162915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
+    t.string "field"
+    t.string "job_title"
+    t.string "contract_types"
+    t.string "experience"
+    t.string "languages"
+    t.string "locations"
+    t.string "description"
+    t.integer "salary_min"
+    t.integer "salary_max"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_applications_on_user_id"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.string "status"
+    t.bigint "application_id"
+    t.bigint "posting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id"], name: "index_matches_on_application_id"
+    t.index ["posting_id"], name: "index_matches_on_posting_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "match_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_messages_on_match_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "postings", force: :cascade do |t|
+    t.string "field"
+    t.string "job_title"
+    t.string "contract_types"
+    t.string "experience"
+    t.string "languages"
+    t.string "locations"
+    t.string "description"
+    t.integer "salary_max"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_postings_on_company_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +81,19 @@ ActiveRecord::Schema.define(version: 2019_12_09_140826) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "applications", "users"
+  add_foreign_key "matches", "applications"
+  add_foreign_key "matches", "postings"
+  add_foreign_key "messages", "matches"
+  add_foreign_key "messages", "users"
+  add_foreign_key "postings", "companies"
+  add_foreign_key "users", "companies"
 end
