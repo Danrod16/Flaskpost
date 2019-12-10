@@ -23,7 +23,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    @profile.update_attributes(params_profile)
+    @profile.update(params_profile)
     redirect_to profiles
   end
 
