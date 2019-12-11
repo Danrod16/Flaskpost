@@ -1,8 +1,10 @@
+<div class="main-wrapper">
+    <div class="cell">
+      <div class="root">
+        <%= render 'shared/navbar' %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<% if user_signed_in? %>
-<div class="main-wrapper" style="vertical-align: center;">
-  <div class="cell" style="vertical-align: middle; width: 100%; margin-top: 100px;">
-    <div class="root" style="width: 465px; height: 600px; margin: auto; background-color: white;">
-      <div class="container" style="text-align: -webkit-center; padding: 20px;">
-<% else %>
-<% end %>
