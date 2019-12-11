@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
   resources :matches, only: [:index, :show, :create, :update]
+
+  resources :profile_steps
 end
