@@ -8,10 +8,14 @@ class CompaniesController < ApplicationController
 
     @company = Company.new(company_params)
 
-    if @company.save
-      redirect_to "/"
-    else
-      render :new
+    if current_user.company.nil?
+      if @company.save
+        set_company_id_in_user
+        redirect_to "/"
+      else
+        render :new
+      end
+      # raise error
     end
   end
 
@@ -19,5 +23,10 @@ class CompaniesController < ApplicationController
 
   def company_params
     params.require(:company).permit(:name, :address)
+  end
+
+  def set_company_id_in_user
+    current_user.company = @company
+    current_user.save
   end
 end
