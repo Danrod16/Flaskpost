@@ -31,6 +31,7 @@ class BuildController < ApplicationController
       :description,
       :salary_max,
       :salary_min,
+      :status,
       languages: [],
       locations: [],
       contract_types: []
