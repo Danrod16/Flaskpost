@@ -1,5 +1,4 @@
 class PostingsController < ApplicationController
-
   def index
     @postings = Posting.all
   end
@@ -53,7 +52,7 @@ class PostingsController < ApplicationController
   end
 
   def delete_empty_items(arr)
-    arr.reject { |item| item.empty? }
+    arr.reject(&:empty?)
   end
 
   def clean_array_items
