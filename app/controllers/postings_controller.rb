@@ -52,18 +52,8 @@ class PostingsController < ApplicationController
   end
 
   def clean_array_items
-    @posting.languages = @posting.languagesreject(&:empty?)
-    @posting.locations = @posting.locationsreject(&:empty?)
-    @posting.contract_types = @posting.contract_typesreject(&:empty?)
-
-    @posting.languages = escape_spaces(@posting.languages)
-    @posting.locations = escape_spaces(@posting.locations)
-    @posting.contract_types = escape_spaces(@posting.contract_types)
-  end
-
-  def escape_spaces(arr)
-    arr.map do |item|
-      item.gsub(/\s/, "\s")
-    end
+    @posting.languages = @posting.languages.reject(&:empty?)
+    @posting.locations = @posting.locations.reject(&:empty?)
+    @posting.contract_types = @posting.contract_types.reject(&:empty?)
   end
 end
