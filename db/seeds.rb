@@ -385,89 +385,86 @@ def clear_database
   puts " "
 end
 
+# REFACTORED METHODS
+
+def set_user_email_with_(domain)
+  @email = "#{@selected_user[:first_name].downcase.gsub(/\s+/, "")}.#{@selected_user[:last_name].downcase.gsub(/\s+/, "")}@#{domain}"
+end
+
+def select_user_company
+  @selected_company_index = @shuffled_companies_list.length - 1
+  @selected_company = @shuffled_companies_list[@selected_company_index]
+  @shuffled_companies_list.delete_at(@selected_company_index) if rand(10) <= 5 # probabilistic variation of employers per company
+  set_user_email_with_(@selected_company[:domain])
+end
+
+def save_new_user
+  if @new_user.valid?
+    @new_user.save # saving new users
+    p User.last
+  else
+    p @new_user.errors.messages
+  end
+end
+
+def create_new_user_with_(company_id)
+  @new_user = User.new(
+    email: @email,
+    password: "12341234",
+    first_name: @selected_user[:first_name],
+    last_name: @selected_user[:last_name],
+    company_id: company_id)
+  save_new_user
+end
+
+def create_new_company
+  @new_company = Company.new(
+    name: @selected_company[:name],
+    address: @selected_company[:address])
+
+  if @new_company.valid?
+    @new_company.save # saving new company
+    p @new_company
+  else
+    p @new_company.errors.messages
+  end
+end
+
+# def create_new_user_with_new_company_id
+#   @new_user = User.new( # and the new user will be created with association to the new company here
+#     email: @email,
+#     password: "12341234",
+#     first_name: @selected_user[:first_name],
+#     last_name: @selected_user[:last_name],
+#     company_id: @new_company.id)
+#   save_new_user
+# end
+
 def create_users(n_users)
   @shuffled_users_list = @users_list.shuffle
   @shuffled_companies_list = @companies_list.shuffle
 
   n_users.times do
-
-    selected_user_index = @shuffled_users_list.length - 1
-    p selected_user = @shuffled_users_list[selected_user_index]
-    @shuffled_users_list.delete_at(selected_user_index)
+    @selected_user_index = @shuffled_users_list.length - 1
+    @selected_user = @shuffled_users_list[@selected_user_index]
+    @shuffled_users_list.delete_at(@selected_user_index)
 
     if @shuffled_companies_list.length > 0 # new users will be associated to company if there are still companies available to be allocated (recruiters)
+      select_user_company
+      @existing_company = Company.find_by(name: @selected_company[:name])
 
-      selected_company_index = @shuffled_companies_list.length - 1
-      selected_company = @shuffled_companies_list[selected_company_index]
-      @shuffled_companies_list.delete_at(selected_company_index) if rand(10) <= 5 # probabilistic variation of employers per company
-
-      email = "#{selected_user[:first_name].downcase.gsub(/\s+/, "")}.#{selected_user[:last_name].downcase.gsub(/\s+/, "")}@#{selected_company[:domain]}"
-
-      existing_company = Company.find_by(name: selected_company[:name])
-
-      if existing_company # if company exists user will be associated with it
-
-        new_user = User.new(
-          email: email,
-          password: "12341234",
-          first_name: selected_user[:first_name],
-          last_name: selected_user[:last_name],
-          company_id: existing_company.id)
-
-          if new_user.valid?
-            new_user.save # saving new users
-            p User.last
-          else
-            p new_user.errors.messages
-          end
-
+      if @existing_company # if company exists user will be associated with it
+        create_new_user_with_(@existing_company.id)
       else # if company does not exist, a new company will be created
-
-        new_company = Company.new(
-          name: selected_company[:name],
-          address: selected_company[:address])
-
-        if new_company.valid?
-          new_company.save  # saving new company
-          p new_company
-        else
-          p new_company.errors.messages
-        end
-
-        new_user = User.new( # and the new user will be created with association to the new company here
-          email: email,
-          password: "12341234",
-          first_name: selected_user[:first_name],
-          last_name: selected_user[:last_name],
-          company_id: new_company.id)
-
-        if new_user.valid?
-          new_user.save # saving new users
-          p User.last
-        else
-          p new_user.errors.messages
-        end
+        create_new_company
+        create_new_user_with_(@new_company.id)
       end
 
     else # remaining new users will not be associated with a company (applicants)
-
-      email = "#{selected_user[:first_name].downcase.gsub(/\s+/, "")}.#{selected_user[:last_name].downcase.gsub(/\s+/, "")}@#{@domains.sample}"
-
+      set_user_email_with_(@domains.sample)
     end
 
-    new_user = User.new( # and will be created without company association here
-      email: email,
-      password: "12341234",
-      first_name: selected_user[:first_name],
-      last_name: selected_user[:last_name])
-
-    if new_user.valid?
-      new_user.save # saving new users
-      p User.last
-    else
-      p new_user.errors.messages
-    end
-
+    create_new_user_with_(nil)
   end
 end
 
@@ -481,16 +478,16 @@ def seed_database
   create_users(@users_list.length)
 
   # n_users.times do
-  #   selected_user = @users_list.sample
+  #   @selected_user = @users_list.sample
   #   new_user = User.new(
-  #     email: "#{selected_user[:first_name]}.#{selected_user[:last_name]}@#{@domains.sample}",
+  #     email: "#{@selected_user[:first_name]}.#{@selected_user[:last_name]}@#{@domains.sample}",
   #     password: "12341234",
-  #     first_name: selected_user[:first_name],
-  #     last_name: selected_user[:last_name])
+  #     first_name: @selected_user[:first_name],
+  #     last_name: @selected_user[:last_name])
   #   if new_user.valid?
   #     new_user.save
   #     p User.last
-  #     seed_loan_offers(rand(0..3), selected_user)
+  #     seed_loan_offers(rand(0..3), @selected_user)
   #   else
   #     p new_user.errors.messages
   #   end
