@@ -1,0 +1,21 @@
+.btn-main{
+
+}
+
+
+
+
+
+
+.btn-main-ghost {
+  color: #6F35E2;
+  border: 1px solid #6F35E2;
+  padding: 1px 24px;
+  border-radius: 50px;
+  font-family: avenir;
+  transition: opacity 0.3s ease;
+}
+
+.btn-main-ghost:hover {
+  opacity: 1;
+}
