@@ -1,7 +1,7 @@
 <ul>
 <% @matches.each do |match| %>
   <li>
-    <%= match.profile.user_id %> ----- <%= match.status %>
+    <%= match.profile.user_id %> ----- <%= match.status %> ----- <%= link_to "Show", match_path(match) %>
   </li>
 <% end %>
 </ul>

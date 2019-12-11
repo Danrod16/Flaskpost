@@ -1,4 +1,6 @@
 class MatchesController < ApplicationController
+  before_action :set_match, only: [:show]
+
   def index
     @matches = []
 
@@ -11,7 +13,14 @@ class MatchesController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
+
+  def set_match
+    @match = Match.find(params[:id])
+  end
 
   def retrieve_matches(arr)
     arr.each do |profile_or_posting|
