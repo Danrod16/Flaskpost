@@ -10,14 +10,13 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <div class="main-wrapper" style="vertical-align: center;">
-      <div class="cell" style="vertical-align: middle; width: 100%; margin-top: 100px;">
-        <div class="root" style="width: 465px; height: 600px; margin: auto; background-color: white;">
-          <%= render 'shared/navbar' %>
-          <%= render 'shared/flashes' %>
-          <%= yield %>
-          <%= javascript_include_tag 'application' %>
-          <%= javascript_pack_tag 'application' %>
+            <%= render 'shared/flashes' %>
+            <%= render 'shared/layouts' %>
+            <%= render 'shared/navbar' %>
+            <%= yield %>
+            <%= javascript_include_tag 'application' %>
+            <%= javascript_pack_tag 'application' %>
+          </div>
         </div>
       </div>
     </div>
