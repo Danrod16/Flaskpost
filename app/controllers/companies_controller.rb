@@ -4,6 +4,8 @@ class CompaniesController < ApplicationController
   end
 
   def create
+    raise "You already have a company assigned" unless current_user.company.nil?
+
     @company = Company.new(company_params)
 
     if @company.save
