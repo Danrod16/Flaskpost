@@ -236,6 +236,12 @@
     last_name: "Landes",
     # photo: "https://res.cloudinary.com/kl3000/image/upload/v1575635966/user_profile_images/T02NE0241-UP7SKTM0S-5cd01d3cbc2a-512_pz6zsa.jpg"
     # address: "Westminster, London"
+  },
+    {
+    first_name: "Inou",
+    last_name: "Ridder",
+    # photo: "https://res.cloudinary.com/kl3000/image/upload/v1575635966/user_profile_images/T02NE0241-UP7SKTM0S-5cd01d3cbc2a-512_pz6zsa.jpg"
+    # address: "Westminster, London"
   }
 ]
 
@@ -391,10 +397,10 @@ def set_user_email_with_(domain)
   @email = "#{@selected_user[:first_name].downcase.gsub(/\s+/, "")}.#{@selected_user[:last_name].downcase.gsub(/\s+/, "")}@#{domain}"
 end
 
-def select_user_company
+def select_user_company(x, y)
   @selected_company_index = @shuffled_companies_list.length - 1
   @selected_company = @shuffled_companies_list[@selected_company_index]
-  @shuffled_companies_list.delete_at(@selected_company_index) if rand(10) <= 5 # probabilistic variation of employers per company
+  @shuffled_companies_list.delete_at(@selected_company_index) if rand(x) < y # probabilistic variation of employers per company
   set_user_email_with_(@selected_company[:domain])
 end
 
@@ -414,7 +420,7 @@ def create_new_user_with_(company_id)
     first_name: @selected_user[:first_name],
     last_name: @selected_user[:last_name],
     company_id: company_id)
-  save_new_user
+  # save_new_user
 end
 
 def create_new_company
@@ -450,7 +456,7 @@ def create_users(n_users)
     @shuffled_users_list.delete_at(@selected_user_index)
 
     if @shuffled_companies_list.length > 0 # new users will be associated to company if there are still companies available to be allocated (recruiters)
-      select_user_company
+      select_user_company(1, 1)
       @existing_company = Company.find_by(name: @selected_company[:name])
 
       if @existing_company # if company exists user will be associated with it
@@ -462,9 +468,10 @@ def create_users(n_users)
 
     else # remaining new users will not be associated with a company (applicants)
       set_user_email_with_(@domains.sample)
+      create_new_user_with_(nil)
     end
 
-    create_new_user_with_(nil)
+    save_new_user
   end
 end
 
