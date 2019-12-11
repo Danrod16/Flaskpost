@@ -7,9 +7,9 @@
       <%= posting.description %>
       <%= link_to "Edit", edit_posting_path(posting) %>
       <ul>
-        <% posting.languages.to_a.each do |language| %>
+        <% posting.locations.to_a.each do |location| %>
           <li>
-            <%= language %>
+            <%= location %>
           </li>
         <% end %>
       </ul>
