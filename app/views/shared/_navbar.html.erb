@@ -1,6 +1,6 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-shuffle">
   <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    <%= image_tag "https://res.cloudinary.com/therainycloud/image/upload/v1576074962/Shuffle._2_xgjapz.png" %>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
           </div>
         </li>
       <% else %>
-        <li class="nav-item">
+        <li class="nav-item btn-main-ghost">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>

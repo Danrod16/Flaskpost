@@ -1,12 +1,16 @@
-.navbar-lewagon {
+.navbar-shuffle {
   justify-content: space-between;
   background: white;
+  padding: 8px 5px;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-shuffle .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-shuffle .navbar-brand img {
+  width: 130px;
+  height: 30px;
+  object-fit: cover;
 }
+
