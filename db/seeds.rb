@@ -16,7 +16,7 @@
     # address: "Frankfurt, Germany"
   },
   {
-    first_name: "Alex Stefan",
+    first_name: "Alexandru",
     last_name: "Sima",
     # photo: "https://res.cloudinary.com/kl3000/image/upload/v1575630972/user_profile_images/T02NE0241-UP7UZUUTC-285ae1d2dce5-512_o0pvwi.jpg"
     # address: "Clot, Barcelona"
@@ -351,33 +351,33 @@ def clear_database
   puts " "
 
   puts "Destroying Messages..."
+  puts "Destroyed #{Message.all.count} Messages."
   Message.destroy_all
-  puts "#{Message.all.count} Messages."
   puts " "
 
   puts "Destroying Matches..."
+  puts "Destroyed #{Match.all.count} Matches."
   Match.destroy_all
-  puts "#{Match.all.count} Matches."
   puts " "
 
   puts "Destroying Profiles..."
+  puts "Destroyed #{Profile.all.count} Profiles."
   Profile.destroy_all
-  puts "#{Profile.all.count} Profiles."
   puts " "
 
   puts "Destroying Postings..."
+  puts "Destroyed #{Posting.all.count} Postings."
   Posting.destroy_all
-  puts "#{Posting.all.count} Postings."
   puts " "
 
   puts "Destroying Companies..."
+  puts "Destroyed #{Company.all.count} Companies."
   Company.destroy_all
-  puts "#{Company.all.count} Companies."
   puts " "
 
   puts "Destroying Users..."
+  puts "Destroyed #{User.all.count} Users."
   User.destroy_all
-  puts "#{User.all.count} Users."
   puts " "
 
   puts "DATABASE CLEARED."
@@ -394,19 +394,40 @@ def create_users(n_users)
     p selected_user = users_list[selected_user_index]
     users_list.delete_at(selected_user_index)
 
-    if companies_list.length > 0
+    if companies_list.length > 0 # new users will be associated to company if there are still available (recruiters)
 
       selected_company_index = companies_list.length - 1
-      p selected_company = companies_list[selected_company_index]
+      selected_company = companies_list[selected_company_index]
       companies_list.delete_at(selected_company_index) if rand(10) <= 5
 
-      p email = "#{selected_user[:first_name].downcase.gsub(/\s+/, ".")}.#{selected_user[:last_name].downcase.gsub(/\s+/, ".")}@#{selected_company[:domain]}"
+      email = "#{selected_user[:first_name].downcase.gsub(/\s+/, "")}.#{selected_user[:last_name].downcase.gsub(/\s+/, "")}@#{selected_company[:domain]}"
+
+    else # remaining new users will not be associated with a company (applicants)
+
+      email = "#{selected_user[:first_name].downcase.gsub(/\s+/, "")}.#{selected_user[:last_name].downcase.gsub(/\s+/, "")}@#{@domains.sample}"
+
+    end
+
+    new_user = User.new(
+      email: email,
+      password: "12341234",
+      first_name: selected_user[:first_name],
+      last_name: selected_user[:last_name])
+
+    p new_user
+
+    if new_user.valid?
+
+      new_user.save
+      p User.last
+      # seed_company
 
     else
 
-      p email = "#{selected_user[:first_name].downcase}.#{selected_user[:last_name].downcase}@#{@domains.sample}"
+      p new_user.errors.messages
 
     end
+
   end
 end
 
@@ -417,7 +438,7 @@ def seed_database
   puts "Seeding Users..."
   puts " "
 
-  create_users(38)
+  create_users(@users_list.length)
 
   # n_users.times do
   #   selected_user = @users_list.sample
@@ -438,6 +459,6 @@ def seed_database
 
 end
 
-# clear_database
+clear_database
 seed_database
 
