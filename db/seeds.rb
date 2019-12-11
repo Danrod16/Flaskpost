@@ -266,7 +266,7 @@
   },
   {
     name: "Booking.com",
-    domain: "Booking.com",
+    domain: "booking.com",
     address: "Herengracht 597, Amsterdam, Netherlands",
     photo: "https://www.vilacvetka.com/wp-content/uploads/2015/04/booking.com-logo-2.png"
   },
