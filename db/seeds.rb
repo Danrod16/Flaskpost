@@ -428,6 +428,10 @@ def create_users(n_users)
 
     end
 
+    if selected_company[:name]
+      new_company = Company.new(
+        )
+
   end
 end
 
