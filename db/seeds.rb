@@ -386,7 +386,7 @@ end
 
 def create_users(n_users)
   users_list = @users_list.shuffle
-  companies_list = @companies_list#.shuffle
+  companies_list = @companies_list.shuffle
 
   n_users.times do
 
@@ -394,11 +394,11 @@ def create_users(n_users)
     p selected_user = users_list[selected_user_index]
     users_list.delete_at(selected_user_index)
 
-    if rand(10) <= 9
+    if companies_list.length > 0
 
       selected_company_index = companies_list.length - 1
       p selected_company = companies_list[selected_company_index]
-      companies_list.delete_at(selected_company_index) if rand(2) == 1
+      companies_list.delete_at(selected_company_index) if rand(10) <= 5
 
       p email = "#{selected_user[:first_name].downcase.gsub(/\s+/, ".")}.#{selected_user[:last_name].downcase.gsub(/\s+/, ".")}@#{selected_company[:domain]}"
 
