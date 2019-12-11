@@ -415,7 +415,7 @@ def create_users(n_users)
           company_id: existing_company.id)
 
           if new_user.valid?
-            new_user.save
+            new_user.save # saving new users
             p User.last
           else
             p new_user.errors.messages
@@ -428,7 +428,7 @@ def create_users(n_users)
           address: selected_company[:address])
 
         if new_company.valid?
-          new_company.save
+          new_company.save  # saving new company
           p new_company
         else
           p new_company.errors.messages
@@ -442,7 +442,7 @@ def create_users(n_users)
           company_id: new_company.id)
 
         if new_user.valid?
-          new_user.save
+          new_user.save # saving new users
           p User.last
         else
           p new_user.errors.messages
@@ -462,7 +462,7 @@ def create_users(n_users)
       last_name: selected_user[:last_name])
 
     if new_user.valid?
-      new_user.save
+      new_user.save # saving new users
       p User.last
     else
       p new_user.errors.messages
