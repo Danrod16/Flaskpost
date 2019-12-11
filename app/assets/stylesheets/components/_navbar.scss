@@ -14,3 +14,11 @@
   object-fit: cover;
 }
 
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 32px;
+  list-style: none;
+  // padding: 5px 0px 0px 25px;
+}

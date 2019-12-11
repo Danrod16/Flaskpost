@@ -1,26 +1,32 @@
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <% if user_signed_in? %>
-        <ul class="nav nav-tabs">
+        <ul class="nav-tabs">
+          <li class="nav-item"><i class="fas fa-comment">
+            <%= link_to "", "", class: "nav-link" %>
+          </i></li>
+          <li class="nav-item"><i class="fas fa-comment">
+            <%= link_to "", "", class: "nav-link" %>
+          </i></li>
           <li class="nav-item"><i class="fas fa-comment">
             <%= link_to "", "", class: "nav-link" %>
           </i></li>
           <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+            <%= link_to "", "#", class: "nav-link" %>
           </li>
         </ul>
       <% else %>
-        <div class="navbar navbar-expand-sm navbar-light navbar-shuffle">
-          <ul class="navbar-nav mr-auto">
-            <%= link_to "#", class: "navbar-brand" do %>
-              <%= image_tag "https://res.cloudinary.com/therainycloud/image/upload/v1576074962/Shuffle._2_xgjapz.png" %>
-            <% end %>
-            <li class="nav-item btn-main-ghost">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            </li>
-          </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar navbar-expand-sm navbar-light navbar-shuffle">
+            <ul class="navbar-nav mr-auto">
+              <%= link_to "#", class: "navbar-brand" do %>
+                <%= image_tag "https://res.cloudinary.com/therainycloud/image/upload/v1576074962/Shuffle._2_xgjapz.png" %>
+              <% end %>
+              <li class="nav-item btn-main-ghost">
+                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              </li>
+            </ul>
+          </div>
         </div>
       <% end %>
-  </div>
 
 
 <!-- <ul class="nav nav-tabs">

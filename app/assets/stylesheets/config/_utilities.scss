@@ -45,6 +45,13 @@ color: #6F35E2;
 text-align: center;
 }
 
+i {
+  color: #6F35E2;
+  &:hover {
+    color: rgb(115, 31, 221);
+  }
+}
+
 .main-wrapper {
   vertical-align: center;
 }
