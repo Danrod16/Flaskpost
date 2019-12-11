@@ -242,85 +242,109 @@
 @companies_list = [
   {
     name: "Google",
+    domain: "google.com",
     address: "1600 Amphitheatre Parkway, Mountain View, California, United States",
-    photo:
+    photo: "https://storage.googleapis.com/gd-wagtail-prod-assets/original_images/evolving_google_identity_share.jpg"
   },
   {
     name: "Facebook",
+    domain: "facebook.com",
     address: "1 Hacker Way, Menlo Park, California, United States",
-    photo:
+    photo: "https://about.fb.com/wp-content/uploads/2019/11/facebook_wordmark.gif"
   },
   {
     name: "Twitter",
+    domain: "twitter.com",
     address: "1355 Market Street, San Francisco, California, United States",
-    photo:
+    photo: "https://s3.amazonaws.com/img.mynetdiary.com/src/logo_twitter.png"
   },
   {
     name: "Skyscanner",
+    domain: "skyscanner.net",
     address: "Quartermile One, 15 Lauriston Place, Edinburgh, United Kingdom",
-    photo:
+    photo: "https://mundoxdescubrir.com/wp-content/uploads/2019/02/logo-skyscanner-1.png"
   },
   {
     name: "Booking.com",
+    domain: "Booking.com",
     address: "Herengracht 597, Amsterdam, Netherlands",
-    photo:
+    photo: "https://www.vilacvetka.com/wp-content/uploads/2015/04/booking.com-logo-2.png"
   },
   {
     name: "AirBnB",
+    domain: "airbnb.com",
     address: "888 Brannan St, San Francisco, California, United States",
-    photo:
+    photo: "http://www.brandemia.org/sites/default/files/sites/default/files/bnb_billboard_01-2000x1125.jpg"
   },
   {
     name: "Microsoft Iberia",
+    domain: "microsoft.com",
     address: "Edificio B3, Carrer de Josep Pla, 2, Barcelona",
-    photo:
+    photo: "http://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE2qVsJ?ver=3f74"
   },
   {
     name: "Yego",
+    domain: "yego.es",
     address: "Carrer de Wellington, 94, Barcelona",
-    photo:
+    photo: "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/c3/d6/03/c3d60344-cc7b-c6fd-fbc1-a564be66391b/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-85-220.png/1200x630wa.png"
   },
   {
     name: "ThoughtWorks",
+    domain: "thoughtworks.com",
     address: "Edifici Media-TIC, Carrer de Roc Boronat, 117, Barcelona",
-    photo:
+    photo: "https://sonarplusd.com/system/attached_images/21482/medium/ThoughtWorks-Alta.jpg?1519817056"
   },
   {
     name: "eCooltra",
+    domain: "ecooltra.com",
     address: "Carrer de la Reina Cristina, 2, Barcelona",
-    photo:
+    photo: "https://canelapr.com/wp-content/uploads/2017/06/ecooltra-logo.jpg"
   },
   {
     name: "Revolut",
+    domain: "revolut.com",
     address: "7 Westferry Circus, Canary Wharf, London, United Kingdom",
-    photo:
+    photo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Logo_Revolut.png"
   },
   {
     name: "N26",
+    domain: "n26.com",
     address: "Klosterstraße 62, Berlin, Germany",
-    photo:
+    photo: "http://fintechaustria.org/wp-content/uploads/2018/07/n26-logo.png"
   },
   {
     name: "Typeform",
+    domain: "typeform.com",
     address: "Carrer de Bac de Roda, 163, Barcelona",
     photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Typeform_Logo.svg/1200px-Typeform_Logo.svg.png"
   },
   {
     name: "Marfeel",
+    domain: "marfeel.com",
     address: "Av. de Josep Tarradellas, 20, Barcelona",
     photo: "https://pbs.twimg.com/profile_images/1047789743335989248/a-QyWwKU_400x400.jpg"
   },
   {
     name: "Cabify",
+    domain: "cabify.com",
     address: "Calle de Pradillo, 42, Madrid",
     photo: "https://upload.wikimedia.org/wikipedia/commons/5/58/Cabify-logo-purple.png"
   },
   {
+    name: "Le Wagon",
+    domain: "lewagon.com",
+    address: "16 Villa Gaudelet, Paris, France",
+    photo: "https://mk0mindspacemexmwc0q.kinstacdn.com/wp-content/uploads/sites/2/2017/03/white_logo_red_font.png"
+  },
+  {
     name: "Badi",
+    domain: "badi.com",
     address: "Passeig de Garcia Fària, 49, Barcelona",
     photo: "https://media.licdn.com/dms/image/C4D0BAQG7h7FmPFXZTA/company-logo_200_200/0?e=2159024400&v=beta&t=UnYwVD5kc1F7ZJSx8ppGKgdxn4S1YMlO8xoyxT9QpXo"
   }
 ]
+
+@domains = ["gmail.com", "hotmail.com", "outlook.com"]
 
 def clear_database
   puts "CLEARING DATABASE:"
@@ -362,13 +386,27 @@ end
 
 def create_users(n_users)
   users_list = @users_list.shuffle
+  companies_list = @companies_list#.shuffle
 
   n_users.times do
+
     selected_user_index = users_list.length - 1
-    selected_user = users_list[selected_user_index]
+    p selected_user = users_list[selected_user_index]
     users_list.delete_at(selected_user_index)
-    selected_company =
-    email = "#{selected_user[:first_name]}.#{selected_user[:last_name]@[company]}"
+
+    if rand(10) <= 9
+
+      selected_company_index = companies_list.length - 1
+      p selected_company = companies_list[selected_company_index]
+      companies_list.delete_at(selected_company_index) if rand(2) == 1
+
+      p email = "#{selected_user[:first_name].downcase.gsub(/\s+/, ".")}.#{selected_user[:last_name].downcase.gsub(/\s+/, ".")}@#{selected_company[:domain]}"
+
+    else
+
+      p email = "#{selected_user[:first_name].downcase}.#{selected_user[:last_name].downcase}@#{@domains.sample}"
+
+    end
   end
 end
 
