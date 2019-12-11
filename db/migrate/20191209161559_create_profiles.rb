@@ -3,10 +3,10 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
     create_table :profiles do |t|
       t.string :field
       t.string :job_title
-      t.string :contract_types, array: true, default: []
+      t.string :contract_types, array: true
       t.string :experience
-      t.string :languages, array: true, default: []
-      t.string :locations, array: true, default: []
+      t.string :languages, array: true
+      t.string :locations, array: true
       t.string :description
       t.integer :salary_min
       t.integer :salary_max
@@ -14,9 +14,5 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-
-    add_index :profiles, :contract_types, using: :gin
-    add_index :profiles, :languages, using: :gin
-    add_index :profiles, :locations, using: :gin
   end
 end

@@ -60,19 +60,16 @@ ActiveRecord::Schema.define(version: 2019_12_09_162915) do
   create_table "profiles", force: :cascade do |t|
     t.string "field"
     t.string "job_title"
-    t.string "contract_types", default: [], array: true
+    t.string "contract_types", array: true
     t.string "experience"
-    t.string "languages", default: [], array: true
-    t.string "locations", default: [], array: true
+    t.string "languages", array: true
+    t.string "locations", array: true
     t.string "description"
     t.integer "salary_min"
     t.integer "salary_max"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["contract_types"], name: "index_profiles_on_contract_types", using: :gin
-    t.index ["languages"], name: "index_profiles_on_languages", using: :gin
-    t.index ["locations"], name: "index_profiles_on_locations", using: :gin
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
