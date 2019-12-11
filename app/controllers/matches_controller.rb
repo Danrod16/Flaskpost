@@ -25,7 +25,7 @@ class MatchesController < ApplicationController
   def retrieve_matches(arr)
     arr.each do |profile_or_posting|
       profile_or_posting.matches.each do |match|
-        @matches << match
+        @matches << match if match.status == "accepted"
       end
     end
   end
