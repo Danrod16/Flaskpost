@@ -399,7 +399,7 @@ def create_users(n_users)
 
       selected_company_index = companies_list.length - 1
       selected_company = companies_list[selected_company_index]
-      companies_list.delete_at(selected_company_index) if rand(10) <= 5
+      companies_list.delete_at(selected_company_index) if rand(10) <= 5 # probabilistic variation of employers per company
 
       email = "#{selected_user[:first_name].downcase.gsub(/\s+/, "")}.#{selected_user[:last_name].downcase.gsub(/\s+/, "")}@#{selected_company[:domain]}"
 
@@ -413,6 +413,13 @@ def create_users(n_users)
           first_name: selected_user[:first_name],
           last_name: selected_user[:last_name],
           company_id: existing_company.id)
+
+          if new_user.valid?
+            new_user.save
+            p User.last
+          else
+            p new_user.errors.messages
+          end
 
       else # if company does not exist, a new company will be created
 
@@ -434,6 +441,12 @@ def create_users(n_users)
           last_name: selected_user[:last_name],
           company_id: new_company.id)
 
+        if new_user.valid?
+          new_user.save
+          p User.last
+        else
+          p new_user.errors.messages
+        end
       end
 
     else # remaining new users will not be associated with a company (applicants)
@@ -448,7 +461,12 @@ def create_users(n_users)
       first_name: selected_user[:first_name],
       last_name: selected_user[:last_name])
 
-    p new_user
+    if new_user.valid?
+      new_user.save
+      p User.last
+    else
+      p new_user.errors.messages
+    end
 
   end
 end
