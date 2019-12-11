@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
-<!-- Active URL: https://kitt.lewagon.com/db/3491 -->
+<!-- Active URL: https://kitt.lewagon.com/db/4003 -->
 <sql>
 <datatypes db="postgresql">
   <group label="Numeric" color="rgb(238,238,170)">
@@ -129,7 +129,7 @@
 <row name="status" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="application_id" null="1" autoincrement="0">
+<row name="profile_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="profiles" row="id" />
 </row>
