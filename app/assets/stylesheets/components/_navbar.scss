@@ -1,6 +1,7 @@
 .navbar-shuffle {
   justify-content: space-between;
   background: white;
+  padding: 8px 5px;
 }
 
 .navbar-shuffle .navbar-collapse {
@@ -8,5 +9,8 @@
 }
 
 .navbar-shuffle .navbar-brand img {
-  width: 40px;
+  width: 130px;
+  height: 30px;
+  object-fit: cover;
 }
+
