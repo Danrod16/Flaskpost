@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :postings, only: [:index, :new, :create, :edit, :update]
 
   resources :messages, only: [:create]
-  resources :matches, only: [:index, :show, :create, :update]
+  resources :matches, only: [:index, :show]
 end
