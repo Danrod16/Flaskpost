@@ -370,15 +370,16 @@ def clear_database
   Posting.destroy_all
   puts " "
 
+  puts "Destroying Users..."
+  puts "Destroyed #{User.all.count} Users."
+  User.destroy_all
+  puts " "
+
   puts "Destroying Companies..."
   puts "Destroyed #{Company.all.count} Companies."
   Company.destroy_all
   puts " "
 
-  puts "Destroying Users..."
-  puts "Destroyed #{User.all.count} Users."
-  User.destroy_all
-  puts " "
 
   puts "DATABASE CLEARED."
   puts " "
@@ -394,7 +395,7 @@ def create_users(n_users)
     p selected_user = users_list[selected_user_index]
     users_list.delete_at(selected_user_index)
 
-    if companies_list.length > 0 # new users will be associated to company if there are still available (recruiters)
+    if companies_list.length > 0 # new users will be associated to company if there are still companies available to be allocated (recruiters)
 
       selected_company_index = companies_list.length - 1
       selected_company = companies_list[selected_company_index]
@@ -402,35 +403,52 @@ def create_users(n_users)
 
       email = "#{selected_user[:first_name].downcase.gsub(/\s+/, "")}.#{selected_user[:last_name].downcase.gsub(/\s+/, "")}@#{selected_company[:domain]}"
 
+      existing_company = Company.find_by(name: selected_company[:name])
+
+      if existing_company # if company exists user will be associated with it
+
+        new_user = User.new(
+          email: email,
+          password: "12341234",
+          first_name: selected_user[:first_name],
+          last_name: selected_user[:last_name],
+          company_id: existing_company.id)
+
+      else # if company does not exist, a new company will be created
+
+        new_company = Company.new(
+          name: selected_company[:name],
+          address: selected_company[:address])
+
+        if new_company.valid?
+          new_company.save
+          p new_company
+        else
+          p new_company.errors.messages
+        end
+
+        new_user = User.new( # and the new user will be created with association to the new company here
+          email: email,
+          password: "12341234",
+          first_name: selected_user[:first_name],
+          last_name: selected_user[:last_name],
+          company_id: new_company.id)
+
+      end
+
     else # remaining new users will not be associated with a company (applicants)
 
       email = "#{selected_user[:first_name].downcase.gsub(/\s+/, "")}.#{selected_user[:last_name].downcase.gsub(/\s+/, "")}@#{@domains.sample}"
 
     end
 
-    new_user = User.new(
+    new_user = User.new( # and will be created without company association here
       email: email,
       password: "12341234",
       first_name: selected_user[:first_name],
       last_name: selected_user[:last_name])
 
     p new_user
-
-    if new_user.valid?
-
-      new_user.save
-      p User.last
-      # seed_company
-
-    else
-
-      p new_user.errors.messages
-
-    end
-
-    if selected_company[:name]
-      new_company = Company.new(
-        )
 
   end
 end
