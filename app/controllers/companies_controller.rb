@@ -8,14 +8,11 @@ class CompaniesController < ApplicationController
 
     @company = Company.new(company_params)
 
-    if current_user.company.nil?
-      if @company.save
-        set_company_id_in_user
-        redirect_to "/"
-      else
-        render :new
-      end
-      # raise error
+    if @company.save
+      set_company_id_in_user
+      redirect_to "/"
+    else
+      render :new
     end
   end
 
