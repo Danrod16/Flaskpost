@@ -6,8 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# require 'seed_partials/_users_list'
-
 @users_list = [
   {
     first_name: "Alexander",
@@ -352,44 +350,50 @@
 
 @domains = ["gmail.com", "hotmail.com", "outlook.com"]
 
-def clear_database
-  puts "CLEARING DATABASE:"
-  puts " "
-
-  puts "Destroying Messages..."
-  puts "Destroyed #{Message.all.count} Messages."
-  Message.destroy_all
-  puts " "
-
-  puts "Destroying Matches..."
-  puts "Destroyed #{Match.all.count} Matches."
-  Match.destroy_all
-  puts " "
-
-  puts "Destroying Profiles..."
-  puts "Destroyed #{Profile.all.count} Profiles."
-  Profile.destroy_all
-  puts " "
-
-  puts "Destroying Postings..."
-  puts "Destroyed #{Posting.all.count} Postings."
-  Posting.destroy_all
-  puts " "
-
-  puts "Destroying Users..."
-  puts "Destroyed #{User.all.count} Users."
-  User.destroy_all
-  puts " "
-
-  puts "Destroying Companies..."
-  puts "Destroyed #{Company.all.count} Companies."
-  Company.destroy_all
-  puts " "
-
-
-  puts "DATABASE CLEARED."
-  puts " "
-end
+@postings_list = [
+  {
+    field: "Tech",
+    job_title: "Front-End Developer",
+    experience: "Senior",
+    description: "Ready to take your style to the next level? Looking for driven and ambitious senior designers."
+  },
+  {
+    field: "Tech",
+    job_title: "Front-End Developer",
+    experience: "Mid",
+    description: "Think you've got style, huh? Then come show us what you've got! Looking for passionate and talented designers."
+  },
+  {
+    field: "Tech",
+    job_title: "Front-End Developer",
+    experience: "Junior",
+    description: "Think you've got an eye for style? Show us you're talent and we'll show you how to go pro."
+  },
+  {
+    field: "Tech",
+    job_title: "Back-End Developer",
+    experience: "Senior",
+    description: "If you express your style with beautiful logic, we understand your art. Swipe to get in touch if you're a true MVC craftsman."
+  },
+  {
+    field: "Tech",
+    job_title: "Back-End Developer",
+    experience: "Mid",
+    description: "If you express your style with beautiful logic, we understand your art. Swipe to get in touch if you're a true MVC craftsman."
+  },
+  {
+    field: "Tech",
+    job_title: "Back-End Developer",
+    experience: "Junior",
+    description: "This is a job for the polymaths and the all-rounders."
+  },
+  {
+    field: "Tech",
+    job_title: "Full-Stack Developer",
+    experience: "Junior",
+    description: "This is a job for the polymaths and the all-rounders."
+  }
+]
 
 # REFACTORED METHODS
 
@@ -436,17 +440,7 @@ def create_new_company
   end
 end
 
-# def create_new_user_with_new_company_id
-#   @new_user = User.new( # and the new user will be created with association to the new company here
-#     email: @email,
-#     password: "12341234",
-#     first_name: @selected_user[:first_name],
-#     last_name: @selected_user[:last_name],
-#     company_id: @new_company.id)
-#   save_new_user
-# end
-
-def create_users(n_users)
+def create_users_with_companies(n_users)
   @shuffled_users_list = @users_list.shuffle
   @shuffled_companies_list = @companies_list.shuffle
 
@@ -475,34 +469,72 @@ def create_users(n_users)
   end
 end
 
-def seed_database
-  puts "SEEDING DATABASE"
+def clear_database
+  puts "CLEARING DATABASE:"
   puts " "
 
-  puts "Seeding Users..."
+  puts "Destroying Messages..."
+  puts "Destroyed #{Message.all.count} Messages."
+  Message.destroy_all
   puts " "
 
-  create_users(@users_list.length)
+  puts "Destroying Matches..."
+  puts "Destroyed #{Match.all.count} Matches."
+  Match.destroy_all
+  puts " "
 
-  # n_users.times do
-  #   @selected_user = @users_list.sample
-  #   new_user = User.new(
-  #     email: "#{@selected_user[:first_name]}.#{@selected_user[:last_name]}@#{@domains.sample}",
-  #     password: "12341234",
-  #     first_name: @selected_user[:first_name],
-  #     last_name: @selected_user[:last_name])
-  #   if new_user.valid?
-  #     new_user.save
-  #     p User.last
-  #     seed_loan_offers(rand(0..3), @selected_user)
-  #   else
-  #     p new_user.errors.messages
-  #   end
-  # end
-  # p "#{User.count} Users."
+  puts "Destroying Profiles..."
+  puts "Destroyed #{Profile.all.count} Profiles."
+  Profile.destroy_all
+  puts " "
 
+  puts "Destroying Postings..."
+  puts "Destroyed #{Posting.all.count} Postings."
+  Posting.destroy_all
+  puts " "
+
+  puts "Destroying Users..."
+  puts "Destroyed #{User.all.count} Users."
+  User.destroy_all
+  puts " "
+
+  puts "Destroying Companies..."
+  puts "Destroyed #{Company.all.count} Companies."
+  Company.destroy_all
+  puts " "
+
+
+  puts "DATABASE CLEARED."
+  puts " "
 end
 
-clear_database
-seed_database
+def seed_database(clean)
+  unless clean.nil?
+    clear_database
+  end
+    puts "SEEDING DATABASE"
+    puts " "
+
+    puts "Seeding Users & Companies..."
+    puts " "
+
+    create_users_with_companies(@users_list.length)
+
+    puts "SEEDED #{User.count} Users"
+    puts "SEEDED #{Company.count} Companies"
+    puts " "
+
+    puts "Seeding Postings & Profiles..."
+    puts " "
+
+    # create_postings_from_companies(5)
+
+    # puts "SEEDED #{Posting.count} Postings"
+    # puts "SEEDED #{Profile.count} Profiles"
+    # puts " "
+    # puts "Seeding Matches..."
+    # puts "SEEDED #{Match.count} Matches"
+end
+
+seed_database("clean")
 
