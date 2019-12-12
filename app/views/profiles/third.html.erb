@@ -1,6 +1,9 @@
-Third
+<div class="container">
 
-<%= simple_form_for @profile, url: wizard_path do |f| %>
-  <%= f.input :description, label: 'Please pitch the job in 80 characters', as: :text %>
-  <%= f.submit "SAVE"%>
-<% end %>
+  Third
+
+  <%= simple_form_for @profile, url: wizard_path do |f| %>
+    <%= f.input :description, label: 'Please pitch the job in 80 characters', as: :text %>
+    <%= f.submit "SAVE"%>
+  <% end %>
+</div>

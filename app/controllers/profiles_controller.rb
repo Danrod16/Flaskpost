@@ -3,14 +3,6 @@ class ProfilesController < ApplicationController
 
   steps :first, :second, :third
 
-  # def index
-  #   @profiles = Profile.all
-  # end
-
-  # def edit
-  #   @profile = Profile.find(params[:id])
-  # end
-
   def show
     @profile = Profile.find(params[:profile_id])
     render_wizard
@@ -18,10 +10,10 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:profile_id])
-    test_value = step
-    params[:profile][:status] = 'active' if test_value == steps.last
-    params[:profile][:user_id] = current_user.id if test_value == steps.last
-    if @profile.update_attributes(profile_params) && test_value == steps.last
+    params[:profile][:status] = step.to_s
+    params[:profile][:status] = 'active' if step == steps.last
+    params[:profile][:user_id] = current_user.id if step == steps.last
+    if @profile.update_attributes(profile_params) && step == steps.last
       redirect_to new_profile_path
     else
       render_wizard @profile
@@ -29,7 +21,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = Profile.create
+    @profile = Profile.create(status: "pending")
     redirect_to wizard_path(steps.first, profile_id: @profile.id)
   end
 
@@ -38,13 +30,13 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(
       :user_id,
+      :status,
       :field,
       :job_title,
       :experience,
       :description,
       :salary_max,
       :salary_min,
-      :status,
       languages: [],
       locations: [],
       contract_types: []
