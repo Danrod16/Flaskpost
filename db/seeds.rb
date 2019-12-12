@@ -313,37 +313,37 @@
   {
     name: "N26",
     domain: "n26.com",
-    address: ["Berlin", "Germany"],
+    address: ["Berlin"],
     photo: "http://fintechaustria.org/wp-content/uploads/2018/07/n26-logo.png"
   },
   {
     name: "Typeform",
     domain: "typeform.com",
-    address: ["Barcelona", "Spain"],
+    address: ["Barcelona"],
     photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Typeform_Logo.svg/1200px-Typeform_Logo.svg.png"
   },
   {
     name: "Marfeel",
     domain: "marfeel.com",
-    address: ["Barcelona", "Spain"],
+    address: ["Barcelona"],
     photo: "https://pbs.twimg.com/profile_images/1047789743335989248/a-QyWwKU_400x400.jpg"
   },
   {
     name: "Cabify",
     domain: "cabify.com",
-    address: ["Madrid", "Spain"],
+    address: ["Madrid"],
     photo: "https://upload.wikimedia.org/wikipedia/commons/5/58/Cabify-logo-purple.png"
   },
   {
     name: "Le Wagon",
     domain: "lewagon.com",
-    address: ["Paris", "France"],
+    address: ["Paris"],
     photo: "https://mk0mindspacemexmwc0q.kinstacdn.com/wp-content/uploads/sites/2/2017/03/white_logo_red_font.png"
   },
   {
     name: "Badi",
     domain: "badi.com",
-    address: ["Barcelona", "Spain"],
+    address: ["Barcelona"],
     photo: "https://media.licdn.com/dms/image/C4D0BAQG7h7FmPFXZTA/company-logo_200_200/0?e=2159024400&v=beta&t=UnYwVD5kc1F7ZJSx8ppGKgdxn4S1YMlO8xoyxT9QpXo"
   }
 ]
