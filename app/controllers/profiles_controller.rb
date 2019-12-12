@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = Profile.create(status: "pending")
+    @profile = Profile.create
     redirect_to wizard_path(steps.first, profile_id: @profile.id)
   end
 

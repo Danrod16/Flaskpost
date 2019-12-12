@@ -15,7 +15,7 @@ class Profile < ApplicationRecord
 
   validates :description, presence: true, allow_blank: false, if: :active_or_third?
 
-  validates :description, length: { maximum: 80, minimum: 10 }, if: :active_or_third?
+  validates :description, length: { maximum: 180, minimum: 60 }, if: :active_or_third?
   validates :salary_min, numericality: { only_integer: true }, if: :active_or_second?
   validates :salary_max, numericality: { only_integer: true }, if: :active_or_second?
 
