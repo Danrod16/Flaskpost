@@ -1,31 +1,29 @@
 
 
 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel"  data-interval="false">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-    <% @cards.length.times do %>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-    <% end %>
-  </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <div class="swipe-photo">
-        <%= image_tag @card.photo, class: "d-block w-100S" %>
-      </div>
-      <div class="carousel-caption d-none d-md-block">
-        <a href="#" class="btn-main-ghost">Nope</a>
-        <a href="#" class="btn-main">Like</a>
+      <div class="swipe-card">
+        <div class="swipe-photo">
+          <%= image_tag @card.photo, class: "d-block w-100S" %>
+        </div>
+          <div class="swipe-answer">
+            <a class="btn-main" href="#">NOPE</a>
+            <a class="btn-main" href="#">LIKE</a>
+          </div>
       </div>
     </div>
 
     <% @cards.each do |card| %>
       <div class="carousel-item">
-        <div class="swipe-photo">
-          <%= image_tag card.photo, class: "d-block w-100S" %>
-        </div>
-        <div class="carousel-caption d-none d-md-block">
-          <a href="#" class="btn-main-ghost">Nope</a>
-          <a href="#" class="btn-main">Like</a>
+        <div class="swipe-card">
+          <div class="swipe-photo">
+            <%= image_tag card.photo, class: "d-block w-100S" %>
+          </div>
+          <div class="swipe-answer">
+            <a class="btn-main" href="#">NOPE</a>
+            <a class="btn-main" href="#">LIKE</a>
+          </div>
         </div>
       </div>
     <% end %>
