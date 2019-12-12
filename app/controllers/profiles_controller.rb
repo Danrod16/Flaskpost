@@ -4,9 +4,17 @@ class ProfilesController < ApplicationController
 
   steps :first, :second, :third
 
+  def index
+    @profiles = current_user.profiles
+  end
+
   def show
     @profile = Profile.find(params[:profile_id])
     render_wizard
+  end
+
+  def new
+    create
   end
 
   def update
@@ -15,7 +23,7 @@ class ProfilesController < ApplicationController
     params[:profile][:status] = 'active' if step == steps.last
     params[:profile][:user_id] = current_user.id if step == steps.last
     if @profile.update_attributes(profile_params) && step == steps.last
-      redirect_to new_profile_path
+      redirect_to profile_path()
     else
       render_wizard @profile
     end
@@ -26,6 +34,16 @@ class ProfilesController < ApplicationController
     redirect_to wizard_path(steps.first, profile_id: @profile.id)
   end
 
+  def bridge_route
+    # registration
+    if current_user.profiles.empty?
+      redirect_to new_profile_path
+    else
+      # sign in
+      redirect_to profiles_path
+    end
+  end
+    
   def swipe
     @cards = cards_from_database
 
