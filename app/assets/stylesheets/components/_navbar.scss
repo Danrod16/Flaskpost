@@ -25,6 +25,10 @@
   margin-bottom: 10px;
 }
 
+.navbar-nav {
+  flex-direction: row;
+}
+
 #logo {
   background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576084648/Screenshot_2019-12-11_at_18.17.05_ueqvra.png);
   height: 32px;
