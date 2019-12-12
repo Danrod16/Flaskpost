@@ -27,6 +27,9 @@ class ProfilesController < ApplicationController
     redirect_to profiles
   end
 
+  def swipe
+  end
+
   private
 
   def params_profile
