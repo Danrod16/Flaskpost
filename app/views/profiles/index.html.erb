@@ -1,6 +1,11 @@
-<h1>Profiles#index</h1>
-<p>Find me in app/views/profiles/index.html.erb</p>
+<h1>Your Job Decks</h1>
+<p><<strong>Select</strong> your job hunting
+deck and start <strong>swiping</strong>! </p>
 
-<% @profiles.each do |profile| %>
-<%= profile.job_title %>
-<% end  %>
+<div class="grid">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    <% @profiles.each do |profile| %>
+    <h2 style="text-align: left"><%= profile.job_title %></h2>
+    <% end  %>
+  </div>
+</div>
