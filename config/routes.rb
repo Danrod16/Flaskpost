@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   resources :companies, only: [:new, :create]
   resources :profiles, only: [:index, :new, :create, :edit, :update, :delete]
-  resources :postings, only: [:index, :new, :create, :edit, :update, :delete]
+  resources :postings, only: [:index, :new, :create, :edit, :update]
 
   resources :messages, only: [:create]
-  resources :matches, only: [:index, :show, :create, :update]
+  resources :matches, only: [:index, :show]
 end

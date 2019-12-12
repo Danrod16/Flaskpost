@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
-<!-- Active URL: https://kitt.lewagon.com/db/3491 -->
+<!-- Active URL: https://kitt.lewagon.com/db/4003 -->
 <sql>
 <datatypes db="postgresql">
   <group label="Numeric" color="rgb(238,238,170)">
@@ -41,7 +41,7 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="533" y="155" name="profiles">
+</datatypes><table x="539" y="266" name="profiles">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -83,7 +83,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="539" y="479" name="postings">
+<table x="536" y="576" name="postings">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -122,14 +122,14 @@
 <part>id</part>
 </key>
 </table>
-<table x="1027" y="265" name="matches">
+<table x="800" y="330" name="matches">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="status" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="application_id" null="1" autoincrement="0">
+<row name="profile_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="profiles" row="id" />
 </row>
@@ -141,7 +141,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="152" y="261" name="users">
+<table x="301" y="200" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -162,7 +162,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="297" y="415" name="companies">
+<table x="289" y="550" name="companies">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -176,20 +176,20 @@
 <part>id</part>
 </key>
 </table>
-<table x="539" y="10" name="messages">
+<table x="1038" y="158" name="messages">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="content" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="match_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="matches" row="id" />
-</row>
 <row name="user_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="match_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="matches" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
