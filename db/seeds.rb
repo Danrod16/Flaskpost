@@ -391,28 +391,28 @@
     job_title: "Back-End Developer",
     experience: "Junior",
     salary_max: 25_000,
-    description: "This is a job for the polymaths and the all-rounders."
+    description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
     field: "Tech",
     job_title: "Full-Stack Developer",
     experience: "Senior",
     salary_max: 90_000,
-    description: "This is a job for the polymaths and the all-rounders."
+    description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
     field: "Tech",
     job_title: "Full-Stack Developer",
     experience: "Mid",
     salary_max: 50_000,
-    description: "This is a job for the polymaths and the all-rounders."
+    description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
     field: "Tech",
     job_title: "Full-Stack Developer",
     experience: "Junior",
     salary_max: 30_000,
-    description: "This is a job for the polymaths and the all-rounders."
+    description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   }
 ]
 
@@ -471,7 +471,7 @@
     experience: "Senior",
     salary_min: 80_000,
     salary_max: 100_000,
-    description: "Behold the polymath... A master of all trades - a jack of none."
+    description: "Behold the polymath... A master of all trades - a jack of none. Swipe right to meet a real renaissance dev..."
   },
   {
     field: "Tech",
@@ -479,7 +479,7 @@
     experience: "Mid",
     salary_min: 40_000,
     salary_max: 60_000,
-    description: "Behold the polymath... A master of all trades - a jack of none."
+    description: "Behold the polymath... A master of all trades - a jack of none. Swipe right to meet a real renaissance dev..."
   },
   {
     field: "Tech",
@@ -487,7 +487,7 @@
     experience: "Junior",
     salary_min: 25_000,
     salary_max: 35_000,
-    description: "Behold the polymath... A master of all trades - a jack of none."
+    description: "Behold the polymath... A master of all trades - a jack of none. Swipe right to meet a real renaissance dev..."
   }
 ]
 
@@ -554,8 +554,8 @@ def create_postings_from_company(n_postings)
       job_title: @selected_posting[:job_title],
       contract_types: @contract_types.sample(1),
       experience: @selected_posting[:experience],
-      languages: @languages.sample(rand(@languages.length)),
-      locations: @locations.sample(rand(@locations.length)),
+      languages: @languages.sample(rand(1..@languages.length)),
+      locations: @locations.sample(rand(1..4)),
       description: @selected_posting[:description],
       salary_max: @selected_posting[:salary_max],
       company_id: @new_company.id) #,
@@ -584,12 +584,13 @@ def create_profiles_from_users(n_profiles)
       job_title: @selected_profile[:job_title],
       contract_types: @contract_types.sample(1),
       experience: @selected_profile[:experience],
-      languages: @languages.sample(rand(@languages.length)),
-      locations: @locations.sample(rand(@locations.length)),
+      languages: @languages.sample(rand(1..@languages.length)),
+      locations: @locations.sample(rand(1..@locations.length)),
       description: @selected_profile[:description],
       salary_min: @selected_profile[:salary_min],
       salary_max: @selected_profile[:salary_max],
-      user_id: User.last.id #,
+      user_id: User.last.id,
+      status: 'active'#,
       # photo: @selected_company[:photo]
       )
 
@@ -620,7 +621,7 @@ def create_users_with_companies(n_users)
       else # if company does not exist, a new company will be created
         create_new_company
         create_new_user_with_(@new_company.id)
-        create_postings_from_company(5) # TODO: FIND THE BUG!!!!
+        create_postings_from_company(rand(8..(@postings_list.length))) # TODO: FIND THE BUG!!!!
       end
 
     else # remaining new users will not be associated with a company (applicants)
@@ -682,7 +683,7 @@ def seed_database(clean)
     puts "SEEDING DATABASE"
     puts " "
 
-    puts "Seeding Users & Companies..."
+    puts "Seeding Users, Companies, Postings & Profiles..."
     puts " "
 
     create_users_with_companies(@users_list.length)
@@ -692,8 +693,8 @@ def seed_database(clean)
     puts "SEEDED #{Company.count} Companies"
     puts " "
 
-    puts "Seeding Postings & Profiles..."
-    puts " "
+    # puts "Seeding Postings & Profiles..."
+    # puts " "
 
     # create_postings_from_companies(5)
 
