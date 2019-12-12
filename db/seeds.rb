@@ -355,45 +355,69 @@
     field: "Tech",
     job_title: "Front-End Developer",
     experience: "Senior",
+    salary_max: 50_000,
     description: "Ready to take your style to the next level? Looking for driven and ambitious senior designers."
   },
   {
     field: "Tech",
     job_title: "Front-End Developer",
     experience: "Mid",
+    salary_max: 30_000,
     description: "Think you've got style, huh? Then come show us what you've got! Looking for passionate and talented designers."
   },
   {
     field: "Tech",
     job_title: "Front-End Developer",
     experience: "Junior",
+    salary_max: 20_000,
     description: "Think you've got an eye for style? Show us you're talent and we'll show you how to go pro."
   },
   {
     field: "Tech",
     job_title: "Back-End Developer",
     experience: "Senior",
+    salary_max: 70_000,
     description: "If you express your style with beautiful logic, we understand your art. Swipe to get in touch if you're a true MVC craftsman."
   },
   {
     field: "Tech",
     job_title: "Back-End Developer",
     experience: "Mid",
+    salary_max: 45_000,
     description: "If you express your style with beautiful logic, we understand your art. Swipe to get in touch if you're a true MVC craftsman."
   },
   {
     field: "Tech",
     job_title: "Back-End Developer",
     experience: "Junior",
+    salary_max: 25_000,
     description: "This is a job for the polymaths and the all-rounders."
   },
   {
     field: "Tech",
     job_title: "Full-Stack Developer",
-    experience: "Junior",
+    experience: "Senior",
+    salary_max: 90_000,
+    description: "This is a job for the polymaths and the all-rounders."
+  },
+  {
+    field: "Tech",
+    job_title: "Full-Stack Developer",
+    experience: "Mid",
+    salary_max: 50_000,
+    description: "This is a job for the polymaths and the all-rounders."
+  },
+  {
+    field: "Tech",
+    job_title: "Full-Stack Developer",
+    experience: "Senior",
+    salary_max: 30_000,
     description: "This is a job for the polymaths and the all-rounders."
   }
 ]
+
+@contract_types = ["Full-Time", "Part-Time", "Freelance"]
+@languages = ["English", "French", "Spanish", "German", "Italian"]
 
 # REFACTORED METHODS
 
@@ -434,9 +458,41 @@ def create_new_company
 
   if @new_company.valid?
     @new_company.save # saving new company
-    p @new_company
+    @new_company
   else
     p @new_company.errors.messages
+  end
+end
+
+def create_postings_from_company(n_postings)
+  @shuffled_postings_list = @postings_list.shuffle # Shuffle postings order - create random posts
+
+  rand(n_postings).times do # TODO: Create rand(n_postings) number of postings - selected from shuffled_postings_list
+
+    @selected_posting_index = @shuffled_postings_list.length - 1 # index of last element of shuffled postings array
+    @selected_posting = @shuffled_postings_list[@selected_posting_index] # selects random post from shuffled array by this index
+    @shuffled_postings_list.delete_at(@selected_posting_index) # deletes selected post from shuffled array
+
+    @new_posting = Posting.new(
+      field: @selected_posting[:field],
+      job_title: @selected_posting[:job_title],
+      contract_types: @contract_types.sample(1),
+      experience: @selected_posting[:experience],
+      languages: @languages.sample(rand(@languages.length)),
+      locations: [@selected_company[:address]],
+      description: @selected_posting[:description],
+      salary_max: @selected_posting[:salary_max],
+      company_id: @new_company.id #,
+      # photo: @selected_company[:photo]
+      )
+
+    if @new_posting.valid?
+      @new_posting.save # saving new company
+      @new_posting
+    else
+      p @new_posting.errors.messages
+    end
+    p Posting.last
   end
 end
 
@@ -458,6 +514,7 @@ def create_users_with_companies(n_users)
       else # if company does not exist, a new company will be created
         create_new_company
         create_new_user_with_(@new_company.id)
+        create_postings_from_company(5)
       end
 
     else # remaining new users will not be associated with a company (applicants)
@@ -520,6 +577,7 @@ def seed_database(clean)
 
     create_users_with_companies(@users_list.length)
 
+    puts " "
     puts "SEEDED #{User.count} Users"
     puts "SEEDED #{Company.count} Companies"
     puts " "
@@ -529,8 +587,9 @@ def seed_database(clean)
 
     # create_postings_from_companies(5)
 
-    # puts "SEEDED #{Posting.count} Postings"
-    # puts "SEEDED #{Profile.count} Profiles"
+    puts " "
+    puts "SEEDED #{Posting.count} Postings"
+    puts "SEEDED #{Profile.count} Profiles"
     # puts " "
     # puts "Seeding Matches..."
     # puts "SEEDED #{Match.count} Matches"
