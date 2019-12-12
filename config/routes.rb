@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :companies, only: [:new, :create]
-  resources :profiles, only: [:index, :new, :create, :edit, :update, :delete]
   resources :postings, only: [:index, :new, :create, :edit, :update]
+
+  resources :profiles, only: [:new, :create, :show, :update] do
+    resources "new_profile", controller: 'profiles'
+  end
 
   resources :messages, only: [:create]
   resources :matches, only: [:index, :show]
