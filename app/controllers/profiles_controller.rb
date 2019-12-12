@@ -43,7 +43,7 @@ class ProfilesController < ApplicationController
       redirect_to profiles_path
     end
   end
-    
+
   def swipe
     @cards = cards_from_database
 
@@ -76,10 +76,6 @@ class ProfilesController < ApplicationController
       locations: [],
       contract_types: []
     )
-  end
-
-  def set_profile
-    @profile = Profile.find(params[:id])
   end
 
   def cards_from_database
