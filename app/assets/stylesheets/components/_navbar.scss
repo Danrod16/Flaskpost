@@ -9,14 +9,29 @@
 }
 
 .navbar-shuffle .navbar-brand img {
-  width: 130px;
+  width: 100px;
   height: 30px;
   object-fit: cover;
 }
 
-.navbar-app {
+.nav {
+  display: flex;
+  text-align: center;
   justify-content: space-between;
-  background: white;
-  padding: 8px 5px;
+  font-size: 32px;
+  list-style: none;
+  padding: 0px 20px 0px 20px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+
+.navbar-nav {
+  flex-direction: row;
+}
+
+#logo {
+  background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576084648/Screenshot_2019-12-11_at_18.17.05_ueqvra.png);
+  height: 32px;
+  object-fit: cover;
 }
 

@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :matches, only: [:index, :show]
   resources :messages, only: [:create]
 
-  resources :profiles, only: [:index, :new, :create, :edit, :update, :delete] do
+  resources :profiles, only: [:index, :new, :create, :edit, :update] do
+    resources "new_profile", controller: 'profiles'
     member do
       get '/swipe', to: 'profiles#swipe', as: :swipe
     end
