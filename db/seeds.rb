@@ -247,103 +247,103 @@
   {
     name: "Google",
     domain: "google.com",
-    address: "1600 Amphitheatre Parkway, Mountain View, California, United States",
+    address: ["Mountain View", "California", "United States"],
     photo: "https://storage.googleapis.com/gd-wagtail-prod-assets/original_images/evolving_google_identity_share.jpg"
   },
   {
     name: "Facebook",
     domain: "facebook.com",
-    address: "1 Hacker Way, Menlo Park, California, United States",
+    address: ["California", "United States"],
     photo: "https://about.fb.com/wp-content/uploads/2019/11/facebook_wordmark.gif"
   },
   {
     name: "Twitter",
     domain: "twitter.com",
-    address: "1355 Market Street, San Francisco, California, United States",
+    address: ["San Francisco", "United States"],
     photo: "https://s3.amazonaws.com/img.mynetdiary.com/src/logo_twitter.png"
   },
   {
     name: "Skyscanner",
     domain: "skyscanner.net",
-    address: "Quartermile One, 15 Lauriston Place, Edinburgh, United Kingdom",
+    address: ["Edinburgh", "United Kingdom"],
     photo: "https://mundoxdescubrir.com/wp-content/uploads/2019/02/logo-skyscanner-1.png"
   },
   {
     name: "Booking.com",
     domain: "booking.com",
-    address: "Herengracht 597, Amsterdam, Netherlands",
+    address: ["Amsterdam", "Netherlands"],
     photo: "https://www.vilacvetka.com/wp-content/uploads/2015/04/booking.com-logo-2.png"
   },
   {
     name: "AirBnB",
     domain: "airbnb.com",
-    address: "888 Brannan St, San Francisco, California, United States",
+    address: ["San Francisco", "United States"],
     photo: "http://www.brandemia.org/sites/default/files/sites/default/files/bnb_billboard_01-2000x1125.jpg"
   },
   {
     name: "Microsoft Iberia",
     domain: "microsoft.com",
-    address: "Edificio B3, Carrer de Josep Pla, 2, Barcelona",
+    address: ["Barcelona", "Spain"],
     photo: "http://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE2qVsJ?ver=3f74"
   },
   {
     name: "Yego",
     domain: "yego.es",
-    address: "Carrer de Wellington, 94, Barcelona",
+    address: ["Barcelona", "Spain"],
     photo: "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/c3/d6/03/c3d60344-cc7b-c6fd-fbc1-a564be66391b/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-85-220.png/1200x630wa.png"
   },
   {
     name: "ThoughtWorks",
     domain: "thoughtworks.com",
-    address: "Edifici Media-TIC, Carrer de Roc Boronat, 117, Barcelona",
+    address: ["Barcelona", "Spain"],
     photo: "https://sonarplusd.com/system/attached_images/21482/medium/ThoughtWorks-Alta.jpg?1519817056"
   },
   {
     name: "eCooltra",
     domain: "ecooltra.com",
-    address: "Carrer de la Reina Cristina, 2, Barcelona",
+    address: ["Barcelona", "Spain"],
     photo: "https://canelapr.com/wp-content/uploads/2017/06/ecooltra-logo.jpg"
   },
   {
     name: "Revolut",
     domain: "revolut.com",
-    address: "7 Westferry Circus, Canary Wharf, London, United Kingdom",
+    address: ["London", "United Kingdom"],
     photo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Logo_Revolut.png"
   },
   {
     name: "N26",
     domain: "n26.com",
-    address: "Klosterstraße 62, Berlin, Germany",
+    address: ["Berlin", "Germany"],
     photo: "http://fintechaustria.org/wp-content/uploads/2018/07/n26-logo.png"
   },
   {
     name: "Typeform",
     domain: "typeform.com",
-    address: "Carrer de Bac de Roda, 163, Barcelona",
+    address: ["Barcelona", "Spain"],
     photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Typeform_Logo.svg/1200px-Typeform_Logo.svg.png"
   },
   {
     name: "Marfeel",
     domain: "marfeel.com",
-    address: "Av. de Josep Tarradellas, 20, Barcelona",
+    address: ["Barcelona", "Spain"],
     photo: "https://pbs.twimg.com/profile_images/1047789743335989248/a-QyWwKU_400x400.jpg"
   },
   {
     name: "Cabify",
     domain: "cabify.com",
-    address: "Calle de Pradillo, 42, Madrid",
+    address: ["Madrid", "Spain"],
     photo: "https://upload.wikimedia.org/wikipedia/commons/5/58/Cabify-logo-purple.png"
   },
   {
     name: "Le Wagon",
     domain: "lewagon.com",
-    address: "16 Villa Gaudelet, Paris, France",
+    address: ["Paris", "France"],
     photo: "https://mk0mindspacemexmwc0q.kinstacdn.com/wp-content/uploads/sites/2/2017/03/white_logo_red_font.png"
   },
   {
     name: "Badi",
     domain: "badi.com",
-    address: "Passeig de Garcia Fària, 49, Barcelona",
+    address: ["Barcelona", "Spain"],
     photo: "https://media.licdn.com/dms/image/C4D0BAQG7h7FmPFXZTA/company-logo_200_200/0?e=2159024400&v=beta&t=UnYwVD5kc1F7ZJSx8ppGKgdxn4S1YMlO8xoyxT9QpXo"
   }
 ]
@@ -410,14 +410,90 @@
   {
     field: "Tech",
     job_title: "Full-Stack Developer",
-    experience: "Senior",
+    experience: "Junior",
     salary_max: 30_000,
     description: "This is a job for the polymaths and the all-rounders."
   }
 ]
 
+@profiles_list = [
+  {
+    field: "Tech",
+    job_title: "Front-End Developer",
+    experience: "Senior",
+    salary_min: 40_000,
+    salary_max: 60_000,
+    description: "I'm ready to take my style to the next level. Looking for driven and ambitious companies."
+  },
+  {
+    field: "Tech",
+    job_title: "Front-End Developer",
+    experience: "Mid",
+    salary_min: 25_000,
+    salary_max: 35_000,
+    description: "I'm ready to take my style to the next level. Looking for driven and ambitious companies."
+  },
+  {
+    field: "Tech",
+    job_title: "Front-End Developer",
+    experience: "Junior",
+    salary_min: 15_000,
+    salary_max: 25_000,
+    description: "I'm ready to take my style to the next level. Looking for driven and ambitious companies."
+  },
+  {
+    field: "Tech",
+    job_title: "Back-End Developer",
+    experience: "Senior",
+    salary_min: 65_000,
+    salary_max: 80_000,
+    description: "I express my style with beautiful logic, and you understand my art. Swipe to get in touch with a true MVC craftsman."
+  },
+  {
+    field: "Tech",
+    job_title: "Back-End Developer",
+    experience: "Mid",
+    salary_min: 35_000,
+    salary_max: 55_000,
+    description: "I express my style with beautiful logic, and want to better understand my art. Swipe to get in touch with a rising MVC star."
+  },
+  {
+    field: "Tech",
+    job_title: "Back-End Developer",
+    experience: "Junior",
+    salary_min: 20_000,
+    salary_max: 30_000,
+    description: "I want to express my style with beautiful logic and understand this art. Swipe to get in touch with an aspiring MVC craftsman."
+  },
+  {
+    field: "Tech",
+    job_title: "Full-Stack Developer",
+    experience: "Senior",
+    salary_min: 80_000,
+    salary_max: 100_000,
+    description: "Behold the polymath... A master of all trades - a jack of none."
+  },
+  {
+    field: "Tech",
+    job_title: "Full-Stack Developer",
+    experience: "Mid",
+    salary_min: 40_000,
+    salary_max: 60_000,
+    description: "Behold the polymath... A master of all trades - a jack of none."
+  },
+  {
+    field: "Tech",
+    job_title: "Full-Stack Developer",
+    experience: "Junior",
+    salary_min: 25_000,
+    salary_max: 35_000,
+    description: "Behold the polymath... A master of all trades - a jack of none."
+  }
+]
+
 @contract_types = ["Full-Time", "Part-Time", "Freelance"]
 @languages = ["English", "French", "Spanish", "German", "Italian"]
+@locations = ["Mountain View", "San Francisco", "California", "United States", "Edinburgh", "London", "United Kingdom", "Amsterdam", "Netherlands", "Barcelona", "Madrid", "Spain", "Berlin", "Germany", "Paris", "France"]
 
 # REFACTORED METHODS
 
@@ -458,7 +534,7 @@ def create_new_company
 
   if @new_company.valid?
     @new_company.save # saving new company
-    @new_company
+    p @new_company
   else
     p @new_company.errors.messages
   end
@@ -479,20 +555,50 @@ def create_postings_from_company(n_postings)
       contract_types: @contract_types.sample(1),
       experience: @selected_posting[:experience],
       languages: @languages.sample(rand(@languages.length)),
-      locations: [@selected_company[:address]],
+      locations: @locations.sample(rand(@locations.length)),
       description: @selected_posting[:description],
       salary_max: @selected_posting[:salary_max],
-      company_id: @new_company.id #,
+      company_id: @new_company.id) #,
       # photo: @selected_company[:photo]
-      )
 
     if @new_posting.valid?
       @new_posting.save # saving new company
-      @new_posting
+      p @new_posting
     else
       p @new_posting.errors.messages
     end
-    p Posting.last
+  end
+end
+
+def create_profiles_from_users(n_profiles)
+  @shuffled_profiles_list = @profiles_list.shuffle # Shuffle postings order - create random posts
+
+  rand(n_profiles).times do # TODO: Create rand(n_postings) number of postings - selected from shuffled_postings_list
+
+    @selected_profile_index = @shuffled_profiles_list.length - 1 # index of last element of shuffled postings array
+    @selected_profile = @shuffled_profiles_list[@selected_profile_index] # selects random post from shuffled array by this index
+    @shuffled_profiles_list.delete_at(@selected_profile_index) # deletes selected post from shuffled array
+
+    @new_profile = Profile.new(
+      field: @selected_profile[:field],
+      job_title: @selected_profile[:job_title],
+      contract_types: @contract_types.sample(1),
+      experience: @selected_profile[:experience],
+      languages: @languages.sample(rand(@languages.length)),
+      locations: @locations.sample(rand(@locations.length)),
+      description: @selected_profile[:description],
+      salary_min: @selected_profile[:salary_min],
+      salary_max: @selected_profile[:salary_max],
+      user_id: User.last.id #,
+      # photo: @selected_company[:photo]
+      )
+
+    if @new_profile.valid?
+      @new_profile.save # saving new company
+      p @new_profile
+    else
+      p @new_profile.errors.messages
+    end
   end
 end
 
@@ -514,7 +620,7 @@ def create_users_with_companies(n_users)
       else # if company does not exist, a new company will be created
         create_new_company
         create_new_user_with_(@new_company.id)
-        create_postings_from_company(5)
+        create_postings_from_company(5) # TODO: FIND THE BUG!!!!
       end
 
     else # remaining new users will not be associated with a company (applicants)
@@ -523,6 +629,10 @@ def create_users_with_companies(n_users)
     end
 
     save_new_user
+
+    unless User.last.company_id
+      create_profiles_from_users(rand(2..4))
+    end
   end
 end
 
