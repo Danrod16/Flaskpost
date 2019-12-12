@@ -7,12 +7,15 @@ Rails.application.routes.draw do
   resources :companies, only: [:new, :create]
   resources :postings, only: [:index, :new, :create, :edit, :update]
 
+
   resources :profiles, only: [:index, :new, :create, :show, :update] do
+    member do
+      get '/swipe', to: 'profiles#swipe', as: :swipe
+    end
     resources "builder", controller: 'profiles'
   end
 
-  resources :messages, only: [:create]
   resources :matches, only: [:index, :show]
-end
+  resources :messages, only: [:create]
 
 

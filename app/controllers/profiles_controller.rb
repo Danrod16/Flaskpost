@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   include Wicked::Wizard
+  before_action :set_profile
 
   steps :first, :second, :third
 
@@ -42,6 +43,22 @@ class ProfilesController < ApplicationController
       redirect_to profiles_path
     end
   end
+    
+  def swipe
+    @cards = cards_from_database
+
+    @cards = @cards.filter do |card|
+      @profile.contract_types.any? { |contract_type| card.contract_types.include?(contract_type) }
+    end
+
+    @cards = @cards.filter do |card|
+      @profile.languages.any? { |language| card.languages.include?(language) }
+    end
+
+    @cards = @cards.filter do |card|
+      @profile.locations.any? { |location| card.locations.include?(location) }
+    end
+  end
 
   private
 
@@ -58,6 +75,21 @@ class ProfilesController < ApplicationController
       languages: [],
       locations: [],
       contract_types: []
+    )
+  end
+
+  def set_profile
+    @profile = Profile.find(params[:id])
+  end
+
+  def cards_from_database
+    Posting.where(
+      'field = :profile_field
+      AND job_title = :profile_job_title
+      AND salary_max >= :profile_salary_min',
+      profile_field: @profile.field,
+      profile_job_title: @profile.job_title,
+      profile_salary_min: @profile.salary_min
     )
   end
 end
