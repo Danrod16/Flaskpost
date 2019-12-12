@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
   include Wicked::Wizard
-  before_action :set_profile
 
   steps :first, :second, :third
 
