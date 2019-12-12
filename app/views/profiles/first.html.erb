@@ -1,13 +1,13 @@
 <div class="container">
 
-  First
-
-  <p>Let's create your first job hunting deck.</p>
+  <div class="onboarding-header">
+    <h1>Let's start building your first profile</h1>
+  </div>
 
   <%= simple_form_for @profile, url: wizard_path do |f| %>
-    <%= f.input :field, label:'Choose your field of interest:', collection: ['Tech', 'E-commerce', 'Cryptocurrency', 'Startup'] %>
-    <%= f.input :job_title, label: 'Define your skill set:' %>
+    <%= f.input :field, label:'Choose your field of interest:', collection: ['Tech', 'E-commerce', 'Cryptocurrency', 'Startup'], placeholder: "e.g. IT & Programming" %>
+    <%= f.input :job_title, label: 'Define your skill set:', placeholder: "e.g. Full Stack Developer" %>
     <%= f.input :experience, label: 'And your skill level', collection: ['Entry', 'Junior', 'Mid', 'Senior'] %>
-    <%= f.submit "NEXT"%>
+    <%= f.submit "NEXT", class: "btn-main" %>
   <% end %>
 </div>
