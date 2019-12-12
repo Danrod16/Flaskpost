@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  before_action :set_profile
+
   def index
     @profiles = Profile.all
   end
@@ -28,11 +30,19 @@ class ProfilesController < ApplicationController
   end
 
   def swipe
+    @cards = Posting.where(
+      field: @profile.field,
+      job_title: @profile.job_title
+    )
   end
 
   private
 
   def params_profile
     params.require(:profile).permit(:field, :job_title, :contract_types, :experience, :languages, :locations, :description, :salary_max, :salary_min)
+  end
+
+  def set_profile
+    @profile = Profile.find(params[:id])
   end
 end
