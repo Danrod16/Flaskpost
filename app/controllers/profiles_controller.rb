@@ -44,19 +44,20 @@ class ProfilesController < ApplicationController
   end
 
   def swipe
-    @cards = cards_from_database
+    @profile = Profile.find(params[:profile_id])
+    # @cards = cards_from_database
 
-    @cards = @cards.filter do |card|
-      @profile.contract_types.any? { |contract_type| card.contract_types.include?(contract_type) }
-    end
+    # @cards = @cards.filter do |card|
+    #   @profile.contract_types.any? { |contract_type| card.contract_types.include?(contract_type) }
+    # end
 
-    @cards = @cards.filter do |card|
-      @profile.languages.any? { |language| card.languages.include?(language) }
-    end
+    # @cards = @cards.filter do |card|
+    #   @profile.languages.any? { |language| card.languages.include?(language) }
+    # end
 
-    @cards = @cards.filter do |card|
-      @profile.locations.any? { |location| card.locations.include?(location) }
-    end
+    # @cards = @cards.filter do |card|
+    #   @profile.locations.any? { |location| card.locations.include?(location) }
+    # end
   end
 
   private

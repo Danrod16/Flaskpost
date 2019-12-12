@@ -7,12 +7,10 @@ Rails.application.routes.draw do
   resources :companies, only: [:new, :create]
   resources :postings, only: [:index, :new, :create, :edit, :update]
 
+  get '/:user_id/:profile_id/swipe', to: 'profiles#swipe', as: :swipe
 
   resources :profiles, only: [:index, :new, :create, :show, :update] do
     resources "builder", controller: 'profiles'
-    member do
-      get '/swipe', to: 'profiles#swipe', as: :swipe
-    end
   end
 
   resources :matches, only: [:index, :show]
