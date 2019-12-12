@@ -621,7 +621,7 @@ def create_users_with_companies(n_users)
       else # if company does not exist, a new company will be created
         create_new_company
         create_new_user_with_(@new_company.id)
-        create_postings_from_company(rand(8..(@postings_list.length))) # TODO: FIND THE BUG!!!!
+        create_postings_from_company(rand(8..(@postings_list.length)))
       end
 
     else # remaining new users will not be associated with a company (applicants)
