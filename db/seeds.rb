@@ -555,7 +555,7 @@ def create_postings_from_company(n_postings)
       contract_types: @contract_types.sample(1),
       experience: @selected_posting[:experience],
       languages: @languages.sample(rand(1..@languages.length)),
-      locations: @locations.sample(rand(1..4)),
+      locations: @new_company[:address],
       description: @selected_posting[:description],
       salary_max: @selected_posting[:salary_max],
       company_id: @new_company.id) #,
