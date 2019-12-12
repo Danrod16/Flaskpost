@@ -1,3 +1,10 @@
 <h1>That's the swiping area!</h1>
 <p>Profile Id <%= @profile.id %> </p>
+<% @cards.each do |card| %>
+  <div>
+    <%= card.id %>
+    <%= image_tag card.photo %>
+  </div>
+<% end %>
+
 
