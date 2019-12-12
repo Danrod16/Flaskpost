@@ -30,14 +30,19 @@ class ProfilesController < ApplicationController
   end
 
   def swipe
-    @cards = Posting.where(
-      'field = :profile_field
-      AND job_title = :profile_job_title
-      AND salary_max >= :profile_salary_min',
-      profile_field: @profile.field,
-      profile_job_title: @profile.job_title,
-      profile_salary_min: @profile.salary_min
-    )
+    @cards = cards_from_database
+
+    @cards = @cards.filter do |card|
+      @profile.contract_types.any? { |contract_type| card.contract_types.include?(contract_type) }
+    end
+
+    @cards = @cards.filter do |card|
+      @profile.languages.any? { |language| card.languages.include?(language) }
+    end
+
+    @cards = @cards.filter do |card|
+      @profile.locations.any? { |location| card.locations.include?(location) }
+    end
   end
 
   private
@@ -48,5 +53,16 @@ class ProfilesController < ApplicationController
 
   def set_profile
     @profile = Profile.find(params[:id])
+  end
+
+  def cards_from_database
+    Posting.where(
+      'field = :profile_field
+      AND job_title = :profile_job_title
+      AND salary_max >= :profile_salary_min',
+      profile_field: @profile.field,
+      profile_job_title: @profile.job_title,
+      profile_salary_min: @profile.salary_min
+    )
   end
 end
