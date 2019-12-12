@@ -247,103 +247,103 @@
   {
     name: "Google",
     domain: "google.com",
-    address: ["Mountain View", "California", "United States"],
+    address: "Madrid",
     photo: "https://storage.googleapis.com/gd-wagtail-prod-assets/original_images/evolving_google_identity_share.jpg"
   },
   {
     name: "Facebook",
     domain: "facebook.com",
-    address: ["California", "United States"],
+    address: "Madrid",
     photo: "https://about.fb.com/wp-content/uploads/2019/11/facebook_wordmark.gif"
   },
   {
     name: "Twitter",
     domain: "twitter.com",
-    address: ["San Francisco", "United States"],
+    address: "Madrid",
     photo: "https://s3.amazonaws.com/img.mynetdiary.com/src/logo_twitter.png"
   },
   {
     name: "Skyscanner",
     domain: "skyscanner.net",
-    address: ["Edinburgh", "United Kingdom"],
+    address: "London",
     photo: "https://mundoxdescubrir.com/wp-content/uploads/2019/02/logo-skyscanner-1.png"
   },
   {
     name: "Booking.com",
     domain: "booking.com",
-    address: ["Amsterdam", "Netherlands"],
+    address: "Amsterdam",
     photo: "https://www.vilacvetka.com/wp-content/uploads/2015/04/booking.com-logo-2.png"
   },
   {
     name: "AirBnB",
     domain: "airbnb.com",
-    address: ["San Francisco", "United States"],
+    address: "Madrid",
     photo: "http://www.brandemia.org/sites/default/files/sites/default/files/bnb_billboard_01-2000x1125.jpg"
   },
   {
     name: "Microsoft Iberia",
     domain: "microsoft.com",
-    address: ["Barcelona", "Spain"],
+    address: "Barcelona",
     photo: "http://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE2qVsJ?ver=3f74"
   },
   {
     name: "Yego",
     domain: "yego.es",
-    address: ["Barcelona", "Spain"],
+    address: "Barcelona",
     photo: "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/c3/d6/03/c3d60344-cc7b-c6fd-fbc1-a564be66391b/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-85-220.png/1200x630wa.png"
   },
   {
     name: "ThoughtWorks",
     domain: "thoughtworks.com",
-    address: ["Barcelona", "Spain"],
+    address: "Barcelona",
     photo: "https://sonarplusd.com/system/attached_images/21482/medium/ThoughtWorks-Alta.jpg?1519817056"
   },
   {
     name: "eCooltra",
     domain: "ecooltra.com",
-    address: ["Barcelona", "Spain"],
+    address: "Barcelona",
     photo: "https://canelapr.com/wp-content/uploads/2017/06/ecooltra-logo.jpg"
   },
   {
     name: "Revolut",
     domain: "revolut.com",
-    address: ["London", "United Kingdom"],
+    address: "London",
     photo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Logo_Revolut.png"
   },
   {
     name: "N26",
     domain: "n26.com",
-    address: ["Berlin", "Germany"],
+    address: "Berlin",
     photo: "http://fintechaustria.org/wp-content/uploads/2018/07/n26-logo.png"
   },
   {
     name: "Typeform",
     domain: "typeform.com",
-    address: ["Barcelona", "Spain"],
+    address: "Barcelona",
     photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Typeform_Logo.svg/1200px-Typeform_Logo.svg.png"
   },
   {
     name: "Marfeel",
     domain: "marfeel.com",
-    address: ["Barcelona", "Spain"],
+    address: "Barcelona",
     photo: "https://pbs.twimg.com/profile_images/1047789743335989248/a-QyWwKU_400x400.jpg"
   },
   {
     name: "Cabify",
     domain: "cabify.com",
-    address: ["Madrid", "Spain"],
+    address: "Madrid",
     photo: "https://upload.wikimedia.org/wikipedia/commons/5/58/Cabify-logo-purple.png"
   },
   {
     name: "Le Wagon",
     domain: "lewagon.com",
-    address: ["Paris", "France"],
+    address: "Paris",
     photo: "https://mk0mindspacemexmwc0q.kinstacdn.com/wp-content/uploads/sites/2/2017/03/white_logo_red_font.png"
   },
   {
     name: "Badi",
     domain: "badi.com",
-    address: ["Barcelona", "Spain"],
+    address: "Barcelona",
     photo: "https://media.licdn.com/dms/image/C4D0BAQG7h7FmPFXZTA/company-logo_200_200/0?e=2159024400&v=beta&t=UnYwVD5kc1F7ZJSx8ppGKgdxn4S1YMlO8xoyxT9QpXo"
   }
 ]
@@ -493,7 +493,7 @@
 
 @contract_types = ["Full-Time", "Part-Time", "Freelance"]
 @languages = ["English", "French", "Spanish", "German", "Italian"]
-@locations = ["Mountain View", "San Francisco", "California", "United States", "Edinburgh", "London", "United Kingdom", "Amsterdam", "Netherlands", "Barcelona", "Madrid", "Spain", "Berlin", "Germany", "Paris", "France"]
+@locations = ["Edinburgh", "London", "Amsterdam", "Barcelona", "Madrid", "Berlin", "Paris"]
 
 # REFACTORED METHODS
 
@@ -555,7 +555,7 @@ def create_postings_from_company(n_postings)
       contract_types: @contract_types.sample(1),
       experience: @selected_posting[:experience],
       languages: @languages.sample(rand(1..@languages.length)),
-      locations: @locations.sample(rand(1..4)),
+      locations: [@new_company.address],
       description: @selected_posting[:description],
       salary_max: @selected_posting[:salary_max],
       company_id: @new_company.id) #,
@@ -621,7 +621,7 @@ def create_users_with_companies(n_users)
       else # if company does not exist, a new company will be created
         create_new_company
         create_new_user_with_(@new_company.id)
-        create_postings_from_company(rand(8..(@postings_list.length))) # TODO: FIND THE BUG!!!!
+        create_postings_from_company(rand(8..(@postings_list.length)))
       end
 
     else # remaining new users will not be associated with a company (applicants)
@@ -632,7 +632,7 @@ def create_users_with_companies(n_users)
     save_new_user
 
     unless User.last.company_id
-      create_profiles_from_users(rand(2..4))
+      create_profiles_from_users(rand(2..6))
     end
   end
 end
