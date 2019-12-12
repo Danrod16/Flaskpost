@@ -31,8 +31,12 @@ class ProfilesController < ApplicationController
 
   def swipe
     @cards = Posting.where(
-      field: @profile.field,
-      job_title: @profile.job_title
+      'field = :profile_field
+      AND job_title = :profile_job_title
+      AND salary_max >= :profile_salary_min',
+      profile_field: @profile.field,
+      profile_job_title: @profile.job_title,
+      profile_salary_min: @profile.salary_min
     )
   end
 
