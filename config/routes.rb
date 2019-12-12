@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :companies, only: [:new, :create]
   resources :postings, only: [:index, :new, :create, :edit, :update]
 
-  resources :profiles, only: [:new, :create, :show, :update] do
+  resources :profiles, only: [:index, :new, :create, :show, :update] do
     resources "builder", controller: 'profiles'
   end
 
