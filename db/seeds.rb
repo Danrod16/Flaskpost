@@ -558,8 +558,8 @@ def create_postings_from_company(n_postings)
       locations: [@new_company.address],
       description: @selected_posting[:description],
       salary_max: @selected_posting[:salary_max],
-      company_id: @new_company.id) #,
-      # photo: @selected_company[:photo]
+      company_id: @new_company.id,
+      photo: @selected_company[:photo])
 
     if @new_posting.valid?
       @new_posting.save # saving new company
