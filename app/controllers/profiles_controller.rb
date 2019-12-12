@@ -22,7 +22,7 @@ class ProfilesController < ApplicationController
     params[:profile][:status] = 'active' if step == steps.last
     params[:profile][:user_id] = current_user.id if step == steps.last
     if @profile.update_attributes(profile_params) && step == steps.last
-      redirect_to profiles_path
+      redirect_to profile_path()
     else
       render_wizard @profile
     end
@@ -39,7 +39,7 @@ class ProfilesController < ApplicationController
       redirect_to new_profile_path
     else
       # sign in
-      redirect_to profile_builder_index_path(current_user.profiles.first)
+      redirect_to profiles_path
     end
   end
 

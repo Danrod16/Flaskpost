@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  get "/bridge", to: "profiles#bridge_route", as: "user_root"
   root to: 'pages#home'
 
 
