@@ -493,7 +493,7 @@
 
 @contract_types = ["Full-Time", "Part-Time", "Freelance"]
 @languages = ["English", "French", "Spanish", "German", "Italian"]
-@locations = ["Mountain View", "Madrid", "California", "United States", "Edinburgh", "London", "United Kingdom", "Amsterdam", "Netherlands", "Barcelona", "Madrid", "Spain", "Berlin", "Germany", "Paris", "France"]
+@locations = ["Edinburgh", "London", "Amsterdam", "Barcelona", "Madrid", "Berlin", "Paris"]
 
 # REFACTORED METHODS
 
