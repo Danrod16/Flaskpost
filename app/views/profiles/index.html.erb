@@ -1,11 +1,13 @@
 <h1>Your Job Decks</h1>
-<p><<strong>Select</strong> your job hunting
+<p><strong>Select</strong> your job hunting
 deck and start <strong>swiping</strong>! </p>
 
-<div class="grid">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+<div class="cards">
     <% @profiles.each do |profile| %>
-    <h2 style="text-align: left"><%= profile.job_title %></h2>
+    <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576167047/Untitled_design_12_n4xgg5.png)">
+      <p style="font-weight: 100;"><%= profile.job_title %></p>
+    </div>
     <% end  %>
-  </div>
+    <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576169127/Create_a_new_Job_hunting_deck_mkivjs.png); object-fit: center;">
+    </div>
 </div>
