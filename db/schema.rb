@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_135839) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
