@@ -58,6 +58,9 @@ class ProfilesController < ApplicationController
     @cards = @cards.filter do |card|
       @profile.locations.any? { |location| card.locations.include?(location) }
     end
+
+    @card = @cards[0]
+    @cards.delete_at(0)
   end
 
   private
