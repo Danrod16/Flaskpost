@@ -1,5 +1,7 @@
 First
 
+<p>Let's create your first job hunting deck.</p>
+
 <%= simple_form_for @profile, url: wizard_path do |f| %>
   <%= f.input :field, label:'Choose your field of interest:', collection: ['Tech', 'E-commerce', 'Cryptocurrency', 'Startup'] %>
   <%= f.input :job_title, label: 'Define your skill set:' %>

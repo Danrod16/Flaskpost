@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  # belongs_to :user // REPLACED BY METHOD BELOW
+  # belongs_to :user // REPLACED BY 'USER' METHOD BELOW
   has_many :matches
 
   # FORM VALIDATIONS

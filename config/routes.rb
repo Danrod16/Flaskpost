@@ -4,10 +4,9 @@ Rails.application.routes.draw do
 
   resources :companies, only: [:new, :create]
 
-  resources :profiles, only: [:index, :new, :create, :edit, :update, :delete] do
-    resources :build
+  resources :profiles, only: [:new, :create, :show, :update] do
+    resources "new_profile", controller: 'profiles'
   end
-  post 'profiles/build/create', to: "build#create"
 
   resources :postings, only: [:index, :new, :create, :edit, :update, :delete]
   resources :messages, only: [:create]

@@ -8,7 +8,13 @@ class User < ApplicationRecord
   has_many :messages
   # has_many :profiles REPLACED BY BELOW METHOD 'PROFILES'
 
+  # before_destroy :destroy_profiles
+
   def profiles
     Profile.where(user_id: self.id, status: 'active')
   end
+
+  # def destroy_profiles
+  #   Profile.where(user_id: self.id).delete_all
+  # end
 end
