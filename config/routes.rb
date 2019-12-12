@@ -9,13 +9,12 @@ Rails.application.routes.draw do
 
 
   resources :profiles, only: [:index, :new, :create, :show, :update] do
+    resources "builder", controller: 'profiles'
     member do
       get '/swipe', to: 'profiles#swipe', as: :swipe
     end
-    resources "builder", controller: 'profiles'
   end
 
   resources :matches, only: [:index, :show]
   resources :messages, only: [:create]
-
-
+end
