@@ -3,18 +3,18 @@
 deck and start <strong>swiping</strong>! </p>
 
 <div class="cards">
-    <% @profiles.each do |profile| %>
+  <% @profiles.each do |profile| %>
 
      <%= link_to swipe_path(user_id: current_user.id, profile_id: profile.id) do %>
       <% if profile.job_title == "Full-Stack Developer" %>
         <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576236747/1_lhnuaa.png); position: relative;">
           <p style="font-size: 12px; font-weight: 100; position: absolute;left: 37px; top: 15px;"><%= profile.job_title %></p>
         </div>
-    <% elsif profile.job_title == "Front-End Developer"%>
-      <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576236748/3_papj1r.png); position: relative;">
-        <p style="font-size: 12px; font-weight: 100; position: absolute;left: 37px; top: 15px;"><%= profile.job_title %></p>
-      </div>
-     <% elsif profile.job_title == "Back-End Developer"%>
+      <% elsif profile.job_title == "Front-End Developer"%>
+        <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576236748/3_papj1r.png); position: relative;">
+          <p style="font-size: 12px; font-weight: 100; position: absolute;left: 37px; top: 15px;"><%= profile.job_title %></p>
+        </div>
+      <% elsif profile.job_title == "Back-End Developer"%>
         <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576236748/2_mm1zej.png); position: relative;">
           <p style="font-size: 12px; font-weight: 100; position: absolute;left: 37px; top: 15px;"><%= profile.job_title %></p>
         </div>
@@ -24,9 +24,10 @@ deck and start <strong>swiping</strong>! </p>
         </div>
       <% end %>
     <% end  %>
+  <% end  %>
     <%= link_to new_profile_path do %>
-    <div class="card-category" style="align-items: center; justify-content: center; display-flex: vertical;">
-      <%= cl_image_tag("https://res.cloudinary.com/therainycloud/image/upload/v1576169127/Create_a_new_Job_hunting_deck_mkivjs.png", style: "height: 80px; width: auto; align-items: flex-center;") %>
-    </div>
+      <div class="card-category" style="align-items: center; justify-content: center; display-flex: vertical;">
+        <%= cl_image_tag("https://res.cloudinary.com/therainycloud/image/upload/v1576169127/Create_a_new_Job_hunting_deck_mkivjs.png", style: "height: 80px; width: auto; align-items: flex-center;") %>
+      </div>
     <% end %>
 </div>
