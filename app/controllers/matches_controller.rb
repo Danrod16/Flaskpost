@@ -11,10 +11,6 @@ class MatchesController < ApplicationController
       #-----get all matches for a recruiter-----
       retrieve_matches(current_user.company.postings)
     end
-
-    # TODO: Retrieve all "accepted" matches containing the ids of the user's profiles
-    current_user.profiles
-
   end
 
   def show
@@ -26,9 +22,9 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:id])
   end
 
-  def retrieve_matches(arr)
-    arr.each do |profile_or_posting|
-      profile_or_posting.matches.each do |match|
+  def retrieve_matches(array)
+    array.each do |p_or_p|
+      p_or_p.matches.each do |match|
         @matches << match if match.status == "accepted"
       end
     end
