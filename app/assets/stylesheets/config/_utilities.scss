@@ -51,19 +51,23 @@ i {
   }
 }
 
+body {
+  background-color: white;
+}
+
 .main-wrapper {
   vertical-align: center;
 }
 
-.cell {
-  vertical-align: middle;
-  width: 100%;
-  margin-top: 50px;
-}
+// .cell {
+//   vertical-align: middle;
+//   width: 100%;
+//   margin-top: 50px;
+// }
 
 .root {
-  width: 465px;
-  height: 600px;
-  margin: auto;
+//   width: 465px;
+//   height: 600px;
+//   margin: auto;
   background-color: white;
 }

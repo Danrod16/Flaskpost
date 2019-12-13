@@ -1,15 +1,20 @@
       <% if user_signed_in? %>
         <ul class="nav">
           <li class="nav-item">
-            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
-          <i class="fas fa-user-astronaut">
-          </i></li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-user-astronaut" style="font-size: 30px;">
+          </i>
               <% end  %>
+          </li>
           <li class="nav-item">
+            <%= link_to profiles_path do %>
+                <%= image_tag "https://res.cloudinary.com/therainycloud/image/upload/v1576084648/Screenshot_2019-12-11_at_18.17.05_ueqvra.png", style: "height: 40px; width: auto; margin-bottom: 3px;" %>
+              <% end %>
           </li>
           <li class="nav-item"><i class="fas fa-comment">
-            <%= link_to "", "", class: "nav-link" %>
-          </i></li>
+            <%= link_to "", "" %>
+          </i>
+          </li>
         </ul>
       <% else %>
           <div class="navbar-expand-sm navbar-light navbar-shuffle">
@@ -17,8 +22,8 @@
               <%= link_to "/", class: "navbar-brand" do %>
                 <%= image_tag "https://res.cloudinary.com/therainycloud/image/upload/v1576074962/Shuffle._2_xgjapz.png" %>
               <% end %>
-              <li class="nav-item btn-main-ghost">
-                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              <li class="nav-item">
+                <%= link_to "Login", new_user_session_path, class: "nav-link", style: "color: #6F35E2; padding-right: 15px;" %>
               </li>
             </ul>
           </div>

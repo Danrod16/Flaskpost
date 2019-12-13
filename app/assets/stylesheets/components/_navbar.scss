@@ -16,6 +16,7 @@
 
 .nav {
   display: flex;
+  background-color: white;
   text-align: center;
   justify-content: space-between;
   font-size: 32px;
@@ -23,6 +24,11 @@
   padding: 0px 20px 0px 20px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+}
+
+.nav .btn-main-ghost {
+  padding: 5px auto;
+  width: fit-content;
 }
 
 .navbar-nav {
@@ -34,4 +40,5 @@
   height: 32px;
   object-fit: cover;
 }
+
 
