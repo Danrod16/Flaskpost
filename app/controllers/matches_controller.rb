@@ -17,9 +17,20 @@ class MatchesController < ApplicationController
   end
 
   def create
+    profile_id = match_params[:profile_id]
+    posting_id = match_params[:postin_id]
+
+    if check_match(posting_id, profile_id)
+      @match = check_match(posting_id, profile_id)
+      @match.status = "accepted"
+
   end
 
   private
+
+  def match_params
+    params.require(:match).permit(:profile_id, :posting_id)
+  end
 
   def set_match
     @match = Match.find(params[:id])
@@ -32,4 +43,7 @@ class MatchesController < ApplicationController
       end
     end
   end
+
+  def check_match
+    Match.where(profile_id: profile_id, posting_id: posting_id)
 end
