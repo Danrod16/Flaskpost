@@ -7,9 +7,11 @@
         <div class="swipe-content">
           <div class="swipe-photo">
             <%= image_tag @card.photo, class: "d-block w-100S" %>
+            <div class="swipe-overlay">a</div>
           </div>
           <div class="swipe-description">
             <h2><%= @card.job_title %></h2>
+            <h4><%= @card.company.name %></h4>
             <p><%= @card.description %></p>
           </div>
         </div>
