@@ -581,10 +581,42 @@ def create_profiles_from_user(n_profiles)
       job_title: @selected_profile[:job_title],
       contract_types: @contract_types.sample(1),
       experience: @selected_profile[:experience],
-      languages: @languages,
+      languages: @languages.sample(rand(1..@languages.length)),
       locations: @locations.sample(rand(1..@locations.length)),
       description: @selected_profile[:description],
-      salary_min: 10_000,
+      salary_min: @selected_profile[:salary_min],
+      salary_max: @selected_profile[:salary_max],
+      user_id: User.last.id,
+      status: 'active'#,
+      # photo: @selected_company[:photo]
+      )
+
+    if @new_profile.valid?
+      @new_profile.save # saving new company
+    else
+      p @new_profile.errors.messages
+    end
+  end
+end
+
+def create_profiles_from_demo_user(n_profiles)
+  @shuffled_profiles_list = @profiles_list.shuffle # Shuffle postings order - create random posts
+
+  n_profiles.times do # TODO: Create rand(n_postings) number of postings - selected from shuffled_postings_list
+
+    @selected_profile_index = @shuffled_profiles_list.length - 1 # index of last element of shuffled postings array
+    @selected_profile = @shuffled_profiles_list[@selected_profile_index] # selects random post from shuffled array by this index
+    @shuffled_profiles_list.delete_at(@selected_profile_index) # deletes selected post from shuffled array
+
+    @new_profile = Profile.new(
+      field: @selected_profile[:field],
+      job_title: @selected_profile[:job_title],
+      contract_types: @contract_types,
+      experience: @selected_profile[:experience],
+      languages: @languages,
+      locations: @locations,
+      description: @selected_profile[:description],
+      salary_min: @selected_profile[:salary_min],
       salary_max: @selected_profile[:salary_max],
       user_id: User.last.id,
       status: 'active'#,
@@ -641,7 +673,7 @@ def create_demo_user
     last_name: "Rodriguez",
     company_id: nil)
   save_new_user
-  create_profiles_from_user(5)
+  create_profiles_from_demo_user(5)
 end
 
 def clear_database
