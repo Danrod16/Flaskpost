@@ -8,8 +8,9 @@ deck and start <strong>swiping</strong>! </p>
       <p style="font-weight: 100; position: absolute;left: 52px; bottom: 59px;"><%= profile.job_title %></p>
     </div>
     <% end  %>
-    link_to
+    <%= link_to new_profile_path do %>
     <div class="card-category" style="align-items: center; justify-content: center; display-flex: vertical;">
       <%= cl_image_tag("https://res.cloudinary.com/therainycloud/image/upload/v1576169127/Create_a_new_Job_hunting_deck_mkivjs.png", style: "height: 80px; width: auto; align-items: flex-center;") %>
     </div>
+    <% end %>
 </div>
