@@ -4,9 +4,11 @@ deck and start <strong>swiping</strong>! </p>
 
 <div class="cards">
     <% @profiles.each do |profile| %>
-    <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576167047/Untitled_design_12_n4xgg5.png)">
-      <p style="font-weight: 100;"><%= profile.job_title %></p>
-    </div>
+      <%= link_to swipe_path(user_id: current_user.id, profile_id: profile.id) do %>
+        <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576167047/Untitled_design_12_n4xgg5.png)">
+          <p style="font-weight: 100;"><%= profile.job_title %></p>
+        </div>
+      <% end %>
     <% end  %>
     <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576169127/Create_a_new_Job_hunting_deck_mkivjs.png); object-fit: center;">
     </div>
