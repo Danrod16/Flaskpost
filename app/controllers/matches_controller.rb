@@ -16,6 +16,9 @@ class MatchesController < ApplicationController
   def show
   end
 
+  def create
+  end
+
   private
 
   def set_match

@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     resources "builder", controller: 'profiles'
   end
 
-  resources :matches, only: [:index, :show]
+  resources :matches, only: [:index, :show, :create]
   resources :messages, only: [:create]
 end
