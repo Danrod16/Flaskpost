@@ -7,17 +7,13 @@
         <div class="swipe-content">
           <div class="swipe-photo">
             <div style="
-          background-image: url(<%= @card.photo %>);
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          border-radius: 25px;">
-
+            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(<%= @card.photo %>);
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            border-radius: 25px">
             </div>
-
-            <%#= image_tag @card.photo, class: "d-block w-100S" %>
-<!--             <div class="swipe-overlay">a</div>
- -->          </div>
+          </div>
           <div class="swipe-description">
             <h2><%= @card.job_title %></h2>
             <h4><%= @card.company.name %></h4>
