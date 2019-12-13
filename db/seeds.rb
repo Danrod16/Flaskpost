@@ -665,7 +665,7 @@ def create_users_with_companies(n_users)
   end
 end
 
-def create_demo_user
+def create_demo_users
   @new_user = User.new(
     email: "dan.rod93@gmail.com",
     password: "12341234",
@@ -674,6 +674,27 @@ def create_demo_user
     company_id: nil)
   save_new_user
   create_profiles_from_demo_user(5)
+  @new_user = User.new(
+    email: "marti15@hotmail.com",
+    password: "12341234",
+    first_name: "Martin",
+    last_name: "Potié",
+    company_id: nil)
+  save_new_user
+  @new_user = User.new(
+    email: "kevin@liebholz.eu",
+    password: "12341234",
+    first_name: "Kevin",
+    last_name: "Liebholz",
+    company_id: nil)
+  save_new_user
+  @new_user = User.new(
+    email: "angustatchell@gmail.com",
+    password: "12341234",
+    first_name: "Angus",
+    last_name: "Tatchell",
+    company_id: nil)
+  save_new_user
 end
 
 def clear_database
@@ -726,7 +747,7 @@ def seed_database(clean)
     puts " "
 
     create_users_with_companies(@users_list.length)
-    create_demo_user
+    create_demo_users
     seekers = User.where(company_id: nil)
 
     puts " "
