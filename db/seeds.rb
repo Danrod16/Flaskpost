@@ -511,7 +511,6 @@ end
 def save_new_user
   if @new_user.valid?
     @new_user.save # saving new users
-    p User.last
   else
     p @new_user.errors.messages
   end
@@ -534,7 +533,6 @@ def create_new_company
 
   if @new_company.valid?
     @new_company.save # saving new company
-    p @new_company
   else
     p @new_company.errors.messages
   end
@@ -543,7 +541,7 @@ end
 def create_postings_from_company(n_postings)
   @shuffled_postings_list = @postings_list.shuffle # Shuffle postings order - create random posts
 
-  rand(n_postings).times do # TODO: Create rand(n_postings) number of postings - selected from shuffled_postings_list
+  n_postings.times do # TODO: Create rand(n_postings) number of postings - selected from shuffled_postings_list
 
     @selected_posting_index = @shuffled_postings_list.length - 1 # index of last element of shuffled postings array
     @selected_posting = @shuffled_postings_list[@selected_posting_index] # selects random post from shuffled array by this index
@@ -563,7 +561,6 @@ def create_postings_from_company(n_postings)
 
     if @new_posting.valid?
       @new_posting.save # saving new company
-      p @new_posting
     else
       p @new_posting.errors.messages
     end
@@ -573,7 +570,7 @@ end
 def create_profiles_from_users(n_profiles)
   @shuffled_profiles_list = @profiles_list.shuffle # Shuffle postings order - create random posts
 
-  rand(n_profiles).times do # TODO: Create rand(n_postings) number of postings - selected from shuffled_postings_list
+  n_profiles.times do # TODO: Create rand(n_postings) number of postings - selected from shuffled_postings_list
 
     @selected_profile_index = @shuffled_profiles_list.length - 1 # index of last element of shuffled postings array
     @selected_profile = @shuffled_profiles_list[@selected_profile_index] # selects random post from shuffled array by this index
@@ -596,7 +593,6 @@ def create_profiles_from_users(n_profiles)
 
     if @new_profile.valid?
       @new_profile.save # saving new company
-      p @new_profile
     else
       p @new_profile.errors.messages
     end
@@ -632,7 +628,7 @@ def create_users_with_companies(n_users)
     save_new_user
 
     unless User.last.company_id
-      create_profiles_from_users(rand(2..6))
+      create_profiles_from_users(rand(1..6))
     end
   end
 end
@@ -680,27 +676,32 @@ def seed_database(clean)
   unless clean.nil?
     clear_database
   end
-    puts "SEEDING DATABASE"
+    puts "SEEDING DATABASE:"
     puts " "
 
     puts "Seeding Users, Companies, Postings & Profiles..."
     puts " "
 
     create_users_with_companies(@users_list.length)
+    seekers = User.where(company_id: nil)
 
     puts " "
     puts "SEEDED #{User.count} Users"
     puts "SEEDED #{Company.count} Companies"
     puts " "
-
-    # puts "Seeding Postings & Profiles..."
-    # puts " "
-
-    # create_postings_from_companies(5)
-
+    puts "SEEDED #{seekers.count} Seekers"
+    puts "SEEDED #{User.count - seekers.count} Recruiters"
     puts " "
     puts "SEEDED #{Posting.count} Postings"
     puts "SEEDED #{Profile.count} Profiles"
+    puts " "
+    puts "SEEKER ACCOUNTS:"
+
+    seekers.each do |seeker|
+      puts "#{(Profile.where(user_id: seeker.id)).count} profile(s): #{seeker.email}"
+    end
+
+
     # puts " "
     # puts "Seeding Matches..."
     # puts "SEEDED #{Match.count} Matches"
