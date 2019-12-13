@@ -1,7 +1,16 @@
-<ul>
-<% @matches.each do |match| %>
-  <li>
-    <%= User.find(@match.profile.user.id).name %> ----- <%= match.status %> ----- <%= link_to "Show", match_path(match) %>
-  </li>
+<% if @matches.count == 0 %>
+  <h3 style="text-align: center; margin-top: 20px;">Sorry! You don't have any matches yet :(</h3>
+<% else %>
+  <% @matches.each do |match| %>
+    <%= link_to match_path(match) do %>
+      <div class="card-product">
+        <img src=<%= "#{match.posting.photo}" %> />
+        <div class="card-product-infos">
+          <h2><%= "#{match.posting.job_title}" %> (<%= "#{match.posting.experience}" %>) </h2>
+          <p style="text-align: left;"><strong><%= "#{match.posting.locations[0]}" %></strong>: <%= "€ #{euro_thousand_separate(match.posting.salary_max)}" %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <h4 style="margin-top: 50px;">Don't leave your match waiting too long! Recruiters love to feel valued ;)</h4>
 <% end %>
-</ul>
