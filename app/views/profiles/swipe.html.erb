@@ -19,8 +19,8 @@
           </div>
         </div>
         <div class="swipe-answer">
-          <a class="btn-main" href="#">NOPE</a>
-          <%= link_to "LIKE", matches_path({profile_id: @profile.id, posting_id: @card.id}), method: :post, class: "btn-main" %>
+          <%= link_to "NOPE", '#', method: :get, class: "btn-main answer-btn" %>
+          <%= link_to "LIKE", matches_path({profile_id: @profile.id, posting_id: @card.id}), method: :post, class: "btn-main answer-btn" %>
         </div>
       </div>
     </div>
