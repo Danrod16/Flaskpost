@@ -44,6 +44,7 @@ class ProfilesController < ApplicationController
   end
 
   def swipe
+    @profile = Profile.find(params[:profile_id])
     @cards = cards_from_database
 
     @cards = @cards.filter do |card|
@@ -57,6 +58,9 @@ class ProfilesController < ApplicationController
     @cards = @cards.filter do |card|
       @profile.locations.any? { |location| card.locations.include?(location) }
     end
+
+    @card = @cards[0]
+    @cards.delete_at(0)
   end
 
   private
