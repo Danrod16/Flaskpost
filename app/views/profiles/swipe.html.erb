@@ -4,8 +4,14 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <div class="swipe-card">
-        <div class="swipe-photo">
-          <%= image_tag @card.photo, class: "d-block w-100S" %>
+        <div class="swipe-content">
+          <div class="swipe-photo">
+            <%= image_tag @card.photo, class: "d-block w-100S" %>
+          </div>
+          <div class="swipe-description">
+            <h2><%= @card.job_title %></h2>
+            <p><%= @card.description %></p>
+          </div>
         </div>
           <div class="swipe-answer">
             <a class="btn-main" href="#">NOPE</a>
