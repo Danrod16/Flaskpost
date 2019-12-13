@@ -20,7 +20,7 @@
         </div>
         <div class="swipe-answer">
           <a class="btn-main" href="#">NOPE</a>
-          <a class="btn-main" href="#">LIKE</a>
+          <%= link_to "LIKE", matches_path({profile_id: @profile.id, posting_id: @card.id}), method: :post, class: "btn-main" %>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
           </div>
           <div class="swipe-answer">
             <a class="btn-main" href="#">NOPE</a>
-            <a class="btn-main" href="#">LIKE</a>
+            <%= link_to "LIKE", matches_path({profile_id: @profile.id, posting_id: card.id}), method: :post, class: "btn-main" %>
           </div>
         </div>
       </div>
