@@ -18,12 +18,15 @@ class MatchesController < ApplicationController
 
   def create
     profile_id = match_params[:profile_id]
-    posting_id = match_params[:postin_id]
+    posting_id = match_params[:posting_id]
 
     if check_match(posting_id, profile_id)
       @match = check_match(posting_id, profile_id)
       @match.status = "accepted"
-
+      @match.save
+    else
+      @match = Match.new(match_params)
+      @match.save
   end
 
   private
