@@ -11,12 +11,8 @@
 </head>
 <body>
   <%= render 'shared/flashes' %>
-  <% if user_signed_in? %>
-    <%= render 'shared/layouts' %>
-  <% else %>
     <%= render 'shared/navbar' %>
     <%= yield %>
-  <% end %>
   <%= javascript_include_tag 'application' %>
   <%= javascript_pack_tag 'application' %>
 </body>
