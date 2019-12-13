@@ -567,7 +567,7 @@ def create_postings_from_company(n_postings)
   end
 end
 
-def create_profiles_from_users(n_profiles)
+def create_profiles_from_user(n_profiles)
   @shuffled_profiles_list = @profiles_list.shuffle # Shuffle postings order - create random posts
 
   n_profiles.times do # TODO: Create rand(n_postings) number of postings - selected from shuffled_postings_list
@@ -581,10 +581,10 @@ def create_profiles_from_users(n_profiles)
       job_title: @selected_profile[:job_title],
       contract_types: @contract_types.sample(1),
       experience: @selected_profile[:experience],
-      languages: @languages.sample(rand(1..@languages.length)),
+      languages: @languages,
       locations: @locations.sample(rand(1..@locations.length)),
       description: @selected_profile[:description],
-      salary_min: @selected_profile[:salary_min],
+      salary_min: 10_000,
       salary_max: @selected_profile[:salary_max],
       user_id: User.last.id,
       status: 'active'#,
@@ -628,9 +628,20 @@ def create_users_with_companies(n_users)
     save_new_user
 
     unless User.last.company_id
-      create_profiles_from_users(rand(1..6))
+      create_profiles_from_user(rand(1..6))
     end
   end
+end
+
+def create_demo_user
+  @new_user = User.new(
+    email: "dan.rod93@gmail.com",
+    password: "12341234",
+    first_name: "Daniel",
+    last_name: "Rodriguez",
+    company_id: nil)
+  save_new_user
+  create_profiles_from_user(5)
 end
 
 def clear_database
@@ -683,6 +694,7 @@ def seed_database(clean)
     puts " "
 
     create_users_with_companies(@users_list.length)
+    create_demo_user
     seekers = User.where(company_id: nil)
 
     puts " "
