@@ -11,6 +11,10 @@ class MatchesController < ApplicationController
       #-----get all matches for a recruiter-----
       retrieve_matches(current_user.company.postings)
     end
+
+    # TODO: Retrieve all "accepted" matches containing the ids of the user's profiles
+    current_user.profiles
+
   end
 
   def show
