@@ -9,10 +9,14 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
 </head>
-<body>
+<body style="background-color: white">
   <%= render 'shared/flashes' %>
-    <%= render 'shared/navbar' %>
-    <%= yield %>
+  <%# if user_signed_in? %>
+    <%#= render 'shared/layouts' %>
+  <%# else %>
+  <%= render 'shared/navbar' %>
+  <%= yield %>
+  <%# end %>
   <%= javascript_include_tag 'application' %>
   <%= javascript_pack_tag 'application' %>
 </body>

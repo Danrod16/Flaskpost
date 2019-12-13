@@ -8,7 +8,7 @@
     <%= f.input :languages, label: 'Select your languages?', collection: ['English', 'Spanish', 'French', 'German'], as: :check_boxes %>
     <%= f.input :locations, label: 'Select your locations', collection: ['Barcelona', 'Madrid', 'Valencia', 'San Sebastian'], as: :check_boxes %>
     <%= f.input :contract_types, label: "Contract type:", collection: ['Full-time', 'Part-time', 'Freelance'], as: :check_boxes  %>
-    <%= f.input :salary_min, collection: (1..100).to_a, label: 'Your minimum salary (k€)' %>
+    <%= f.input :salary_min, label: 'Your minimum salary', as: :integer  %>
     <%= f.input :salary_max, label: 'Your maximum salary', as: :integer %>
     <%= f.submit "NEXT", class: "btn-main"%>
   <% end %>
