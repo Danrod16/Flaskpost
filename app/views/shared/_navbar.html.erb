@@ -11,9 +11,10 @@
                 <%= image_tag "https://res.cloudinary.com/therainycloud/image/upload/v1576084648/Screenshot_2019-12-11_at_18.17.05_ueqvra.png", style: "height: 40px; width: auto; margin-bottom: 3px;" %>
               <% end %>
           </li>
-          <li class="nav-item"><i class="fas fa-comment">
-            <%= link_to "", "" %>
-          </i>
+          <li class="nav-item">
+            <%= link_to matches_path do %>
+            <i class="fas fa-comment" style="font-size: 30px;"></i>
+            <% end  %>
           </li>
         </ul>
       <% else %>
