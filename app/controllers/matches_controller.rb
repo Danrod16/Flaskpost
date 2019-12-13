@@ -17,23 +17,20 @@ class MatchesController < ApplicationController
   end
 
   def create
-    profile_id = match_params[:profile_id]
-    posting_id = match_params[:posting_id]
+    profile_id = params[:profile_id]
+    posting_id = params[:posting_id]
 
-    if check_match(posting_id, profile_id)
+    if check_match(posting_id, profile_id).empty?
+      @match = Match.new(profile_id: profile_id, posting_id: posting_id)
+    else
       @match = check_match(posting_id, profile_id)
       @match.status = "accepted"
-      @match.save
-    else
-      @match = Match.new(match_params)
-      @match.save
+    end
+    @match.save
+    redirect_to swipe_path(current_user, profile_id)
   end
 
   private
-
-  def match_params
-    params.require(:match).permit(:profile_id, :posting_id)
-  end
 
   def set_match
     @match = Match.find(params[:id])
@@ -47,6 +44,7 @@ class MatchesController < ApplicationController
     end
   end
 
-  def check_match
+  def check_match(posting_id, profile_id)
     Match.where(profile_id: profile_id, posting_id: posting_id)
+  end
 end
