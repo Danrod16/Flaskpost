@@ -23,7 +23,7 @@ class MatchesController < ApplicationController
     if check_match(posting_id, profile_id).empty?
       @match = Match.new(profile_id: profile_id, posting_id: posting_id)
     else
-      @match = check_match(posting_id, profile_id)
+      @match = check_match(posting_id, profile_id)[0]
       @match.status = "accepted"
     end
     @match.save
