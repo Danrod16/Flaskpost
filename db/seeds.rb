@@ -747,7 +747,7 @@ def seed_database(clean)
     puts " "
 
     create_users_with_companies(@users_list.length)
-    create_demo_user
+    create_demo_users
     seekers = User.where(company_id: nil)
 
     puts " "
