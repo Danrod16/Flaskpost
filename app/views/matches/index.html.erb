@@ -1,7 +1,7 @@
 <ul>
 <% @matches.each do |match| %>
   <li>
-    <%= match.profile.user.email %> ----- <%= match.status %> ----- <%= link_to "Show", match_path(match) %>
+    <%= Company.find(match.posting.company.id).name %> ----- <%= match.status %> ----- <%= link_to "Show", match_path(match) %>
   </li>
 <% end %>
 </ul>
