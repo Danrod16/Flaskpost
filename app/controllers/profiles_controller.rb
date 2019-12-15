@@ -51,6 +51,7 @@ class ProfilesController < ApplicationController
     filter_for_locations
     filter_for_languages
     filter_for_liked_cards
+    filter_for_declined_cards
 
     @card = @cards[0]
     @cards.delete_at(0)
@@ -106,6 +107,12 @@ class ProfilesController < ApplicationController
   def filter_for_liked_cards
     @cards = @cards.reject do |card|
       Match.where(profile_id: @profile.id, posting_id: card.id, status_seeker: "accepted").exists?
+    end
+  end
+
+  def filter_for_declined_cards
+    @cards = @cards.reject do |card|
+      Match.where(profile_id: @profile.id, posting_id: card.id, status: "declined").exists?
     end
   end
 end
