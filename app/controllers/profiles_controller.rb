@@ -59,6 +59,10 @@ class ProfilesController < ApplicationController
       @profile.locations.any? { |location| card.locations.include?(location) }
     end
 
+    @cards = @cards.reject do |card|
+      Match.where(profile_id: @profile.id, posting_id: card.id, status_seeker: "accepted").exists?
+    end
+
     @card = @cards[0]
     @cards.delete_at(0)
   end
