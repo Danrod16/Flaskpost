@@ -18,7 +18,7 @@ class MatchesController < ApplicationController
   def show
   end
 
-  def create
+  def accept
     profile_id = params[:profile_id]
     posting_id = params[:posting_id]
 

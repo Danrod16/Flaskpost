@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     resources "builder", controller: 'profiles'
   end
 
-  resources :matches, only: [:index, :show, :create]
+  resources :matches, only: [:index, :show] do
+    collection do
+      post '/accept', to: 'matches#accept', as: :accept
+    end
+  end
+
   resources :messages, only: [:create]
 end
