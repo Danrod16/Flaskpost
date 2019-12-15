@@ -24,8 +24,20 @@ class MatchesController < ApplicationController
 
     @match = Match.find_or_initialize_by(profile_id: profile_id, posting_id: posting_id)
 
-    update_seeker_or_recruiter_status
+    accept_seeker_or_recruiter_status
     @match.status = "accepted" if @match.status_seeker == "accepted" && @match.status_recruiter == "accepted"
+    @match.save
+
+    redirect_to swipe_path(current_user, profile_id)
+  end
+
+  def decline
+    profile_id = params[:profile_id]
+    posting_id = params[:posting_id]
+
+    @match = Match.find_or_initialize_by(profile_id: profile_id, posting_id: posting_id)
+    decline_seeker_or_recruiter_status
+    @match.status = "declined"
     @match.save
 
     redirect_to swipe_path(current_user, profile_id)
@@ -49,11 +61,19 @@ class MatchesController < ApplicationController
     Match.where(profile_id: profile_id, posting_id: posting_id)
   end
 
-  def update_seeker_or_recruiter_status
+  def accept_seeker_or_recruiter_status
     if current_user.company_id.nil?
       @match.status_seeker = "accepted"
     else
       @match.status_recruiter = "accepted"
+    end
+  end
+
+  def decline_seeker_or_recruiter_status
+    if current_user.company_id.nil?
+      @match.status_seeker = "declined"
+    else
+      @match.status_recruiter = "declined"
     end
   end
 end

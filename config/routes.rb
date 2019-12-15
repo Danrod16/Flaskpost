@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :matches, only: [:index, :show] do
     collection do
       post '/accept', to: 'matches#accept', as: :accept
+      post '/decline', to:'matches#decline', as: :decline
     end
   end
 
