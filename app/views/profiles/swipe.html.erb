@@ -19,8 +19,8 @@
           </div>
         </div>
         <div class="swipe-answer">
-          <%= link_to "Nope", decline_matches_path({profile_id: @profile.id, posting_id: @card.id}), method: :post, class: "btn-main answer-btn" %>
-          <%= link_to "LIKE", accept_matches_path({profile_id: @profile.id, posting_id: @card.id}), method: :post, class: "btn-main answer-btn" %>
+          <%= link_to 'Nope', accept_decline_matches_path({profile_id: @profile.id, posting_id: @card.id, user_intention: 'declined'}), method: :post, class: "btn-main answer-btn" %>
+          <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @card.id, user_intention: 'accepted'}), method: :post, class: "btn-main" %>
         </div>
       </div>
     </div>
@@ -39,8 +39,8 @@
             </div>
           </div>
           <div class="swipe-answer">
-            <%= link_to "Nope", decline_matches_path({profile_id: @profile.id, posting_id: @card.id}), method: :post, class: "btn-main answer-btn" %>
-            <%= link_to "LIKE", matches_path({profile_id: @profile.id, posting_id: card.id}), method: :post, class: "btn-main" %>
+            <%= link_to 'Nope', accept_decline_matches_path({profile_id: @profile.id, posting_id: card.id, user_intention: 'declined'}), method: :post, class: "btn-main answer-btn" %>
+            <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: card.id, user_intention: 'accepted'}), method: :post, class: "btn-main" %>
           </div>
         </div>
       </div>

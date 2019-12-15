@@ -18,29 +18,21 @@ class MatchesController < ApplicationController
   def show
   end
 
-  def accept
-    profile_id = params[:profile_id]
-    posting_id = params[:posting_id]
+  def accept_decline
+    user_intention = params[:user_intention]
+    match_instance
+    update_seeker_or_recruiter_status(user_intention)
 
-    @match = Match.find_or_initialize_by(profile_id: profile_id, posting_id: posting_id)
+    if user_intention == 'declined'
+      @match.status = user_intention
 
-    accept_seeker_or_recruiter_status
-    @match.status = "accepted" if @match.status_seeker == "accepted" && @match.status_recruiter == "accepted"
+    # gets fired, when user_intention is 'accepted'
+    elsif @match.status_seeker == user_intention && @match.status_recruiter == user_intention
+      @match.status = user_intention
+    end
+
     @match.save
-
-    redirect_to swipe_path(current_user, profile_id)
-  end
-
-  def decline
-    profile_id = params[:profile_id]
-    posting_id = params[:posting_id]
-
-    @match = Match.find_or_initialize_by(profile_id: profile_id, posting_id: posting_id)
-    decline_seeker_or_recruiter_status
-    @match.status = "declined"
-    @match.save
-
-    redirect_to swipe_path(current_user, profile_id)
+    redirect_to swipe_path(@current_user, @profile_id)
   end
 
   private
@@ -57,23 +49,18 @@ class MatchesController < ApplicationController
     end
   end
 
-  def check_match(posting_id, profile_id)
-    Match.where(profile_id: profile_id, posting_id: posting_id)
+  def match_instance
+    @profile_id = params[:profile_id]
+    @posting_id = params[:posting_id]
+
+    @match = Match.find_or_initialize_by(profile_id: @profile_id, posting_id: @posting_id)
   end
 
-  def accept_seeker_or_recruiter_status
+  def update_seeker_or_recruiter_status(updated_status)
     if current_user.company_id.nil?
-      @match.status_seeker = "accepted"
+      @match.status_seeker = updated_status
     else
-      @match.status_recruiter = "accepted"
-    end
-  end
-
-  def decline_seeker_or_recruiter_status
-    if current_user.company_id.nil?
-      @match.status_seeker = "declined"
-    else
-      @match.status_recruiter = "declined"
+      @match.status_recruiter = updated_status
     end
   end
 end
