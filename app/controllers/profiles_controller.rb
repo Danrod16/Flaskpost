@@ -83,8 +83,8 @@ class ProfilesController < ApplicationController
 
   def cards_from_database
     Posting.where(
-      'field = :profile_field
-      AND job_title = :profile_job_title
+      'field ILIKE :profile_field
+      AND job_title ILIKE :profile_job_title
       AND salary_max >= :profile_salary_min',
       profile_field: @profile.field,
       profile_job_title: @profile.job_title,
