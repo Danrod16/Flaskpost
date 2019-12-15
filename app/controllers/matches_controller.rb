@@ -28,6 +28,13 @@ class MatchesController < ApplicationController
       @match = check_match(posting_id, profile_id)[0]
       @match.status = "accepted"
     end
+
+    if current_user.company_id.nil?
+      @match.status_seeker = "accepted"
+    else
+      @match.status_recruiter = "accepted"
+    end
+
     @match.save
     redirect_to swipe_path(current_user, profile_id)
   end
