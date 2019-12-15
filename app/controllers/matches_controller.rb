@@ -22,20 +22,12 @@ class MatchesController < ApplicationController
     profile_id = params[:profile_id]
     posting_id = params[:posting_id]
 
-    if check_match(posting_id, profile_id).empty?
-      @match = Match.new(profile_id: profile_id, posting_id: posting_id)
-    else
-      @match = check_match(posting_id, profile_id)[0]
-      @match.status = "accepted"
-    end
+    @match = Match.find_or_initialize_by(profile_id: profile_id, posting_id: posting_id)
 
-    if current_user.company_id.nil?
-      @match.status_seeker = "accepted"
-    else
-      @match.status_recruiter = "accepted"
-    end
-
+    update_seeker_or_recruiter_status
+    @match.status = "accepted" if @match.status_seeker == "accepted" && @match.status_recruiter == "accepted"
     @match.save
+
     redirect_to swipe_path(current_user, profile_id)
   end
 
@@ -55,5 +47,13 @@ class MatchesController < ApplicationController
 
   def check_match(posting_id, profile_id)
     Match.where(profile_id: profile_id, posting_id: posting_id)
+  end
+
+  def update_seeker_or_recruiter_status
+    if current_user.company_id.nil?
+      @match.status_seeker = "accepted"
+    else
+      @match.status_recruiter = "accepted"
+    end
   end
 end
