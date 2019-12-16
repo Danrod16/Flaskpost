@@ -1,58 +1,66 @@
-<% unless @card %>
-  <h2>Sorry, you have no fitting job offers yet...</h2>
-<% else %>
-
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel"  data-interval="false">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="swipe-card">
-          <div class="swipe-content">
-            <div class="swipe-photo-section">
-              <div class="swipe-photo" style="
-              background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(<%= @card.photo %>)">
-            </div>
-          </div>
-          <div class="swipe-description">
-            <h2><%= @card.job_title %></h2>
-            <h4><%= @card.company.name %></h4>
-            <p><%= @card.description %></p>
-          </div>
+<div class="container" style="padding: 20px;">
+  <% unless @card %>
+    <h2>Sorry, you have no fitting job offers yet... you can try again later</h2>
+      <p style="margin-top: 20px;"> Or See the stats to compare your expectations with actual market figures</p>
+     <%= link_to stats_path do%>
+        <div style="font-size: 100px;">
+          <i class="fas fa-chart-pie"></i>
         </div>
-        <div class="swipe-answer">
-          <%= link_to 'Nope', accept_decline_matches_path({profile_id: @profile.id, posting_id: @card.id, user_intention: 'declined'}), method: :post, class: "btn-main answer-btn" %>
-          <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @card.id, user_intention: 'accepted'}), method: :post, class: "btn-main" %>
-        </div>
-      </div>
-    </div>
+      <% end %>
+  <% else %>
 
-    <% @cards.each do |card| %>
-      <div class="carousel-item">
-        <div class="swipe-card">
-          <div class="swipe-content">
-            <div class="swipe-photo-section">
-              <div class="swipe-photo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(<%= card.photo %>)"></div>
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel"  data-interval="false">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="swipe-card">
+            <div class="swipe-content">
+              <div class="swipe-photo-section">
+                <div class="swipe-photo" style="
+                background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(<%= @card.photo %>)">
+              </div>
             </div>
             <div class="swipe-description">
-              <h2><%= card.job_title %></h2>
-              <h4><%= card.company.name %></h4>
-              <p><%= card.description %></p>
+              <h2><%= @card.job_title %></h2>
+              <h4><%= @card.company.name %></h4>
+              <p><%= @card.description %></p>
             </div>
           </div>
           <div class="swipe-answer">
-            <%= link_to 'Nope', accept_decline_matches_path({profile_id: @profile.id, posting_id: card.id, user_intention: 'declined'}), method: :post, class: "btn-main answer-btn" %>
-            <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: card.id, user_intention: 'accepted'}), method: :post, class: "btn-main" %>
+            <%= link_to 'Nope', accept_decline_matches_path({profile_id: @profile.id, posting_id: @card.id, user_intention: 'declined'}), method: :post, class: "btn-main answer-btn" %>
+            <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @card.id, user_intention: 'accepted'}), method: :post, class: "btn-main" %>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
 
-  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-<% end %>
+      <% @cards.each do |card| %>
+        <div class="carousel-item">
+          <div class="swipe-card">
+            <div class="swipe-content">
+              <div class="swipe-photo-section">
+                <div class="swipe-photo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(<%= card.photo %>)"></div>
+              </div>
+              <div class="swipe-description">
+                <h2><%= card.job_title %></h2>
+                <h4><%= card.company.name %></h4>
+                <p><%= card.description %></p>
+              </div>
+            </div>
+            <div class="swipe-answer">
+              <%= link_to 'Nope', accept_decline_matches_path({profile_id: @profile.id, posting_id: card.id, user_intention: 'declined'}), method: :post, class: "btn-main answer-btn" %>
+              <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: card.id, user_intention: 'accepted'}), method: :post, class: "btn-main" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  <% end %>
+</div>
