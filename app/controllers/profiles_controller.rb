@@ -76,6 +76,7 @@ class ProfilesController < ApplicationController
       :experience,
       :description,
       :salary_min,
+      :photo,
       languages: [],
       locations: [],
       contract_types: []
