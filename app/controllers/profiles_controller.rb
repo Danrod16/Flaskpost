@@ -61,9 +61,6 @@ class ProfilesController < ApplicationController
     filter_for_languages
     filter_for_liked_cards
     filter_for_declined_cards
-
-    @card = @cards[0]
-    @cards.delete_at(0)
   end
 
   def stats
