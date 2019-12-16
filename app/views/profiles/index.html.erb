@@ -24,6 +24,10 @@ deck and start <strong>swiping</strong>! </p>
         </div>
       <% end %>
     <% end  %>
+
+    <%= link_to "EDIT", profile_builder_path(profile.id, :first) %>
+
+
   <% end  %>
     <%= link_to new_profile_path do %>
       <div class="card-category" style="align-items: center; justify-content: center; display-flex: vertical;">
