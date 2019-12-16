@@ -8,51 +8,51 @@
         <div class="swipe-card">
           <div class="swipe-content">
             <div class="swipe-photo-section">
-              <div class="swipe-photo" style="
-              background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(<%= @card.photo %>)">
-            </div>
-          </div>
-          <div class="swipe-description">
-            <h2><%= @card.job_title %></h2>
-            <h4><%= @card.company.name %></h4>
-            <p><%= @card.description %></p>
-          </div>
-        </div>
-        <div class="swipe-answer">
-          <%= link_to 'Nope', accept_decline_matches_path({profile_id: @profile.id, posting_id: @card.id, user_intention: 'declined'}), method: :post, class: "btn-main answer-btn" %>
-          <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @card.id, user_intention: 'accepted'}), method: :post, class: "btn-main" %>
-        </div>
-      </div>
-    </div>
-
-    <% @cards.each do |card| %>
-      <div class="carousel-item">
-        <div class="swipe-card">
-          <div class="swipe-content">
-            <div class="swipe-photo-section">
-              <div class="swipe-photo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(<%= card.photo %>)"></div>
+              <div class="swipe-photo" style=" background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(<%= @card.photo %>)"></div>
+              <%= cl_image_tag @card.company.logo, class: "avatar swipe-avatar" %>
             </div>
             <div class="swipe-description">
-              <h2><%= card.job_title %></h2>
-              <h4><%= card.company.name %></h4>
-              <p><%= card.description %></p>
+              <h2><%= @card.job_title %></h2>
+              <h4><%= @card.company.name %> (<%= "#{@card.experience}" %>)</h4>
+              <p><%= @card.description %></p>
             </div>
           </div>
           <div class="swipe-answer">
-            <%= link_to 'Nope', accept_decline_matches_path({profile_id: @profile.id, posting_id: card.id, user_intention: 'declined'}), method: :post, class: "btn-main answer-btn" %>
-            <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: card.id, user_intention: 'accepted'}), method: :post, class: "btn-main" %>
+            <%= link_to 'NOPE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @card.id, user_intention: 'declined'}), method: :post, class: "btn-main answer-btn" %>
+            <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @card.id, user_intention: 'accepted'}), method: :post, class: "btn-main answer-btn" %>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
 
-  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-<% end %>
+      <% @cards.each do |card| %>
+        <div class="carousel-item">
+          <div class="swipe-card">
+            <div class="swipe-content">
+              <div class="swipe-photo-section">
+                <div class="swipe-photo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(<%= card.photo %>)"></div>
+                <%= cl_image_tag card.company.logo, class: "avatar swipe-avatar" %>
+                </div>
+              <div class="swipe-description">
+                <h2><%= card.job_title %></h2>
+                <h4><%= card.company.name %> (<%= "#{card.experience}" %>)</h4>
+                <p><%= card.description %></p>
+              </div>
+            </div>
+            <div class="swipe-answer">
+              <%= link_to 'NOPE', accept_decline_matches_path({profile_id: @profile.id, posting_id: card.id, user_intention: 'declined'}), method: :post, class: "btn-main answer-btn" %>
+              <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: card.id, user_intention: 'accepted'}), method: :post, class: "btn-main answer-btn" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  <% end %>
