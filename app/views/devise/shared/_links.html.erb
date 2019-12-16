@@ -1,15 +1,17 @@
-<%- if controller_name != 'sessions' %>
+<%- if controller_name != 'sessions' && devise_mapping.registerable? != true %>
   <%= link_to "Log in", new_session_path(resource_name) %><br />
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <a class="btn btn-main-ghost form-button mt-0" href="/users/auth/facebook"><i class="fab fa-facebook-f mr-2"> </i> Sign in with Facebook</a>
+    <a class="btn btn-main-ghost form-button mt-0" href="/users/auth/facebook"><i class="fab fa-facebook-f mr-2"> </i>Continue with Facebook</a>
     <%#= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "btn-main-ghost form-button" %><br />
   <% end %>
 <% end %>
 
-<p style="padding:25px 0px 0px 0px;">or</p>
+<%- if controller_name != 'sessions' && devise_mapping.registerable? != true %>
+  <p style="padding:25px 0px 0px 0px;">or</p>
+<% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <%= link_to "Sign up", new_registration_path(resource_name) %><br />
