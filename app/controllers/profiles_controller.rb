@@ -59,6 +59,7 @@ class ProfilesController < ApplicationController
 
   def stats
     @profile = Profile.find(params[:profile_id])
+    @profile.score
   end
 
   private

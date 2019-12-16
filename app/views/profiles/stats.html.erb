@@ -1,2 +1,9 @@
-<%= @profile.job_title %>
-<%=  @profile.score %>
+<div class="container">
+  <h1><%= @profile.job_title %></h1>
+  <p>Checkout this awesome graph we made for you...</p>
+  <p>It compares your selected job filters compared with actual market figures, cool huh? </p>
+
+  <div style="font-size: 150px; color: #6F35E2; text-align: center;">
+    <%=  @profile.score %>
+  </div>
+</div>
