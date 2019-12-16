@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 2019_12_16_122352) do
     t.string "locations", array: true
     t.string "description"
     t.integer "salary_min"
-    t.integer "salary_max"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

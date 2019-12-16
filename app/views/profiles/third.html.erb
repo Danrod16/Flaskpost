@@ -1,11 +1,17 @@
-<div class="container">
+<div class="container onboarding">
+
+  <div class="progress">
+    <div class="progress-circle-1"> </div>
+    <div class="progress-circle-1"> </div>
+    <div class="progress-circle-1"> </div>
+  </div>
 
   <div class="onboarding-header">
-    <h1>Give us your Elevator Pitch</h1>
+    <h1>Your Elevator Pitch</h1>
   </div>
 
   <%= simple_form_for @profile, url: wizard_path do |f| %>
-    <%= f.input :description, label: 'Please pitch the job in 80 characters', as: :text %>
-    <%= f.submit "SAVE", class: "btn-main"%>
+    <%= f.input :description, label: 'Your minimum salary', as: :text, placeholder: 'Remember that recruiters value creativity, so try to impress them with a catchy pitch that captures your personality!' %>
+    <%= f.submit "SAVE", class: "btn btn-main form-button"%>
   <% end %>
 </div>

@@ -7,16 +7,18 @@
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
-    <div>
+    <div class="font-weight-bold" >
       <%= f.input :email,
       required: false,
       autofocus: true,
-      input_html: { autocomplete: "email" } %>
+      input_html: { autocomplete: "email" },
+      placeholder: "alan.turing@enigma.com"%>
     </div>
-    <div>
+    <div class="font-weight-bold" >
       <%= f.input :password,
       required: false,
-      input_html: { autocomplete: "current-password" } %>
+      input_html: { autocomplete: "current-password" },
+      placeholder: "●●●●●●●" %>
     </div>
     <%#= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>

@@ -16,23 +16,24 @@
 }
 
 .card-product h2 {
-  font-size: 16px;
+  color: black;
+  font-size: 18px;
   font-weight: bold;
   margin: 0;
+  text-align: left;
 }
 
 .card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
+  // font-size: 18px;
   margin-bottom: 0;
   margin-top: 8px;
+  color: gray;
 }
 
 .card-product .card-product-infos {
   padding: 16px;
 }
 
-a {
+.inbox a {
   text-decoration: none;
 }
