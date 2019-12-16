@@ -493,7 +493,7 @@
     experience: "Junior",
     contract_type: "Full-Time",
     salary_max: 20_000,
-    description: "Think you've got an eye for style? Show us you're talent and we'll show you how to go pro."
+    description: "Think you've got an eye for style? Show us your talent and we'll show you how to go pro."
   },
   {
     field: "Tech",
@@ -501,7 +501,7 @@
     experience: "Junior",
     contract_type: "Part-Time",
     salary_max: 20_000,
-    description: "Think you've got an eye for style? Show us you're talent and we'll show you how to go pro."
+    description: "Think you've got an eye for style? Show us your talent and we'll show you how to go pro."
   },
   {
     field: "Tech",
@@ -509,7 +509,7 @@
     experience: "Junior",
     contract_type: "Freelance",
     salary_max: 20_000,
-    description: "Think you've got an eye for style? Show us you're talent and we'll show you how to go pro."
+    description: "Think you've got an eye for style? Show us your talent and we'll show you how to go pro."
   },
   {
     field: "Tech",
@@ -743,6 +743,7 @@
 
 @domains = ["gmail.com", "hotmail.com", "outlook.com"]
 @contract_types = ["Full-Time", "Part-Time", "Freelance"]
+@experience = ["Junior", "Mid", "Senior"]
 @languages = ["English", "French", "Spanish", "German", "Italian"]
 @locations = ["Edinburgh", "London", "Amsterdam", "Barcelona", "Madrid", "Berlin", "Paris"]
 
@@ -804,7 +805,7 @@ def create_postings_from_company(n_postings)
     @new_posting = Posting.new(
       field: @selected_posting[:field],
       job_title: @selected_posting[:job_title],
-      contract_types: @contract_types,
+      contract_types: [@selected_posting[:contract_type]],
       experience: @selected_posting[:experience],
       languages: @selected_company[:languages],
       locations: @selected_company[:locations],
@@ -834,7 +835,7 @@ def create_profiles_from_user(n_profiles)
       field: @selected_profile[:field],
       job_title: @selected_profile[:job_title],
       contract_types: @contract_types.sample(rand(1..@contract_types.length)),
-      experience: @selected_profile[:experience],
+      experience: @selected_user[:experience],
       languages: @selected_user[:languages],
       locations: @selected_user[:locations],
       description: @selected_profile[:description],
@@ -901,7 +902,7 @@ def create_users_with_companies(n_users)
       else # if company does not exist, a new company will be created
         create_new_company
         create_new_user_with_(@new_company.id)
-        create_postings_from_company(rand(4..(@postings_list.length)))
+        create_postings_from_company(rand(1..(@postings_list.count))) # unless Posting.where(company_id: @new_company.id).count > @postings_list.length
       end
 
     else # remaining new users will not be associated with a company (applicants)
@@ -912,6 +913,7 @@ def create_users_with_companies(n_users)
     save_new_user
 
     unless User.last.company_id
+      @new_user[experience: @experience.shuffle]
       create_profiles_from_user(rand(1..4))
     end
   end
@@ -1001,7 +1003,8 @@ def seed_database(clean)
     create_users_with_companies(@users_list.length)
     create_demo_users
     seekers = User.where(company_id: nil)
-    # postings = Posting.all.sort
+    postings = Posting.all.sort
+    companies = Company.all
 
     puts " "
     puts "SEEDED #{User.count} Users"
@@ -1016,11 +1019,16 @@ def seed_database(clean)
     puts "SEEKER ACCOUNTS:"
 
     seekers.each do |seeker|
-      puts "#{(Profile.where(user_id: seeker.id)).count} profile(s): #{seeker.email}"
+      seeker_profiles = Profile.where(user_id: seeker.id)
+      puts "#{seeker_profiles.count} profile(s): EXP (#{Profile.where(user_id: seeker.id).experience}) - #{seeker.email}"
     end
 
-    # postings.each do |posting|
-    #   puts "#{posting.job_title} - #{posting.locations}"
+    puts " "
+    puts "COMPANY POSTS:"
+
+    companies.each do |company|
+      puts "#{Posting.where(company_id: company.id).count} posting(s) - #{company.name}"
+    end
 
     # puts " "
     # puts "Seeding Matches..."
