@@ -15,7 +15,6 @@
     <%= f.input :locations, label: 'Select your locations', collection: ['Barcelona', 'Madrid', 'Valencia', 'San Sebastian'], as: :check_boxes %>
     <%= f.input :contract_types, label: "Contract type:", collection: ['Full-time', 'Part-time', 'Freelance'], as: :check_boxes  %>
     <%= f.input :salary_min, label: 'Your minimum salary', as: :integer  %>
-    <%= f.input :salary_max, label: 'Your minimum salary', as: :integer  %>
 
     <!-- <div class="form-group range optional profile_salary_min"><label class="range optional" for="profile_salary_min">Your desired salary</label>
       <input class="form-control-range numeric range optional" type="range" value="5" min="1" max="100" step="1" name="profile[salary_min]" id="profile_salary_min">
