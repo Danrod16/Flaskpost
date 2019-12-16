@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_13_113638) do
+ActiveRecord::Schema.define(version: 2019_12_15_152704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2019_12_13_113638) do
     t.bigint "posting_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status_seeker"
+    t.string "status_recruiter"
     t.index ["posting_id"], name: "index_matches_on_posting_id"
     t.index ["profile_id"], name: "index_matches_on_profile_id"
   end
@@ -86,6 +88,11 @@ ActiveRecord::Schema.define(version: 2019_12_13_113638) do
     t.string "first_name"
     t.string "last_name"
     t.bigint "company_id"
+    t.string "provider"
+    t.string "uid"
+    t.string "facebook_picture_url"
+    t.string "token"
+    t.datetime "token_expiry"
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -567,7 +567,7 @@ def create_postings_from_company(n_postings)
   end
 end
 
-def create_profiles_from_users(n_profiles)
+def create_profiles_from_user(n_profiles)
   @shuffled_profiles_list = @profiles_list.shuffle # Shuffle postings order - create random posts
 
   n_profiles.times do # TODO: Create rand(n_postings) number of postings - selected from shuffled_postings_list
@@ -583,6 +583,38 @@ def create_profiles_from_users(n_profiles)
       experience: @selected_profile[:experience],
       languages: @languages.sample(rand(1..@languages.length)),
       locations: @locations.sample(rand(1..@locations.length)),
+      description: @selected_profile[:description],
+      salary_min: @selected_profile[:salary_min],
+      salary_max: @selected_profile[:salary_max],
+      user_id: User.last.id,
+      status: 'active'#,
+      # photo: @selected_company[:photo]
+      )
+
+    if @new_profile.valid?
+      @new_profile.save # saving new company
+    else
+      p @new_profile.errors.messages
+    end
+  end
+end
+
+def create_profiles_from_demo_user(n_profiles)
+  @shuffled_profiles_list = @profiles_list.shuffle # Shuffle postings order - create random posts
+
+  n_profiles.times do # TODO: Create rand(n_postings) number of postings - selected from shuffled_postings_list
+
+    @selected_profile_index = @shuffled_profiles_list.length - 1 # index of last element of shuffled postings array
+    @selected_profile = @shuffled_profiles_list[@selected_profile_index] # selects random post from shuffled array by this index
+    @shuffled_profiles_list.delete_at(@selected_profile_index) # deletes selected post from shuffled array
+
+    @new_profile = Profile.new(
+      field: @selected_profile[:field],
+      job_title: @selected_profile[:job_title],
+      contract_types: @contract_types,
+      experience: @selected_profile[:experience],
+      languages: @languages,
+      locations: @locations,
       description: @selected_profile[:description],
       salary_min: @selected_profile[:salary_min],
       salary_max: @selected_profile[:salary_max],
@@ -628,9 +660,41 @@ def create_users_with_companies(n_users)
     save_new_user
 
     unless User.last.company_id
-      create_profiles_from_users(rand(1..6))
+      create_profiles_from_user(rand(1..6))
     end
   end
+end
+
+def create_demo_users
+  @new_user = User.new(
+    email: "dan.rod93@gmail.com",
+    password: "12341234",
+    first_name: "Daniel",
+    last_name: "Rodriguez",
+    company_id: nil)
+  save_new_user
+  create_profiles_from_demo_user(5)
+  @new_user = User.new(
+    email: "marti15@hotmail.com",
+    password: "12341234",
+    first_name: "Martin",
+    last_name: "Potié",
+    company_id: nil)
+  save_new_user
+  @new_user = User.new(
+    email: "kevin@liebholz.eu",
+    password: "12341234",
+    first_name: "Kevin",
+    last_name: "Liebholz",
+    company_id: nil)
+  save_new_user
+  @new_user = User.new(
+    email: "angustatchell@gmail.com",
+    password: "12341234",
+    first_name: "Angus",
+    last_name: "Tatchell",
+    company_id: nil)
+  save_new_user
 end
 
 def clear_database
@@ -683,6 +747,7 @@ def seed_database(clean)
     puts " "
 
     create_users_with_companies(@users_list.length)
+    create_demo_users
     seekers = User.where(company_id: nil)
 
     puts " "

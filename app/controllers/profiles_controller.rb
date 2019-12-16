@@ -47,17 +47,11 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:profile_id])
     @cards = cards_from_database
 
-    @cards = @cards.filter do |card|
-      @profile.contract_types.any? { |contract_type| card.contract_types.include?(contract_type) }
-    end
-
-    @cards = @cards.filter do |card|
-      @profile.languages.any? { |language| card.languages.include?(language) }
-    end
-
-    @cards = @cards.filter do |card|
-      @profile.locations.any? { |location| card.locations.include?(location) }
-    end
+    filter_for_contract_types
+    filter_for_locations
+    filter_for_languages
+    filter_for_liked_cards
+    filter_for_declined_cards
 
     @card = @cards[0]
     @cards.delete_at(0)
@@ -83,12 +77,42 @@ class ProfilesController < ApplicationController
 
   def cards_from_database
     Posting.where(
-      'field = :profile_field
-      AND job_title = :profile_job_title
+      'field ILIKE :profile_field
+      AND job_title ILIKE :profile_job_title
       AND salary_max >= :profile_salary_min',
       profile_field: @profile.field,
       profile_job_title: @profile.job_title,
       profile_salary_min: @profile.salary_min
     )
+  end
+
+  def filter_for_contract_types
+    @cards = @cards.filter do |card|
+      @profile.contract_types.any? { |contract_type| card.contract_types.include?(contract_type) }
+    end
+  end
+
+  def filter_for_locations
+    @cards = @cards.filter do |card|
+      @profile.languages.any? { |language| card.languages.include?(language) }
+    end
+  end
+
+  def filter_for_languages
+    @cards = @cards.filter do |card|
+      @profile.locations.any? { |location| card.locations.include?(location) }
+    end
+  end
+
+  def filter_for_liked_cards
+    @cards = @cards.reject do |card|
+      Match.where(profile_id: @profile.id, posting_id: card.id, status_seeker: "accepted").exists?
+    end
+  end
+
+  def filter_for_declined_cards
+    @cards = @cards.reject do |card|
+      Match.where(profile_id: @profile.id, posting_id: card.id, status: "declined").exists?
+    end
   end
 end

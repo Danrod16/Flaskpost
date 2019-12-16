@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   get "/bridge", to: "profiles#bridge_route", as: "user_root"
   root to: 'pages#home'
 
@@ -13,6 +14,11 @@ Rails.application.routes.draw do
     resources "builder", controller: 'profiles'
   end
 
-  resources :matches, only: [:index, :show, :create]
+  resources :matches, only: [:index, :show] do
+    collection do
+      post '/accept_decline', to: 'matches#accept_decline', as: :accept_decline
+    end
+  end
+
   resources :messages, only: [:create]
 end
