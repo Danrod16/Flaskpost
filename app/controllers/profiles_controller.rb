@@ -22,6 +22,7 @@ class ProfilesController < ApplicationController
     params[:profile][:status] = 'active' if step == steps.last
     params[:profile][:user_id] = current_user.id if step == steps.last
     if @profile.update_attributes(profile_params) && step == steps.last
+      @profile.compute_score
       redirect_to profiles_path
     else
       render_wizard @profile

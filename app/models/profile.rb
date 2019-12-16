@@ -23,6 +23,7 @@ class Profile < ApplicationRecord
   validates :user_id, presence: true, if: :active?
 
   after_create :compute_score
+  before_save :remove_empty_string
 
   # VALIDATION METHODS
   def active?
@@ -43,17 +44,27 @@ class Profile < ApplicationRecord
 
   def compute_score
     stats = []
-    types = ["job_title", "contract_types"]
+    types = ["contract_types", "languages", "locations", "experience", "salary_max"]
     types.each do |type|
       query = { field: field }
       query[type.to_sym] = send(type)
-      stats << Posting.where(query).count.to_f / Posting.where(field: field).count.to_f
+      stat = Posting.where(query).count.to_f / Posting.where(field: field).count.to_f
+      stats << (stat.nan? ? 0 : stat)
     end
-    self.score = stats.sum.to_f / stats.count.to_f
+
+    self.score = ((stats.sum.to_f / stats.count.to_f) * 100).round.to_i
     save
   end
 
   def active_or_third?
     status.include?('third') || active?
+  end
+
+  private
+
+  def remove_empty_string
+    %w[contract_types languages locations].each do |attributes|
+      self[attributes] = self[attributes]&.reject(&:blank?)
+    end
   end
 end
