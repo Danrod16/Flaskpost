@@ -44,7 +44,7 @@ class Profile < ApplicationRecord
 
   def compute_score
     stats = []
-    types = ["contract_types", "languages", "locations", "experience", "salary_max"]
+    types = ["contract_types", "languages", "locations", "experience"]
     types.each do |type|
       query = { field: field }
       query[type.to_sym] = send(type)
