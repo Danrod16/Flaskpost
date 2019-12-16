@@ -20,6 +20,7 @@ class MatchesController < ApplicationController
 
   def accept_decline
     user_intention = params[:user_intention]
+    @posting = params[:posting_id]
     match_instance
     update_seeker_or_recruiter_status(user_intention)
 
@@ -32,7 +33,7 @@ class MatchesController < ApplicationController
     end
 
     @match.save
-    redirect_to swipe_path(@current_user, @profile_id)
+    render :update_btn
   end
 
   private
