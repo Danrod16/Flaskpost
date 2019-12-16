@@ -11,10 +11,7 @@
   </div>
 
   <%= simple_form_for @profile, url: wizard_path do |f| %>
-    <div class="form-group text optional profile_description">
-      <label class="text optional" for="profile_description">Nearly there! <br> How would you pitch yourself in 180 characters?</label>
-      <textarea class="form-control text optional" name="profile[description]" id="profile_description" placeholder="Remember that recruiters value creativity, so try to impress them with a catchy pitch that captures your personality!"></textarea>
-    </div>
+    <%= f.input :description, label: 'Your minimum salary', as: :text, placeholder: 'Remember that recruiters value creativity, so try to impress them with a catchy pitch that captures your personality!' %>
     <%= f.submit "SAVE", class: "btn btn-main form-button"%>
   <% end %>
 </div>
