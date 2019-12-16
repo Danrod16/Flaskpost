@@ -16,6 +16,7 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'omniauth-facebook'
 
 # Added by hand
 gem 'wicked'
