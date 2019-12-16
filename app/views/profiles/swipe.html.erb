@@ -1,6 +1,12 @@
 <% if @cards.empty? %>
-  <h2>Sorry, you have no fitting job offers yet...</h2>
-<% else %>
+    <h2>Sorry, you have no fitting job offers yet... You can try again later</h2>
+      <p style="margin-top: 20px;"> Or See the stats to compare your expectations with actual market figures</p>
+     <%= link_to stats_path do%>
+        <div style="font-size: 100px;">
+          <i class="fas fa-chart-pie"></i>
+        </div>
+      <% end %>
+  <% else %>
 
   <div id="carouselExampleCaptions" class="carousel slide seeker-swipe" data-ride="carousel"  data-interval="false">
     <div class="carousel-inner">
