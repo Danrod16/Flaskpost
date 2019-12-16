@@ -86,6 +86,9 @@ class ProfilesController < ApplicationController
     )
   end
 
+  def compute_score
+    @score += 25 if @profile.contract_types.any? { |contract_type| card.contract_types.include?(contract_type) }
+  end
   def filter_for_contract_types
     @cards = @cards.filter do |card|
       @profile.contract_types.any? { |contract_type| card.contract_types.include?(contract_type) }

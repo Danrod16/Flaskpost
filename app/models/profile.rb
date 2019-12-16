@@ -22,6 +22,8 @@ class Profile < ApplicationRecord
   # VALIDATES USER
   validates :user_id, presence: true, if: :active?
 
+  after_create :compute_score
+
   # VALIDATION METHODS
   def active?
     status == 'active'
@@ -37,6 +39,18 @@ class Profile < ApplicationRecord
 
   def active_or_second?
     status.include?('second') || active?
+  end
+
+  def compute_score
+    stats = []
+    types = ["job_title", "contract_types"]
+    types.each do |type|
+      query = { field: field }
+      query[type.to_sym] = send(type)
+      stats << Posting.where(query).count.to_f / Posting.where(field: field).count.to_f
+    end
+    self.score = stats.sum.to_f / stats.count.to_f
+    save
   end
 
   def active_or_third?
