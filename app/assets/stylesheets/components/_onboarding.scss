@@ -22,3 +22,37 @@
   margin-bottom: 10px;
 }
 
+#profile_description {
+  height: 180px;
+  padding: 12px;
+  text-align: justify;
+  margin-top: 10px;
+  border-radius: 25px;
+}
+
+.progress {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 18px;
+  margin-top: 50px;
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+.progress-circle-1 {
+  background-color: #6F35E2;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.progress-circle-0 {
+  background-color: #6F35E2;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  opacity: 0.3;
+}
