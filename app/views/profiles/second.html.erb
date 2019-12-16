@@ -1,5 +1,11 @@
 <div class="container onboarding">
 
+  <div class="progress">
+    <div class="progress-circle-1"> </div>
+    <div class="progress-circle-1"> </div>
+    <div class="progress-circle-0"> </div>
+  </div>
+
   <div class="onboarding-header">
     <h1>Your dream job awaits</h1>
   </div>
@@ -9,32 +15,12 @@
     <%= f.input :locations, label: 'Select your locations', collection: ['Barcelona', 'Madrid', 'Valencia', 'San Sebastian'], as: :check_boxes %>
     <%= f.input :contract_types, label: "Contract type:", collection: ['Full-time', 'Part-time', 'Freelance'], as: :check_boxes  %>
     <%= f.input :salary_min, label: 'Your minimum salary', as: :integer  %>
-    <%= f.input :salary_max, label: 'Your maximum salary', as: :integer %>
+    <%= f.input :salary_max, label: 'Your minimum salary', as: :integer  %>
+
+    <!-- <div class="form-group range optional profile_salary_min"><label class="range optional" for="profile_salary_min">Your desired salary</label>
+      <input class="form-control-range numeric range optional" type="range" value="5" min="1" max="100" step="1" name="profile[salary_min]" id="profile_salary_min">
+    </div> -->
     <%= f.submit "NEXT", class: "btn btn-main form-button"%>
   <% end %>
 </div>
 
-<fieldset class="form-group check_boxes optional profile_languages">
-  <legend class="col-form-label pt-0">Select your languages</legend>
-  <input type="hidden" name="profile[languages][]" value="">
-
-  <div class="form-check">
-    <input class="form-check-input check_boxes optional" type="checkbox" value="English" name="profile[languages][]" id="profile_languages_english">
-    <label class="form-check-label collection_check_boxes" for="profile_languages_english">English</label>
-  </div>
-
-  <div class="form-check">
-    <input class="form-check-input check_boxes optional" type="checkbox" value="Spanish" name="profile[languages][]" id="profile_languages_spanish">
-    <label class="form-check-label collection_check_boxes" for="profile_languages_spanish">Spanish</label>
-  </div>
-
-  <div class="form-check">
-    <input class="form-check-input check_boxes optional" type="checkbox" value="French" name="profile[languages][]" id="profile_languages_french">
-    <label class="form-check-label collection_check_boxes" for="profile_languages_french">French</label>
-  </div>
-
-  <div class="form-check">
-    <input class="form-check-input check_boxes optional" type="checkbox" value="German" name="profile[languages][]" id="profile_languages_german">
-    <label class="form-check-label collection_check_boxes" for="profile_languages_german">German</label>
-  </div>
-</fieldset>
