@@ -605,7 +605,7 @@ def create_profiles_from_user(n_profiles)
       locations: @locations.sample(rand(1..@locations.length)),
       description: @selected_profile[:description],
       salary_min: @selected_profile[:salary_min],
-      salary_max: @selected_profile[:salary_max],
+      # salary_max: @selected_profile[:salary_max],
       user_id: User.last.id,
       status: 'active'
       )
@@ -636,7 +636,7 @@ def create_profiles_from_demo_user(n_profiles)
       locations: @locations,
       description: @selected_profile[:description],
       salary_min: @selected_profile[:salary_min],
-      salary_max: @selected_profile[:salary_max],
+      # salary_max: @selected_profile[:salary_max],
       user_id: User.last.id,
       status: 'active'
       )
@@ -667,7 +667,7 @@ def create_users_with_companies(n_users)
       else # if company does not exist, a new company will be created
         create_new_company
         create_new_user_with_(@new_company.id)
-        create_postings_from_company(rand(8..(@postings_list.length)))
+        create_postings_from_company(rand(4..(@postings_list.length)))
       end
 
     else # remaining new users will not be associated with a company (applicants)
