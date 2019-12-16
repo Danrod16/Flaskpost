@@ -1,13 +1,19 @@
-<div class="container">
+<div class="container onboarding">
+
+  <div class="progress">
+    <div class="progress-circle-1"> </div>
+    <div class="progress-circle-0"> </div>
+    <div class="progress-circle-0"> </div>
+  </div>
 
   <div class="onboarding-header">
-    <h1>Let's start building your first profile</h1>
+    <h1>Let's build your profile</h1>
   </div>
 
   <%= simple_form_for @profile, url: wizard_path do |f| %>
     <%= f.input :field, label:'Choose your field of interest:', collection: ['Tech', 'E-commerce', 'Cryptocurrency', 'Startup'], placeholder: "e.g. IT & Programming" %>
     <%= f.input :job_title, label: 'Define your skill set:', placeholder: "e.g. Full Stack Developer" %>
-    <%= f.input :experience, label: 'And your skill level', collection: ['Entry', 'Junior', 'Mid', 'Senior'] %>
-    <%= f.submit "NEXT", class: "btn-main" %>
+    <%= f.input :experience, label: 'Choose your skill level', collection: ['Entry', 'Junior', 'Mid', 'Senior'] %>
+    <%= f.submit "NEXT", class: "btn btn-main form-button" %>
   <% end %>
 </div>
