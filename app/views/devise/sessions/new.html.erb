@@ -1,9 +1,8 @@
-<div class="container onboarding">
+  <div class="container onboarding">
 
   <div class="onboarding-header">
     <h1>Log in</h1>
   </div>
-
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
@@ -30,3 +29,6 @@
   <%= render "devise/shared/links" %>
   </div>
 </div>
+
+  <canvas id="canvas">
+  </canvas>
