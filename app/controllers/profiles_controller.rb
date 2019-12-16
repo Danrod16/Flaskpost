@@ -18,6 +18,7 @@ class ProfilesController < ApplicationController
 
   def wizard_redirect
     if @profile.update_attributes(profile_params) && step == steps.last
+      @profile.compute_score
       redirect_to profiles_path
     else
       render_wizard @profile
@@ -63,6 +64,11 @@ class ProfilesController < ApplicationController
 
     @card = @cards[0]
     @cards.delete_at(0)
+  end
+
+  def stats
+    @profile = Profile.find(params[:profile_id])
+    @profile.score
   end
 
   private
