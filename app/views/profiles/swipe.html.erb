@@ -1,29 +1,9 @@
-<% unless @card %>
+<% if @cards.empty? %>
   <h2>Sorry, you have no fitting job offers yet...</h2>
 <% else %>
 
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel"  data-interval="false">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="swipe-card">
-          <div class="swipe-content">
-            <div class="swipe-photo-section">
-              <div class="swipe-photo" style=" background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(<%= @card.photo %>)"></div>
-              <%= cl_image_tag @card.company.logo, class: "avatar swipe-avatar" %>
-            </div>
-            <div class="swipe-description">
-              <h2><%= @card.job_title %></h2>
-              <h4><%= @card.company.name %> (<%= "#{@card.experience}" %>)</h4>
-              <p><%= @card.description %></p>
-            </div>
-          </div>
-          <div class="swipe-answer">
-            <%= link_to 'NOPE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @card.id, user_intention: 'declined'}), method: :post, class: "btn-main answer-btn" %>
-            <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @card.id, user_intention: 'accepted'}), method: :post, class: "btn-main answer-btn" %>
-          </div>
-        </div>
-      </div>
-
       <% @cards.each do |card| %>
         <div class="carousel-item">
           <div class="swipe-card">
