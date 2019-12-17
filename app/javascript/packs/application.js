@@ -10,5 +10,5 @@ makeFirstCardActive();
 import { changeButtonLinks } from '../swipe/button_links';
 changeButtonLinks();
 
-import { changePillClass } from '../pills/pill_active';
+import { changePillClass } from '../forms/pill_active';
 changePillClass();

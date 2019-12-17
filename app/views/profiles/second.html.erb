@@ -16,6 +16,12 @@
     <%#= f.input :contract_types, label: "Contract type:", collection: ['Full-time', 'Part-time', 'Freelance'], as: :check_boxes  %>
     <%= f.input :salary_min, label: 'Your desired salary', as: :integer  %>
 
+
+    <div class="rangeslider">
+      <input type="range" min="1000" max="100000" value="100" class="myslider" id="sliderRange">
+    </div>
+
+
     <fieldset class="form-group check_boxes optional profile_contract_types">
 
       <legend class="col-form-label pt-0">Contract type:</legend>
