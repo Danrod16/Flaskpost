@@ -1,7 +1,14 @@
-import $ from 'jquery'
+// import { changeButtonLinks } from '../../javascript/swipe/button_links';
 
-var changeLinks = (activeCardParentElement) => {
+var activeCard = document.querySelector(".active")
 
+if(activeCard.nextElementSibling) {
+  var nextCard = activeCard.nextElementSibling
+} else {
+  var nextCard = activeCard.parentElement.firstElementChild
+}
+
+var changeButtonLinks = () => {
   var acceptBtn = document.getElementById("accept");
   var declineBtn = document.getElementById("decline");
 
@@ -11,8 +18,7 @@ var changeLinks = (activeCardParentElement) => {
   var acceptUrl = new URL ("/matches/accept_decline?posting_id=jsChange&profile_id=jsChange&user_intention=accepted", baseUrl);
   var declineUrl = new URL ("/matches/accept_decline?posting_id=jsChange&profile_id=jsChange&user_intention=declined", baseUrl);
 
-  var activeCard = activeCardParentElement.querySelector(".active")
-  var posting_id = activeCard.querySelector(".swipe-card").dataset.posting
+  var posting_id = nextCard.querySelector(".swipe-card").dataset.posting
 
   acceptUrl.searchParams.set( 'posting_id', posting_id );
   declineUrl.searchParams.set( 'posting_id', posting_id );
@@ -24,10 +30,15 @@ var changeLinks = (activeCardParentElement) => {
   declineBtn.href = declineUrl;
 }
 
-var changeButtonLinks = () => {
-  $('#carouselExampleCaptions').on('slid.bs.carousel', function (event) {
-    changeLinks(event.currentTarget)
-  })
-}
 
-export { changeButtonLinks };
+var goToNextCard = () => {
+  nextCard.classList.add("active");
+  changeButtonLinks();
+};
+
+var kill_card = () => {
+  activeCard.remove();
+  goToNextCard();
+};
+
+kill_card();
