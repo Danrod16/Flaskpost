@@ -1,7 +1,12 @@
 // import { changeButtonLinks } from '../../javascript/swipe/button_links';
 
 var activeCard = document.querySelector(".active")
-var nextCard = activeCard.nextSibling.nextSibling
+
+if(activeCard.nextElementSibling) {
+  var nextCard = activeCard.nextElementSibling
+} else {
+  var nextCard = activeCard.parentElement.firstElementChild
+}
 
 var changeButtonLinks = () => {
   var acceptBtn = document.getElementById("accept");
