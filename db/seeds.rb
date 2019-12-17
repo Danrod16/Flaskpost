@@ -287,8 +287,8 @@
     name: "Google",
     domain: "google.com",
     address: "San Francisco",
-    locations: ["Madrid", "London", "Paris", "Berlin", "Rome", "Athens", "Rome", "Amsterdam"],
-    languages: ["English"],
+    locations: ["Madrid", "London", "Paris", "Berlin", "Rome", "Athens", "Amsterdam"],
+    languages: ["English", "French", "German", "Dutch", "Italian", "Greek"],
     photo_logo: "https://storage.googleapis.com/gd-wagtail-prod-assets/original_images/evolving_google_identity_share.jpg",
     photo_banner: "https://media.blogto.com/articles/2019918-google.jpg?w=1200&cmd=resize_then_crop&height=630&quality=70"
   },
@@ -296,8 +296,8 @@
     name: "Facebook",
     domain: "facebook.com",
     address: "San Francisco",
-    locations: ["Madrid", "London", "Paris", "Berlin", "Rome", "Athens", "Rome", "Amsterdam"],
-    languages: ["English"],
+    locations: ["Madrid", "London", "Paris", "Berlin", "Rome", "Athens", "Amsterdam"],
+    languages: ["English", "French", "German", "Dutch", "Italian", "Greek"],
     photo_logo: "https://about.fb.com/wp-content/uploads/2019/11/facebook_wordmark.gif",
     photo_banner: "https://www.designboom.com/wp-content/uploads/2018/09/frank-gehry-facebook-campus-menlo-park-MPK-21-california-designboom-1800.jpg"
   },
@@ -305,8 +305,8 @@
     name: "Twitter",
     domain: "twitter.com",
     address: "San Francisco",
-    locations: ["Madrid", "London", "Paris", "Berlin", "Rome", "Athens", "Rome", "Amsterdam"],
-    languages: ["English"],
+    locations: ["Madrid", "London", "Paris", "Berlin", "Rome", "Athens", "Amsterdam"],
+    languages: ["English", "French", "German", "Dutch", "Italian", "Greek"],
     photo_logo: "https://s3.amazonaws.com/img.mynetdiary.com/src/logo_twitter.png",
     photo_banner: "https://d1l6lhgof63zdh.cloudfront.net/twitter-office-cCc4SUHbqk.jpg"
   },
@@ -440,7 +440,7 @@
 
 @postings_list = [
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Front-End Developer",
     experience: "Senior",
     contract_type: "Full-Time",
@@ -448,7 +448,7 @@
     description: "Ready to take your style to the next level? Looking for driven and ambitious senior designers."
   },
     {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Front-End Developer",
     experience: "Senior",
     contract_type: "Part-Time",
@@ -456,7 +456,7 @@
     description: "Ready to take your style to the next level? Looking for driven and ambitious senior designers."
   },
     {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Front-End Developer",
     experience: "Senior",
     contract_type: "Freelance",
@@ -464,7 +464,7 @@
     description: "Ready to take your style to the next level? Looking for driven and ambitious senior designers."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Front-End Developer",
     experience: "Mid",
     contract_type: "Full-Time",
@@ -472,7 +472,7 @@
     description: "Think you've got style, huh? Then come show us what you've got! Looking for passionate and talented designers."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Front-End Developer",
     experience: "Mid",
     contract_type: "Part-Time",
@@ -480,7 +480,7 @@
     description: "Think you've got style, huh? Then come show us what you've got! Looking for passionate and talented designers."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Front-End Developer",
     experience: "Mid",
     contract_type: "Freelance",
@@ -488,7 +488,7 @@
     description: "Think you've got style, huh? Then come show us what you've got! Looking for passionate and talented designers."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Front-End Developer",
     experience: "Junior",
     contract_type: "Full-Time",
@@ -496,7 +496,7 @@
     description: "Think you've got an eye for style? Show us your talent and we'll show you how to go pro."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Front-End Developer",
     experience: "Junior",
     contract_type: "Part-Time",
@@ -504,7 +504,7 @@
     description: "Think you've got an eye for style? Show us your talent and we'll show you how to go pro."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Front-End Developer",
     experience: "Junior",
     contract_type: "Freelance",
@@ -512,7 +512,7 @@
     description: "Think you've got an eye for style? Show us your talent and we'll show you how to go pro."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Back-End Developer",
     experience: "Senior",
     contract_type: "Full-Time",
@@ -520,7 +520,7 @@
     description: "If you express your style with beautiful logic, we understand your art. Swipe to get in touch if you're a true MVC craftsman."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Back-End Developer",
     experience: "Senior",
     contract_type: "Part-Time",
@@ -528,7 +528,7 @@
     description: "If you express your style with beautiful logic, we understand your art. Swipe to get in touch if you're a true MVC craftsman."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Back-End Developer",
     experience: "Senior",
     contract_type: "Freelance",
@@ -536,7 +536,7 @@
     description: "If you express your style with beautiful logic, we understand your art. Swipe to get in touch if you're a true MVC craftsman."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Back-End Developer",
     experience: "Mid",
     contract_type: "Full-Time",
@@ -544,7 +544,7 @@
     description: "If you express your style with beautiful logic, we understand your art. Swipe to get in touch if you're a true MVC craftsman."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Back-End Developer",
     experience: "Mid",
     contract_type: "Part-Time",
@@ -552,7 +552,7 @@
     description: "If you express your style with beautiful logic, we understand your art. Swipe to get in touch if you're a true MVC craftsman."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Back-End Developer",
     experience: "Mid",
     contract_type: "Freelance",
@@ -560,7 +560,7 @@
     description: "If you express your style with beautiful logic, we understand your art. Swipe to get in touch if you're a true MVC craftsman."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Back-End Developer",
     experience: "Junior",
     contract_type: "Full-Time",
@@ -568,7 +568,7 @@
     description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Back-End Developer",
     experience: "Junior",
     contract_type: "Part-Time",
@@ -576,7 +576,7 @@
     description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Back-End Developer",
     experience: "Junior",
     contract_type: "Freelance",
@@ -584,7 +584,7 @@
     description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Full-Stack Developer",
     experience: "Senior",
     contract_type: "Full-Time",
@@ -592,7 +592,7 @@
     description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Full-Stack Developer",
     experience: "Senior",
     contract_type: "Part-Time",
@@ -600,7 +600,7 @@
     description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Full-Stack Developer",
     experience: "Senior",
     contract_type: "Freelance",
@@ -608,7 +608,7 @@
     description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Full-Stack Developer",
     experience: "Mid",
     contract_type: "Full-Time",
@@ -616,7 +616,7 @@
     description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Full-Stack Developer",
     experience: "Mid",
     contract_type: "Part-Time",
@@ -624,7 +624,7 @@
     description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Full-Stack Developer",
     experience: "Mid",
     contract_type: "Freelance",
@@ -632,7 +632,7 @@
     description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Full-Stack Developer",
     experience: "Junior",
     contract_type: "Full-Time",
@@ -640,7 +640,7 @@
     description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Full-Stack Developer",
     experience: "Junior",
     contract_type: "Part-Time",
@@ -648,7 +648,7 @@
     description: "This is a job for the polymaths and the all-rounders. Swipe right to discover your inner renaissance dev..."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Full-Stack Developer",
     experience: "Junior",
     contract_type: "Freelance",
@@ -659,7 +659,7 @@
 
 @profiles_list = [
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Front-End Developer",
     experience: "Senior",
     contract_type: "",
@@ -668,7 +668,7 @@
     description: "I'm ready to take my style to the next level. Looking for driven and ambitious companies."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Front-End Developer",
     experience: "Mid",
     contract_type: "",
@@ -677,7 +677,7 @@
     description: "I'm ready to take my style to the next level. Looking for driven and ambitious companies."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Front-End Developer",
     experience: "Junior",
     contract_type: "",
@@ -686,7 +686,7 @@
     description: "I'm ready to take my style to the next level. Looking for driven and ambitious companies."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Back-End Developer",
     experience: "Senior",
     contract_type: "",
@@ -695,7 +695,7 @@
     description: "I express my style with beautiful logic, and you understand my art. Swipe to get in touch with a true MVC craftsman."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Back-End Developer",
     experience: "Mid",
     contract_type: "",
@@ -704,7 +704,7 @@
     description: "I express my style with beautiful logic, and want to better understand my art. Swipe to get in touch with a rising MVC star."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Back-End Developer",
     experience: "Junior",
     contract_type: "",
@@ -713,7 +713,7 @@
     description: "I want to express my style with beautiful logic and understand this art. Swipe to get in touch with an aspiring MVC craftsman."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Full-Stack Developer",
     experience: "Senior",
     contract_type: "",
@@ -722,7 +722,7 @@
     description: "Behold the polymath... A master of all trades - a jack of none. Swipe right to meet a real renaissance dev..."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Full-Stack Developer",
     experience: "Mid",
     contract_type: "",
@@ -731,7 +731,7 @@
     description: "Behold the polymath... A master of all trades - a jack of none. Swipe right to meet a real renaissance dev..."
   },
   {
-    field: "Tech",
+    field: "Information Technology",
     job_title: "Full-Stack Developer",
     experience: "Junior",
     contract_type: "",

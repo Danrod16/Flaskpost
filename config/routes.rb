@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     collection do
       post '/accept_decline', to: 'matches#accept_decline', as: :accept_decline
     end
+    resources :messages, only: [:create]
   end
 
-  resources :messages, only: [:create]
 end
