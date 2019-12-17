@@ -1,4 +1,5 @@
 import "bootstrap";
+// import { Visual } from '../purple_cloud'
 
 // ----- swipe functionality -----
 // activate the slide function by passing the class "active" to the first card
