@@ -1,13 +1,13 @@
 
 <div class="container">
+
   <div class="messages-header">
-    <img <%= src="#{@match.profile.photo}" %>/>
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
     <div class="messages-header-infos">
       <h2><%= @match.posting.company.name %></h2>
       <p><%= @match.posting.company.address %></p>
     </div>
   </div>
-
   <div class="messages">
     <% if @match.messages.count > 0 %>
       <% @match.messages.each do |message| %>
@@ -17,7 +17,7 @@
       <p style="margin-top: 80px;">Make a good first impression! This could be your future employer :D</p>
     <% end %>
   </div>
-  </div>
+</div>
 
   <div id="create-message">
     <%= simple_form_for [ @match, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
