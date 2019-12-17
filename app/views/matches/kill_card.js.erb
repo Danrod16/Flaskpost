@@ -4,6 +4,7 @@ var activeCard = document.querySelector(".active");
 var popup = document.getElementById("popup");
 var continueBtn = document.getElementById("continue");
 var companyAvatar = document.getElementById("company-avatar")
+var message = document.getElementById("message")
 
 if(activeCard.nextElementSibling) {
   var nextCard = activeCard.nextElementSibling
@@ -50,6 +51,7 @@ var kill_card = () => {
   if(matchStatus == "accepted") {
     popup.classList.remove("d-none");
     companyAvatar.src = "<%= @match.posting.company.logo %>"
+    message.innerHTML = "<strong style='background-color: #6F35E2'><%= @match.posting.company.name %></strong> wants to connect with you."
     continueBtn.addEventListener("click", (event) => {
       activeCard.remove();
       goToNextCard();
