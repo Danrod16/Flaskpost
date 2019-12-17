@@ -1,5 +1,5 @@
 import "bootstrap";
-import { Visual } from '../purple_cloud'
+// import { Visual } from '../purple_cloud'
 
 
 // ----- swipe functionality -----
