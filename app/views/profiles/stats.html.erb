@@ -1,12 +1,21 @@
 <div class="container">
-  <h1><%= @profile.job_title %></h1>
-  <p>Checkout this awesome graph we made for you...</p>
-  <p>It compares your selected job filters compared with actual market figures, cool huh? </p>
-
-  <div style="font-size: 150px; color: #6F35E2; text-align: center;">
-    <%=  "#{@profile.score}%" %>
-    <%= @profile.locations.count %>
-    <%= @profile.locations %>
-
+  <div class="stats-text">
+    <h1>Hi <%= current_user.first_name %>!</h1>
+    <p> This is our feedback for increasing your chances of connecting with companies as a <strong style="color:#6F35E2;"><%= @profile.job_title %></strong> </p>
+  <div class="set-size charts-container" style="justify-content: center;
+    display: flex;">
+    <div class="pie-wrapper progress-75 style-2">
+      <span class="label">14<span class="smaller">%</span></span>
+      <div class="pie">
+        <div class="left-side half-circle"></div>
+        <div class="right-side half-circle"></div>
+      </div>
+      <div class="shadow"></div>
+    </div>
+    </div>
+    <h2 style="color:#6F35E2;">Salary</h2>
+    <p>Your salary is matching with <strong style="color:#6F35E2">14%</strong> of total salaries for your position in <strong style="color:#6F35E2"> <%= @profile.locations[1] %></strong>. Try a lower one and increase your chances of finding your perfect job! </p>
   </div>
 </div>
+
+
