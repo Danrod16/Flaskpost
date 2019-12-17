@@ -17,7 +17,14 @@
 .card-category > p {
     background-color: #05e3ff;
     /* border-radius: 5px; */
+    color: black;
     padding: 1px 5px;
     max-width: 71px;
     line-height: 14px;
+}
+
+.card-edit {
+  margin-left: 24px;
+  position: absolute;
+  bottom: -5px;
 }

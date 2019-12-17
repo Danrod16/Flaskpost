@@ -16,15 +16,24 @@ class ProfilesController < ApplicationController
     create
   end
 
-  def update
-    @profile = Profile.find(params[:profile_id])
-    params[:profile][:status] = step.to_s
-    params[:profile][:status] = 'active' if step == steps.last
-    params[:profile][:user_id] = current_user.id if step == steps.last
+  def wizard_redirect
     if @profile.update_attributes(profile_params) && step == steps.last
+      @profile.compute_score
       redirect_to profiles_path
     else
       render_wizard @profile
+    end
+  end
+
+  def update
+    @profile = Profile.find(params[:profile_id])
+    if @profile.user_id
+      wizard_redirect
+    else
+      params[:profile][:status] = step.to_s
+      params[:profile][:status] = 'active' if step == steps.last
+      params[:profile][:user_id] = current_user.id if step == steps.last
+      wizard_redirect
     end
   end
 
@@ -52,9 +61,11 @@ class ProfilesController < ApplicationController
     filter_for_languages
     filter_for_liked_cards
     filter_for_declined_cards
+  end
 
-    @card = @cards[0]
-    @cards.delete_at(0)
+  def stats
+    @profile = Profile.find(params[:profile_id])
+    @profile.score
   end
 
   private
@@ -67,8 +78,8 @@ class ProfilesController < ApplicationController
       :job_title,
       :experience,
       :description,
-      :salary_max,
       :salary_min,
+      :photo,
       languages: [],
       locations: [],
       contract_types: []

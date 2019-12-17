@@ -1,11 +1,23 @@
-<div class="container">
+<div class="container onboarding">
+
+  <div class="progress">
+    <div class="progress-circle-1"> </div>
+    <div class="progress-circle-1"> </div>
+    <div class="progress-circle-1"> </div>
+  </div>
 
   <div class="onboarding-header">
-    <h1>Give us your Elevator Pitch</h1>
+    <h1>Your Elevator Pitch</h1>
   </div>
 
   <%= simple_form_for @profile, url: wizard_path do |f| %>
-    <%= f.input :description, label: 'Please pitch the job in 80 characters', as: :text %>
-    <%= f.submit "SAVE", class: "btn-main"%>
+    <%= f.input :description, label: 'Nearly there! Time to pitch yourself in 180 characters.', label_html: { class: 'font-weight-bold' }, as: :text, placeholder: 'Remember that recruiters value creativity, so try to impress them with a catchy pitch that captures your personality!' %>
+    <div class="form-group file optional profile_photo mb-0">
+      <label class="file optional upload-photo mb-0" for="profile_photo"><i class="fas fa-camera mr-1"></i> Add your photo</label>
+      <input class="form-control-file file optional d-none mb-0" type="file" name="profile[photo]" id="profile_photo">
+    </div>
+    <%#= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo fas fa-camera'}, label: 'Add your photo' %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.submit "SAVE", class: "btn btn-main form-button"%>
   <% end %>
 </div>
