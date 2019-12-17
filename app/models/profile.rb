@@ -4,14 +4,22 @@ class Profile < ApplicationRecord
   # belongs_to :user // REPLACED BY 'USER' METHOD BELOW
   has_many :matches
 
-  # FORM VALIDATIONS
-  validates :field, presence: true, allow_blank: false, if: :active_or_first?
-  validates :job_title, presence: true, allow_blank: false, if: :active_or_first?
-  validates :experience, presence: true, allow_blank: false, if: :active_or_first?
+  # FORM COLLECTION ARRAYS
+  INDUSTRIES = ["Information Technology", "Health Care", "Retail", "Financial Services", "Automotive", "Education", "Advertising", "Government Administration", "Real Estate", "Telecommunications", "Energy", "Food & Beverages", "Management Consulting", "Pharmaceuticals", "Logistics", "Architecture", "Fashion", "Non-profit", "Media", "Legal Services", "Tourism", "Aviation", "Recruitment", "Graphic Design", "Public Relations", "Philanthropy" ].sort
+  JOBS = ["Account Manager", "Area Sales Manager", "Artificial Intelligence Engineer", "Back-End Developer", "Biologist", "Brand Manager", "Brand Strategist", "Chemist", "Cloud Architect", "Columnist", "Communications Director", "Computer Scientist", "Content Creator", "Content Marketing Manager", "Content Strategist", "Continuous Improvement Consultant", "Copywriter", "Customer Service", "Data Entry", "Dental Hygienist", "DevOps Engineer", "Digital Marketing Manager", "Director of Inside Sales", "Doctor", "eCommerce Marketing Specialist", "Film Critic", "Front-End Developer", "Full-Stack Developer", "Geologist", "Ghostwriter", "Graphic Designer", "Information Security Analyst", "IT Manager", "Journalist", "Marketing Consultant", "Marketing Research Analyst", "Marketing Specialist", "Massage Therapy", "Media Relations Coordinator", "Medical Laboratory Tech", "Nurse", "Operations Manager", "Personal Trainer", "Pharmacist", "Physical Therapist", "Physicist", "Political Scientist", "Product Manager", "Proposal Writer", "Public Relations", "Public Relations Specialist", "Real Estate Broker", "Sales Analyst", "Sales Associate", "Sales Manager", "Sales Representative", "Screenwriter", "Scrum Master", "Social Media Assistant", "Social Media Specialist", "Sociologist", "Software Engineer", "Speechwriter", "SQL Developer", "Store Manager", "Technical Support Specialist", "Technical Writer", "Translator", "Travel Writer", "UX Designer & UI Developer", "Video Game Writer", "Web Designer", "Web Developer"].sort
+  EXPERIENCES = ['Entry', 'Junior', 'Mid', 'Senior'].sort
+  LANGUAGES = ["", "English", "French", "German", "Spanish", "Italian", "Greek", "Dutch"].sort
+  LOCATIONS = ["", "Madrid", "London", "Berlin", "Amsterdam", "Paris", "Barcelona", "Dublin"].sort
+  CONTRACTS = ["", 'Full-time', 'Part-time', 'Freelance'].sort
 
-  validates :languages, presence: true, allow_blank: false, if: :active_or_second?
-  validates :locations, presence: true, allow_blank: false, if: :active_or_second?
-  validates :contract_types, presence: true, allow_blank: false, if: :active_or_second?
+  # FORM VALIDATIONS
+  validates :field, inclusion: { in: INDUSTRIES }, presence: true, allow_blank: false, if: :active_or_first?
+  validates :job_title, inclusion: { in: JOBS }, presence: true, allow_blank: false, if: :active_or_first?
+  validates :experience, inclusion: { in: EXPERIENCES }, presence: true, allow_blank: false, if: :active_or_first?
+
+  validates :languages, inclusion: { in: LANGUAGES }, presence: true, allow_blank: false, if: :active_or_second?
+  validates :locations, inclusion: { in: LOCATIONS }, presence: true, allow_blank: false, if: :active_or_second?
+  validates :contract_types, inclusion: { in: CONTRACTS }, presence: true, allow_blank: false, if: :active_or_second?
   validates :salary_min, presence: true, allow_blank: false, if: :active_or_second?
 
   validates :description, presence: true, allow_blank: false, if: :active_or_third?

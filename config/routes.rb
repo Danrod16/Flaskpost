@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/:user_id/:profile_id/stats', to: 'profiles#stats', as: :stats
   get '/:user_id/:profile_id/swipe', to: 'profiles#swipe', as: :swipe
 
-  resources :profiles, only: [:index, :new, :create, :show, :update] do
+  resources :profiles, only: [:index, :new, :create, :update] do
     resources "builder", controller: 'profiles'
   end
 

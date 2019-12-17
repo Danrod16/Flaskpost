@@ -1,56 +1,106 @@
 <div class="container onboarding">
 
-  <div class="progress">
+  <div class="progress two">
     <div class="progress-circle-1"> </div>
     <div class="progress-circle-1"> </div>
     <div class="progress-circle-0"> </div>
   </div>
 
   <div class="onboarding-header">
-    <h1>Your dream job awaits</h1>
+    <h1 id="page-two">A few details...</h1>
   </div>
 
   <%= simple_form_for @profile, url: wizard_path do |f| %>
-    <%= f.input :languages, label: 'Select your languages', collection: ['English', 'Spanish', 'French', 'German'], as: :check_boxes %>
-    <%= f.input :locations, label: 'Select your locations', collection: ['Barcelona', 'Madrid', 'Valencia', 'San Sebastian'], as: :check_boxes %>
-    <%#= f.input :contract_types, label: "Contract type:", collection: ['Full-time', 'Part-time', 'Freelance'], as: :check_boxes  %>
+    <%#= f.input :languages, label: 'Select your languages', collection: Profile::LANGUAGES, as: :check_boxes %>
+    <%#= f.input :locations, label: 'Select your locations', collection: Profile::LOCATIONS, as: :check_boxes %>
+    <%#= f.input :contract_types, label: "Contract type:", collection: Profile::CONTRACTS, as: :check_boxes  %>
     <%= f.input :salary_min, label: 'Your desired salary', as: :integer  %>
 
-
-    <div class="rangeslider">
-      <input type="range" min="1000" max="100000" value="100" class="myslider" id="sliderRange">
-    </div>
-
-
-    <fieldset class="form-group check_boxes optional profile_contract_types">
-
-      <legend class="col-form-label pt-0">Contract type:</legend>
-      <input type="hidden" name="profile[contract_types][]" value="">
-
+    <fieldset class="form-group check_boxes optional profile_languages two">
+      <legend class="col-form-label pt-0 font-weight-bold">Select your languages</legend>
+      <input type="hidden" name="profile[languages][]" value="">
 
       <div class="category-choices">
         <div class="form-check">
-          <!-- <input class="form-check-input" type="checkbox" value="Full-time" name="profile[contract_types][]" id="profile_contract_types_full-time"> -->
-          <label class="form-check-label collection_check_boxes category-choice" for="profile_contract_types_full-time">Full-time</label>
+          <% Profile::LANGUAGES.each do |language| %>
+            <input
+              class="form-check-input check_boxes optional d-none"
+              type="checkbox"
+              value="<%=language%>"
+              name="profile[languages][]"
+              id="profile_languages_<%=language%>"
+              <%= @profile.languages && @profile.languages.include?(language) ? "checked" : "" %>
+            >
+            <label
+              class="form-check-label collection_check_boxes category-choice <%= @profile.languages && @profile.languages.include?("language") ? "checked" : "" %>"
+              for="profile_languages_<%=language%>"
+            >
+              <%=language%>
+            </label>
+          <% end %>
         </div>
-
-        <div class="form-check">
-          <!-- <input class="form-check-input" type="hidden" value="Part-time" name="profile[contract_types][]" id="profile_contract_types_part-time"> -->
-          <label class="form-check-label collection_check_boxes category-choice active" for="profile_contract_types_part-time">Part-time</label>
-        </div>
-
-        <div class="form-check">
-          <!-- <input class="form-check-input" type="hidden" value="Freelance" name="profile[contract_types][]" id="profile_contract_types_freelance"> -->
-          <label class="form-check-label collection_check_boxes category-choice" for="profile_contract_types_freelance">Freelance</label>
-        </div>
-
       </div>
     </fieldset>
 
-    <!-- <div class="form-group range optional profile_salary_min"><label class="range optional" for="profile_salary_min">Your desired salary</label>
-      <input class="form-control-range numeric range optional" type="range" value="5" min="1" max="100" step="1" name="profile[salary_min]" id="profile_salary_min">
+    <fieldset class="form-group check_boxes optional profile_locations two">
+      <legend class="col-form-label pt-0 font-weight-bold">Pick your locations</legend>
+      <input type="hidden" name="profile[locations][]" value="">
+
+      <div class="category-choices">
+        <div class="form-check">
+          <% Profile::LOCATIONS.each do |location| %>
+            <input
+              class="form-check-input check_boxes optional d-none"
+              type="checkbox"
+              value="<%=location%>"
+              name="profile[locations][]"
+              id="profile_locations_<%=location%>"
+              <%= @profile.locations && @profile.locations.include?(location) ? "checked" : "" %>
+            >
+            <label
+              class="form-check-label collection_check_boxes category-choice <%= @profile.locations && @profile.locations.include?(location) ? "checked" : "" %>"
+              for="profile_locations_<%=location%>"
+            >
+              <%=location%>
+            </label>
+          <% end %>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group check_boxes optional profile_contract_types two">
+      <legend class="col-form-label pt-0 font-weight-bold">Contract type</legend>
+      <input type="hidden" name="profile[contract_types][]" value="">
+
+      <div class="category-choices">
+        <div class="form-check">
+          <% Profile::CONTRACTS.each do |contract| %>
+            <input
+              class="form-check-input check_boxes optional d-none"
+              type="checkbox"
+              value="<%=contract%>"
+              name="profile[contract_types][]"
+              id="profile_contract_types_<%=contract%>"
+              <%= @profile.contract_types && @profile.contract_types.include?(contract) ? "checked" : "" %>
+              >
+            <label
+              class="form-check-label collection_check_boxes category-choice <%= @profile.contract_types && @profile.contract_types.include?(contract) ? "active" : "" %>"
+              for="profile_contract_types_<%=contract%>"
+            >
+              <%=contract%>
+            </label>
+          <% end %>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- <div class="rangeslider">
+      <label class="font-weight-bold" for="">What's your desired salary?</label>
+      <input type="range" min="1000" max="100000" value="100" class="myslider" id="sliderRange">
     </div> -->
+
     <%= f.submit "NEXT", class: "btn btn-main form-button"%>
   <% end %>
+
 </div>
 

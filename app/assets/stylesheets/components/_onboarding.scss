@@ -9,16 +9,25 @@
 
 .onboarding-header h1 {
   margin-top: 30px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .form-control {
   border-radius: 50px;
 }
 
+.two {
+  margin-bottom: 0;
+}
+
+#page-two {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 .form-button {
   width: 100%;
-  margin-top: 15px;
+  margin-top: 30px;
   margin-bottom: 10px;
 }
 
@@ -59,7 +68,7 @@
 
 .category-choices {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 10px 0;
   flex-wrap: wrap;
   .form-check {
@@ -70,6 +79,8 @@
 .category-choice {
   background: white;
   padding: 10px 14px;
+  height: 37px;
+  line-height: 16px;
   border-radius: 35px;
   opacity: 0.4;
   text-align: center;
@@ -77,6 +88,7 @@
   border-style: solid;
   border-width: 1px;
   border-color: #6F35E2;
+  margin-bottom: 6px;
   &.active {
     background: #6F35E2;
     color: white;
