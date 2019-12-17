@@ -57,6 +57,29 @@
   opacity: 0.3;
 }
 
-// .fa-camera {
-//   color: #6F35E2;
-// }
+.category-choices {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  flex-wrap: wrap;
+  .form-check {
+  padding-left: 0;
+  }
+}
+
+.category-choice {
+  background: white;
+  padding: 10px 14px;
+  border-radius: 35px;
+  opacity: 0.4;
+  text-align: center;
+  color: #6F35E2;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #6F35E2;
+  &.active {
+    background: #6F35E2;
+    color: white;
+    opacity: 1;
+  }
+}

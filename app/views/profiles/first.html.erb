@@ -11,9 +11,10 @@
   </div>
 
   <%= simple_form_for @profile, url: wizard_path do |f| %>
-    <%= f.input :field, label:'Choose your field of interest:', collection: ['Tech', 'E-commerce', 'Cryptocurrency', 'Startup'], placeholder: "e.g. IT & Programming" %>
-    <%= f.input :job_title, label: 'Define your skill set:', placeholder: "e.g. Full Stack Developer" %>
-    <%= f.input :experience, label: 'Choose your skill level', collection: ['Entry', 'Junior', 'Mid', 'Senior'] %>
+    <%= f.input :field, label:'Choose your field of interest:', collection: ['Tech', 'E-commerce', 'Cryptocurrency', 'Startup'], prompt: "e.g. IT & Programming" %>
+    <%= f.input :job_title, label: 'Define your job title:', placeholder: "e.g. Full Stack Developer" %>
+    <%= f.input :experience, label: 'Choose your skill level', collection: ['Entry', 'Junior', 'Mid', 'Senior'], prompt: "e.g. Junior" %>
     <%= f.submit "NEXT", class: "btn btn-main form-button" %>
   <% end %>
 </div>
+

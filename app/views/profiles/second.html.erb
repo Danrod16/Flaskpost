@@ -13,8 +13,33 @@
   <%= simple_form_for @profile, url: wizard_path do |f| %>
     <%= f.input :languages, label: 'Select your languages', collection: ['English', 'Spanish', 'French', 'German'], as: :check_boxes %>
     <%= f.input :locations, label: 'Select your locations', collection: ['Barcelona', 'Madrid', 'Valencia', 'San Sebastian'], as: :check_boxes %>
-    <%= f.input :contract_types, label: "Contract type:", collection: ['Full-time', 'Part-time', 'Freelance'], as: :check_boxes  %>
-    <%= f.input :salary_min, label: 'Your minimum salary', as: :integer  %>
+    <%#= f.input :contract_types, label: "Contract type:", collection: ['Full-time', 'Part-time', 'Freelance'], as: :check_boxes  %>
+    <%= f.input :salary_min, label: 'Your desired salary', as: :integer  %>
+
+    <fieldset class="form-group check_boxes optional profile_contract_types">
+
+      <legend class="col-form-label pt-0">Contract type:</legend>
+      <input type="hidden" name="profile[contract_types][]" value="">
+
+
+      <div class="category-choices">
+        <div class="form-check">
+          <!-- <input class="form-check-input" type="checkbox" value="Full-time" name="profile[contract_types][]" id="profile_contract_types_full-time"> -->
+          <label class="form-check-label collection_check_boxes category-choice" for="profile_contract_types_full-time">Full-time</label>
+        </div>
+
+        <div class="form-check">
+          <!-- <input class="form-check-input" type="hidden" value="Part-time" name="profile[contract_types][]" id="profile_contract_types_part-time"> -->
+          <label class="form-check-label collection_check_boxes category-choice active" for="profile_contract_types_part-time">Part-time</label>
+        </div>
+
+        <div class="form-check">
+          <!-- <input class="form-check-input" type="hidden" value="Freelance" name="profile[contract_types][]" id="profile_contract_types_freelance"> -->
+          <label class="form-check-label collection_check_boxes category-choice" for="profile_contract_types_freelance">Freelance</label>
+        </div>
+
+      </div>
+    </fieldset>
 
     <!-- <div class="form-group range optional profile_salary_min"><label class="range optional" for="profile_salary_min">Your desired salary</label>
       <input class="form-control-range numeric range optional" type="range" value="5" min="1" max="100" step="1" name="profile[salary_min]" id="profile_salary_min">
