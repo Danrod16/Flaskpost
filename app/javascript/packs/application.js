@@ -13,3 +13,5 @@ if (document.getElementById("carouselExampleCaptions")) {
   // change the links of the button so it works for the active card
   changeButtonLinks();
 }
+
+// global.makeFirstCardActive = makeFirstCardActive
