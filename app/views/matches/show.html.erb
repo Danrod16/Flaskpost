@@ -2,3 +2,12 @@
 <p style="margin: none;"><%= @match.posting.locations[0] %></p>
 
 <p style="margin-top: 300px;">Make a good first impression! This could be your future employer :D</p>
+
+<% content_for :after_js do %>
+  <script>
+    App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create(
+      { channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> },
+      { received: (data) => console.log(data) }
+    })
+  </script>
+<% end %>
