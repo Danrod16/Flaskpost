@@ -1,1 +1,13 @@
-// Specific CSS for your home-page
+
+body {
+  position: relative;
+}
+#canvas {
+  display: block;
+  width: 100vh;
+  height: 100vh;
+  position: absolute;
+  bottom: 0px;
+  z-index: -1;
+
+}
