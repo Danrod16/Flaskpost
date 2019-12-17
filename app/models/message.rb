@@ -1,10 +1,9 @@
 class Message < ApplicationRecord
   belongs_to :match
   belongs_to :user
+
   validates :content, presence: true, allow_blank: false
   after_create :broadcast_message
-
-
 
   def broadcast_message
     ActionCable.server.broadcast("match_#{match.id}", {

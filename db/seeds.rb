@@ -957,32 +957,32 @@ def clear_database
 
   puts "Destroying Messages..."
   puts "Destroyed #{Message.all.count} Messages."
-  Message.destroy_all
+  Message.delete_all
   puts " "
 
   puts "Destroying Matches..."
   puts "Destroyed #{Match.all.count} Matches."
-  Match.destroy_all
+  Match.delete_all
   puts " "
 
   puts "Destroying Profiles..."
   puts "Destroyed #{Profile.all.count} Profiles."
-  Profile.destroy_all
+  Profile.delete_all
   puts " "
 
   puts "Destroying Postings..."
   puts "Destroyed #{Posting.all.count} Postings."
-  Posting.destroy_all
+  Posting.delete_all
   puts " "
 
   puts "Destroying Users..."
   puts "Destroyed #{User.all.count} Users."
-  User.destroy_all
+  User.delete_all
   puts " "
 
   puts "Destroying Companies..."
   puts "Destroyed #{Company.all.count} Companies."
-  Company.destroy_all
+  Company.delete_all
   puts " "
 
 
@@ -1020,7 +1020,7 @@ def seed_database(clean)
 
     seekers.each do |seeker|
       seeker_profiles = Profile.where(user_id: seeker.id)
-      puts "#{seeker_profiles.count} profile(s): EXP (#{Profile.where(user_id: seeker.id).experience}) - #{seeker.email}"
+      puts "#{seeker_profiles.count} profile(s): - #{seeker.email}"
     end
 
     puts " "

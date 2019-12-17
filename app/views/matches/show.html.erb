@@ -1,9 +1,12 @@
+
 <div class="container">
-
-  <h2 style="margin: none;"><%= @match.posting.company.name %></h2>
-  <p style="margin: none;"><%= @match.posting.company.address %></p>
-
-
+  <div class="messages-header">
+    <img <%= src="#{@match.profile.photo}" %>/>
+    <div class="messages-header-infos">
+      <h2><%= @match.posting.company.name %></h2>
+      <p><%= @match.posting.company.address %></p>
+    </div>
+  </div>
 
   <div class="messages">
     <% if @match.messages.count > 0 %>
@@ -18,8 +21,7 @@
 
   <div id="create-message">
     <%= simple_form_for [ @match, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
-      <%= f.input :content, label: false %>
-      <%= f.submit %>
+      <input class="form-control text required" name="message[content]" id="message_content">
     <% end %>
   </div>
 
