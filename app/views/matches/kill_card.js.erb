@@ -1,13 +1,15 @@
-const activeCard = document.querySelector(".active")
+let activeCard = document.querySelector(".active")
+let nextCard = activeCard.nextSibling.nextSibling
+
 console.log(activeCard);
 
 const goToNextCard = () => {
-
+  nextCard.classList.add("active");
 };
 
 const kill_card = () => {
-  activeCard.innerHTML = "";
+  activeCard.remove();
   goToNextCard();
 };
 
-goToNextCard();
+kill_card();
