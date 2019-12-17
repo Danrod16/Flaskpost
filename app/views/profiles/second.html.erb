@@ -32,7 +32,7 @@
               <%= @profile.languages && @profile.languages.include?(language) ? "checked" : "" %>
             >
             <label
-              class="form-check-label collection_check_boxes category-choice <%= @profile.languages && @profile.languages.include?("language") ? "checked" : "" %>"
+              class="form-check-label collection_check_boxes category-choice <%= @profile.languages && @profile.languages.include?(language) ? "active" : "" %>"
               for="profile_languages_<%=language%>"
             >
               <%=language%>
@@ -58,7 +58,7 @@
               <%= @profile.locations && @profile.locations.include?(location) ? "checked" : "" %>
             >
             <label
-              class="form-check-label collection_check_boxes category-choice <%= @profile.locations && @profile.locations.include?(location) ? "checked" : "" %>"
+              class="form-check-label collection_check_boxes category-choice <%= @profile.locations && @profile.locations.include?(location) ? "active" : "" %>"
               for="profile_locations_<%=location%>"
             >
               <%=location%>
