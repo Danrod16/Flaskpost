@@ -1,13 +1,37 @@
-let activeCard = document.querySelector(".active")
-let nextCard = activeCard.nextSibling.nextSibling
+// import { changeButtonLinks } from '../../javascript/swipe/button_links';
 
-console.log(activeCard);
+var activeCard = document.querySelector(".active")
+var nextCard = activeCard.nextSibling.nextSibling
 
-const goToNextCard = () => {
+var changeButtonLinks = () => {
+  var acceptBtn = document.getElementById("accept");
+  var declineBtn = document.getElementById("decline");
+
+  var baseUrl = window.location.href.split('/')[0] + "//" + window.location.href.split('/')[2]
+  var profile_id = window.location.href.split('/')[4]
+
+  var acceptUrl = new URL ("/matches/accept_decline?posting_id=jsChange&profile_id=jsChange&user_intention=accepted", baseUrl);
+  var declineUrl = new URL ("/matches/accept_decline?posting_id=jsChange&profile_id=jsChange&user_intention=declined", baseUrl);
+
+  var posting_id = nextCard.querySelector(".swipe-card").dataset.posting
+
+  acceptUrl.searchParams.set( 'posting_id', posting_id );
+  declineUrl.searchParams.set( 'posting_id', posting_id );
+
+  acceptUrl.searchParams.set(  'profile_id', profile_id );
+  declineUrl.searchParams.set(  'profile_id', profile_id );
+
+  acceptBtn.href = acceptUrl;
+  declineBtn.href = declineUrl;
+}
+
+
+var goToNextCard = () => {
   nextCard.classList.add("active");
+  changeButtonLinks();
 };
 
-const kill_card = () => {
+var kill_card = () => {
   activeCard.remove();
   goToNextCard();
 };
