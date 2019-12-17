@@ -1,7 +1,6 @@
 import "bootstrap";
 // import { Visual } from '../purple_cloud'
 
-
 // ----- swipe functionality -----
 import { makeFirstCardActive } from '../swipe/activate_card';
 import { changeButtonLinks } from '../swipe/button_links';
