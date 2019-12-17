@@ -9,8 +9,9 @@
     </div>
 
       <p style="margin-top: 20px;"> Or See the stats <i class="fas fa-chart-pie"></i> to compare your expectations with actual market figures</p>
-     <%= link_to "See stats", stats_path, class: "btn-main", style: "align-self: center;"%>
-
+      <div style="text-align-last: center;">
+       <%= link_to "See stats", stats_path, class: "btn-main", style: "text-align-last: center;"%>
+      </div>
   <% else %>
 
   <div id="carouselExampleCaptions" class="carousel slide seeker-swipe" data-ride="carousel"  data-interval="false">
@@ -21,7 +22,7 @@
             <div class="swipe-content">
               <div class="swipe-photo-section">
                 <div class="swipe-photo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(<%= card.photo %>)"></div>
-                <%= cl_image_tag card.company.logo, class: "avatar swipe-avatar" %>
+                <%= cl_image_tag card.company.logo, class: "avatar-large swipe-avatar" %>
                 </div>
               <div class="swipe-description">
                 <h2><%= card.job_title %></h2>
@@ -31,6 +32,7 @@
             </div>
           </div>
         </div>
+
       <% end %>
     </div>
 
@@ -49,5 +51,21 @@
     <div class="swipe-answer">
       <%= link_to 'NOPE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @cards.first.id, user_intention: 'declined'}), method: :post, remote: true, id: "decline", class: "btn-main answer-btn" %>
       <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @cards.first.id, user_intention: 'accepted'}), method: :post, remote: true, id: "accept", class: "btn-main answer-btn" %>
+    </div>
+
+
+    <!-- popup for instant match -->
+    <div id="popup" class="popup d-none">
+      <div class="popup-content">
+        <h2>You have a match!</h2>
+        <div class="match-parties">
+          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+          <%= image_tag avatar_url, class: "avatar-xl avatar-bordered"%>
+          <i class="fas fa-infinity"></i>
+          <img src="jsChange" alt="", id="company-avatar", class="avatar-xl avatar-bordered">
+        </div>
+        <a id="continue" class="btn btn-main">Continue swiping</a></br>
+        <%= link_to "Go to chat", matches_path, class: "btn btn-main", target: "_blank" %>
+      </div>
     </div>
   <% end %>

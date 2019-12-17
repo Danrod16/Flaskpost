@@ -1,6 +1,9 @@
 // import { changeButtonLinks } from '../../javascript/swipe/button_links';
 
-var activeCard = document.querySelector(".active")
+var activeCard = document.querySelector(".active");
+var popup = document.getElementById("popup");
+var continueBtn = document.getElementById("continue");
+var companyAvatar = document.getElementById("company-avatar")
 
 if(activeCard.nextElementSibling) {
   var nextCard = activeCard.nextElementSibling
@@ -36,9 +39,27 @@ var goToNextCard = () => {
   changeButtonLinks();
 };
 
+// var kill_card =() => {
+//   activeCard.remove();
+//   goToNextCard();
+// }
+
 var kill_card = () => {
+  var matchStatus = "<%= @match.status %>";
+
+  if(matchStatus == "accepted") {
+    popup.classList.remove("d-none");
+    companyAvatar.src = "<%= @match.posting.company.logo %>"
+    continueBtn.addEventListener("click", (event) => {
+      activeCard.remove();
+      goToNextCard();
+      popup.classList.add("d-none");
+    });
+
+  } else {
   activeCard.remove();
   goToNextCard();
+  }
 };
 
 kill_card();
