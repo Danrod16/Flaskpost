@@ -1,22 +1,12 @@
-<% content_for :meta_title, "#{@card.job_title} is on #{DEFAULT_META["meta_profile_name"]}" %>
-<% content_for :meta_description, @card.description %>
-<% content_for :meta_image, cl_image_path(@card.photo.path) %>
 
-<% if @cards.empty? %>
-    <div class="container-pulse">
-      <div class="profile-pic center" style="background-image: url(http://www.imagenesanimadas.net/Ciencias/Radares/Radar-10.gif); position: top; object-fit: cover;"></div>
-      <p class="center" style="z-index: +1">Sorry, you have no fitting job offers yet... You can try again later</p>
-      <div class="sonar-container">
-        <div class="sonar center"></div>
-        <div class="sonar center delay"></div>
-      </div>
-    </div>
+<%= render 'show_stats' %>
 
-      <p style="margin-top: 20px;"> Or See the stats <i class="fas fa-chart-pie"></i> to compare your expectations with actual market figures</p>
-      <div style="text-align-last: center;">
-       <%= link_to "See stats", stats_path, class: "btn-main", style: "text-align-last: center;"%>
-      </div>
-  <% else %>
+<%# content_for :meta_title, "#{@card.job_title} is on #{DEFAULT_META["meta_profile_name"]}" %>
+<%# content_for :meta_description, @card.description %>
+<%# content_for :meta_image, cl_image_path(@card.photo.path) %>
+
+
+<% unless @cards.empty? %>
 
   <div id="carouselExampleCaptions" class="carousel slide seeker-swipe" data-ride="carousel"  data-interval="false">
     <div class="carousel-inner">
@@ -27,7 +17,7 @@
               <div class="swipe-photo-section">
                 <div class="swipe-photo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(<%= card.photo %>)"></div>
                 <%= cl_image_tag card.company.logo, class: "avatar-large swipe-avatar" %>
-                </div>
+              </div>
               <div class="swipe-description">
                 <h2><%= card.job_title %></h2>
                 <h4><%= card.company.name %> (<%= "#{card.experience}" %>)</h4>
@@ -36,41 +26,27 @@
             </div>
           </div>
         </div>
+    <% end %>
+  </div>
 
-      <% end %>
-    </div>
+  <div id="controls">
+    <a class="carousel-control-prev control" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next control" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 
-    <div id="controls">
-      <a class="carousel-control-prev control" href="#carouselExampleCaptions" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next control" href="#carouselExampleCaptions" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-
-    <!-- accept and decline buttons -->
-    <div class="swipe-answer">
-      <%= link_to 'NOPE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @cards.first.id, user_intention: 'declined'}), method: :post, remote: true, id: "decline", class: "btn-main answer-btn" %>
-      <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @cards.first.id, user_intention: 'accepted'}), method: :post, remote: true, id: "accept", class: "btn-main answer-btn" %>
-    </div>
+  <!-- accept and decline buttons -->
+  <div class="swipe-answer">
+    <%= link_to 'NOPE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @cards.first.id, user_intention: 'declined'}), method: :post, remote: true, id: "decline", class: "btn-main answer-btn bubbly-button answer-btn-ghost", style: "text-decoration: none"%>
+    <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @cards.first.id, user_intention: 'accepted'}), method: :post, remote: true, id: "accept", class: "btn-main answer-btn bubbly-button", style: "text-decoration: none"%>
+  </div>
 
 
-    <!-- popup for instant match -->
-    <div id="popup" class="popup d-none">
-      <div class="popup-content">
-        <h2>You have a match!</h2>
-        <p id="message"></p>
-        <div class="match-parties">
-          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-          <%= image_tag avatar_url, class: "avatar-xl avatar-bordered"%>
-          <i class="far fa-comments" style="color: white;"></i>
-          <img src="jsChange" alt="", id="company-avatar", class="avatar-xl avatar-bordered popup-avatar">
-        </div>
-        <a id="continue" class="btn btn-main" style="font-weight: bold">Continue Swiping</a></br>
-        <%= link_to "Go to Chat", matches_path, class: "btn btn-main", target: "_blank", style: "font-weight: bold" %>
-      </div>
-    </div>
-  <% end %>
+  <!-- popup for instant match -->
+  <%= render 'popup' %>
+<% end %>

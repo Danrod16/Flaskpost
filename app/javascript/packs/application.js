@@ -6,6 +6,7 @@ changePillClass();
 // ----- begin swipe functionality -----
 import { makeFirstCardActive } from '../swipe/activate_card';
 import { changeButtonLinks } from '../swipe/button_links';
+import { buttonAnimation } from '../swipe/button_animation';
 
 if (document.getElementById("carouselExampleCaptions")) {
   // activate the slide function by passing the class "active" to the first card
@@ -13,6 +14,9 @@ if (document.getElementById("carouselExampleCaptions")) {
 
   // change the links of the button so it works for the active card
   changeButtonLinks();
+
+  buttonAnimation();
+
 }
 
 // global.makeFirstCardActive = makeFirstCardActive

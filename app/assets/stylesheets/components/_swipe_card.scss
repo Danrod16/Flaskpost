@@ -63,3 +63,15 @@
   padding-bottom: 13px;
   padding-top: 13px;
 }
+
+.answer-btn-ghost {
+  color: #6F35E2;
+  border: 1px solid #6F35E2;
+  background-color: white;
+
+  &:hover {
+    background-color: white;
+    color: #6F35E2;
+  }
+
+}
