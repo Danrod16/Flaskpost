@@ -1,3 +1,7 @@
+<% content_for :meta_title, "#{@card.job_title} is on #{DEFAULT_META["meta_profile_name"]}" %>
+<% content_for :meta_description, @card.description %>
+<% content_for :meta_image, cl_image_path(@card.photo.path) %>
+
 <% if @cards.empty? %>
     <div class="container-pulse">
       <div class="profile-pic center" style="background-image: url(http://www.imagenesanimadas.net/Ciencias/Radares/Radar-10.gif); position: top; object-fit: cover;"></div>
