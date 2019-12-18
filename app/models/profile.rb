@@ -6,10 +6,10 @@ class Profile < ApplicationRecord
 
   # FORM COLLECTION ARRAYS
   INDUSTRIES = ["Information Technology", "Health Care", "Retail", "Financial Services", "Automotive", "Education", "Advertising", "Government Administration", "Real Estate", "Telecommunications", "Energy", "Food & Beverages", "Management Consulting", "Pharmaceuticals", "Logistics", "Architecture", "Fashion", "Non-profit", "Media", "Legal Services", "Tourism", "Aviation", "Recruitment", "Graphic Design", "Public Relations", "Philanthropy" ].sort
-  JOBS = ["Account Manager", "Area Sales Manager", "Artificial Intelligence Engineer", "Back-End Developer", "Biologist", "Brand Manager", "Brand Strategist", "Chemist", "Cloud Architect", "Columnist", "Communications Director", "Computer Scientist", "Content Creator", "Content Marketing Manager", "Content Strategist", "Continuous Improvement Consultant", "Copywriter", "Customer Service", "Data Entry", "Dental Hygienist", "DevOps Engineer", "Digital Marketing Manager", "Director of Inside Sales", "Doctor", "eCommerce Marketing Specialist", "Film Critic", "Front-End Developer", "Full-Stack Developer", "Geologist", "Ghostwriter", "Graphic Designer", "Information Security Analyst", "IT Manager", "Journalist", "Marketing Consultant", "Marketing Research Analyst", "Marketing Specialist", "Massage Therapy", "Media Relations Coordinator", "Medical Laboratory Tech", "Nurse", "Operations Manager", "Personal Trainer", "Pharmacist", "Physical Therapist", "Physicist", "Political Scientist", "Product Manager", "Proposal Writer", "Public Relations", "Public Relations Specialist", "Real Estate Broker", "Sales Analyst", "Sales Associate", "Sales Manager", "Sales Representative", "Screenwriter", "Scrum Master", "Social Media Assistant", "Social Media Specialist", "Sociologist", "Software Engineer", "Speechwriter", "SQL Developer", "Store Manager", "Technical Support Specialist", "Technical Writer", "Translator", "Travel Writer", "UX Designer & UI Developer", "Video Game Writer", "Web Designer", "Web Developer"].sort
+  JOBS = ["Account Manager", "Area Sales Manager", "Artificial Intelligence Engineer", "Back-End Developer", "Brand Manager", "Brand Strategist", "Cloud Architect", "Communications Director", "Computer Scientist", "Content Marketing Manager", "Content Strategist", "Continuous Improvement Consultant", "Copywriter", "Customer Service", "Data Entry", "DevOps Engineer", "Digital Marketing Manager", "Director of Inside Sales", "eCommerce Marketing Specialist", "Front-End Developer", "Full-Stack Developer", "Graphic Designer", "Information Security Analyst", "IT Manager", "Marketing Research Analyst", "Media Relations Coordinator", "Operations Manager", "Product Manager", "Public Relations Specialist", "Sales Analyst", "Sales Associate", "Scrum Master", "Social Media Specialist", "Software Engineer", "SQL Developer", "Technical Support Specialist", "UX Designer", "UI Developer", "Video Game Writer", "Web Designer", "Web Developer"].sort
   EXPERIENCES = ['Entry', 'Junior', 'Mid', 'Senior'].sort
   LANGUAGES = ["English", "French", "German", "Spanish", "Italian", "Greek", "Dutch"].sort
-  LOCATIONS = ["Madrid", "London", "Berlin", "Amsterdam", "Paris", "Barcelona", "Dublin"].sort
+  LOCATIONS = ["Remote", "London", "Berlin", "Amsterdam", "Paris", "Barcelona", "Dublin"].sort
   CONTRACTS = ['Full-time', 'Part-time', 'Freelance'].sort
 
   # FORM VALIDATIONS
@@ -41,14 +41,6 @@ class Profile < ApplicationRecord
     User.find(self.user_id) if active?
   end
 
-  def active_or_first?
-    status.include? "first" || active?
-  end
-
-  def active_or_second?
-    status.include?('second') || active?
-  end
-
   def compute_score
     stats = []
     types = ["contract_types", "languages", "locations", "experience"]
@@ -61,6 +53,14 @@ class Profile < ApplicationRecord
 
     self.score = ((stats.sum.to_f / stats.count.to_f) * 100).round.to_i
     save
+  end
+
+  def active_or_first?
+    status.include?("first") || active?
+  end
+
+  def active_or_second?
+    status.include?('second') || active?
   end
 
   def active_or_third?
