@@ -16,6 +16,7 @@ class MatchesController < ApplicationController
   end
 
   def show
+    @match = Match.includes(messages: :user).find(params[:id])
   end
 
   def accept_decline
@@ -33,7 +34,7 @@ class MatchesController < ApplicationController
     end
 
     @match.save
-    render :update_btn
+    render :kill_card
   end
 
   private

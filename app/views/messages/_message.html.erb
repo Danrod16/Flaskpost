@@ -1,0 +1,10 @@
+
+<div class="message <%= user_is_messages_author ? "right" : "" %>">
+  <% if(message.user.facebook_picture_url) %>
+    <%= image_tag message.user.facebook_picture_url, class: "avatar" %>
+  <% else %>
+    <%= image_tag "logo", class: "avatar" %>
+  <% end %>
+
+  <div class="message-content"><%= message.content %></div>
+</div>
