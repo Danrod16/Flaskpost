@@ -2,7 +2,7 @@
 
 var carousel = document.getElementById("carouselExampleCaptions");
 var activeCard = document.querySelector(".active");
-var popup = document.getElementById("popup");
+var popupMatch = document.getElementById("popup-match");
 var continueBtn = document.getElementById("continue");
 var companyAvatar = document.getElementById("company-avatar")
 var message = document.getElementById("message");
@@ -58,18 +58,23 @@ var kill_card = () => {
   var matchStatus = "<%= @match.status %>";
 
   if(matchStatus == "accepted") {
-    popup.classList.remove("d-none");
+
+    popupMatch.style.zIndex = "1";
+    popupMatch.style.opacity = "1";
+
     companyAvatar.src = "<%= @match.posting.company.logo %>"
     message.innerHTML = "<strong style='background-color: #6F35E2'><%= @match.posting.company.name %></strong> wants to connect with you."
     continueBtn.addEventListener("click", (event) => {
       activeCard.remove();
       goToNextCard();
-      popup.classList.add("d-none");
+      popupMatch.style.opacity = "0";
+      <% sleep(0.5) %>
+      popupMatch.style.zIndex = "-1";
     });
 
   } else {
-  activeCard.remove();
-  goToNextCard();
+    activeCard.remove();
+    goToNextCard();
   }
 };
 
