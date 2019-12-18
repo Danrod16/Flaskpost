@@ -1,46 +1,57 @@
-
 <div class="container">
-  <div class="messages-header">
-    <img <%= src="#{@match.profile.photo}" %>/>
-    <div class="messages-header-infos">
-      <h2><%= @match.posting.company.name %></h2>
-      <p><%= @match.posting.company.address %></p>
-    </div>
-  </div>
-
-  <div class="messages">
-    <% if @match.messages.count > 0 %>
-      <% @match.messages.each do |message| %>
-        <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+  <div class="full-chat">
+    <div class="messages-header">
+      <% if current_user.company.nil? %>
+        <%= image_tag @match.posting.company.logo %>
+        <div class="messages-header-infos">
+          <h2><%= @match.posting.job_title %></h2>
+          <p><%= "#{@match.posting.experience} € #{FormatMoney.euro_thousand_separate(@match.posting.salary_max)}"  %></p>
+        </div>
+      <% else %>
+      <%= image_tag @match.profile.user.facebook_picture_url %>
+        <div class="messages-header-infos">
+          <h2><%= "#{@match.profile.user.first_name} #{@match.profile.user.last_name}" %></h2>
+          <p><%= "#{@match.profile.job_title} #{@match.profile.experience}" %></p>
+        </div>
       <% end %>
-    <% else %>
-      <p style="margin-top: 80px;">Make a good first impression! This could be your future employer :D</p>
-    <% end %>
-  </div>
-  </div>
 
-  <div id="create-message">
-    <%= simple_form_for [ @match, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
-      <input class="form-control text required" name="message[content]" id="message_content">
+    </div>
+
+    <div class="messages">
+      <% if @match.messages.count > 0 %>
+        <% @match.messages.each do |message| %>
+          <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+        <% end %>
+      <% else %>
+        <p style="margin-top: 80px;">Make a good first impression! This could be your future employer :D</p>
+      <% end %>
+    </div>
+    </div>
+
+    <div id="create-message">
+      <%= simple_form_for [ @match, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
+        <input class="form-control text required" name="message[content]" id="message_content">
+      <% end %>
+    </div>
+
+    <% content_for :after_js do %>
+      <script>
+        scrollLastMessageIntoView();
+        App['match_<%= @match.id %>'] = App.cable.subscriptions.create(
+          { channel: 'MatchesChannel', match_id: <%= @match.id %> },
+          {
+            received: (data) => {
+              if (data.current_user_id !== <%= current_user.id %>) {
+                const messagesContainer = document.querySelector('.messages');
+                messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+                scrollLastMessageIntoView();
+              }
+            }
+          }
+        )
+      </script>
     <% end %>
+
   </div>
 
 </div>
-
-<% content_for :after_js do %>
-  <script>
-    scrollLastMessageIntoView();
-    App['match_<%= @match.id %>'] = App.cable.subscriptions.create(
-      { channel: 'MatchesChannel', match_id: <%= @match.id %> },
-      {
-        received: (data) => {
-          if (data.current_user_id !== <%= current_user.id %>) {
-            const messagesContainer = document.querySelector('.messages');
-            messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-            scrollLastMessageIntoView();
-          }
-        }
-      }
-    )
-  </script>
-<% end %>

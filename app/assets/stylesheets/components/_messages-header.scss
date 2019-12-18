@@ -5,10 +5,14 @@
   // box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 1px;
   border-bottom-style: solid;
   border-width: 1px;
-  border-color: #6F35E2;
+  border-color: #cccaca;
+
+  p {
+    font-size: 14px;
+  }
 }
 
 .messages-header img {
@@ -32,6 +36,7 @@
   margin-bottom: 0;
   margin-top: 8px;
   color: gray;
+  text-align: left;
 }
 
 .messages-header .messages-header-infos {
@@ -48,8 +53,8 @@
 }
 
 #messages-header img {
-  height: 80px;
-  width: 80px;
-  border-radius: 40px;
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
   object-fit: cover;
 }
