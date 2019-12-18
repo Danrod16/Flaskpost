@@ -962,8 +962,8 @@ def create_demo_users
     company_id: nil,
     facebook_picture_url: "https://ca.slack-edge.com/T02NE0241-UP947CJ0K-cfc8176b8fec-512")
   save_new_user
-    create_profiles_from_user(3)
-    generate_matches(rand(1..6))
+    # create_profiles_from_user(3)
+    # generate_matches(rand(1..6))
   @new_user = User.new(
     email: "angustatchell@gmail.com",
     password: "12341234",

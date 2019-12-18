@@ -61,6 +61,9 @@ class ProfilesController < ApplicationController
     filter_for_languages
     filter_for_liked_cards
     filter_for_declined_cards
+
+
+    fake_matches
   end
 
   def stats
@@ -124,6 +127,14 @@ class ProfilesController < ApplicationController
   def filter_for_declined_cards
     @cards = @cards.reject do |card|
       Match.where(profile_id: @profile.id, posting_id: card.id, status: "declined").exists?
+    end
+  end
+
+  def fake_matches
+    @cards.each do |card|
+      if Match.where(profile_id: @profile.id, posting_id: card.id).empty? && (rand() > 0.5)
+        Match.create(profile_id: @profile.id, posting_id: card.id, status: "pending", status_recruiter: "accepted")
+      end
     end
   end
 end
