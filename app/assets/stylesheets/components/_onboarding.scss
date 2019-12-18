@@ -20,6 +20,36 @@
   margin-bottom: 0;
 }
 
+.first {
+  .form-control.is-valid {
+    background-image: none;
+    border-color: #6F35E2;
+  }
+  .form-control.is-invalid {
+    background-image: none
+  }
+}
+
+.second {
+  .form-control.is-valid {
+    background-image: none;
+    border-color: #6F35E2;
+  }
+  .form-control.is-invalid {
+    background-image: none
+  }
+}
+
+.third {
+  .form-control.is-valid {
+    background-image: none;
+    border-color: #6F35E2;
+  }
+  .form-control.is-invalid {
+    background-image: none
+  }
+}
+
 #page-two {
   margin-top: 20px;
   margin-bottom: 10px;

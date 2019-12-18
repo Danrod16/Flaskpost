@@ -1,4 +1,4 @@
-<div class="container onboarding">
+<div class="container onboarding second">
 
   <div class="progress two">
     <div class="progress-circle-1"> </div>
@@ -14,7 +14,7 @@
     <%#= f.input :languages, label: 'Select your languages', collection: Profile::LANGUAGES, as: :check_boxes %>
     <%#= f.input :locations, label: 'Select your locations', collection: Profile::LOCATIONS, as: :check_boxes %>
     <%#= f.input :contract_types, label: "Contract type:", collection: Profile::CONTRACTS, as: :check_boxes  %>
-    <%= f.input :salary_min, label: 'Your desired salary', as: :integer  %>
+    <%#= f.input :salary_min, label: 'Your desired salary', as: :integer  %>
 
     <fieldset class="form-group check_boxes optional profile_languages two">
       <legend class="col-form-label pt-0 font-weight-bold">Select your languages</legend>
@@ -94,10 +94,24 @@
       </div>
     </fieldset>
 
-    <!-- <div class="rangeslider">
-      <label class="font-weight-bold" for="">What's your desired salary?</label>
-      <input type="range" min="1000" max="100000" value="100" class="myslider" id="sliderRange">
-    </div> -->
+
+      <div class="form-group integer optional profile_salary_min form-group-valid rangeslider">
+        <label class="integer optional font-weight-bold"
+        for="profile_salary_min"
+        >
+        What's your desired salary?
+        </label>
+        <input
+        class="form-control is-valid numeric integer optional myslider"
+        type="range"
+        min="1000"
+        max="100000"
+        step="100"
+        value="121323"
+        name="profile[salary_min]"
+        id="profile_salary_min sliderRange"
+        >
+      </div>
 
     <%= f.submit "NEXT", class: "btn btn-main form-button"%>
   <% end %>

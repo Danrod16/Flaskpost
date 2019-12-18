@@ -9,7 +9,7 @@ class Profile < ApplicationRecord
   JOBS = ["Account Manager", "Area Sales Manager", "Artificial Intelligence Engineer", "Back-End Developer", "Brand Manager", "Brand Strategist", "Cloud Architect", "Communications Director", "Computer Scientist", "Content Marketing Manager", "Content Strategist", "Continuous Improvement Consultant", "Copywriter", "Customer Service", "Data Entry", "DevOps Engineer", "Digital Marketing Manager", "Director of Inside Sales", "eCommerce Marketing Specialist", "Front-End Developer", "Full-Stack Developer", "Graphic Designer", "Information Security Analyst", "IT Manager", "Marketing Research Analyst", "Media Relations Coordinator", "Operations Manager", "Product Manager", "Public Relations Specialist", "Sales Analyst", "Sales Associate", "Scrum Master", "Social Media Specialist", "Software Engineer", "SQL Developer", "Technical Support Specialist", "UX Designer", "UI Developer", "Video Game Writer", "Web Designer", "Web Developer"].sort
   EXPERIENCES = ['Entry', 'Junior', 'Mid', 'Senior'].sort
   LANGUAGES = ["English", "French", "German", "Spanish", "Italian", "Greek", "Dutch"].sort
-  LOCATIONS = ["Madrid", "London", "Berlin", "Amsterdam", "Paris", "Barcelona", "Dublin"].sort
+  LOCATIONS = ["Remote", "London", "Berlin", "Amsterdam", "Paris", "Barcelona", "Dublin"].sort
   CONTRACTS = ['Full-time', 'Part-time', 'Freelance'].sort
 
   # FORM VALIDATIONS
