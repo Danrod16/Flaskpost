@@ -4,10 +4,11 @@ var carousel = document.getElementById("carouselExampleCaptions");
 var activeCard = document.querySelector(".active");
 var popupMatch = document.getElementById("popup-match");
 var continueBtn = document.getElementById("continue");
+var chatBtn = document.getElementById("chat-link");
 var companyAvatar = document.getElementById("company-avatar")
 var message = document.getElementById("message");
 var stats = document.getElementById("show-stats");
-
+var baseUrl = window.location.href.split('/')[0] + "//" + window.location.href.split('/')[2]
 
 if(activeCard.nextElementSibling) {
   var nextCard = activeCard.nextElementSibling
@@ -19,7 +20,6 @@ var changeButtonLinks = () => {
   var acceptBtn = document.getElementById("accept");
   var declineBtn = document.getElementById("decline");
 
-  var baseUrl = window.location.href.split('/')[0] + "//" + window.location.href.split('/')[2]
   var profile_id = window.location.href.split('/')[4]
 
   var acceptUrl = new URL ("/matches/accept_decline?posting_id=jsChange&profile_id=jsChange&user_intention=accepted", baseUrl);
@@ -63,6 +63,7 @@ var kill_card = () => {
     popupMatch.style.opacity = "1";
 
     companyAvatar.src = "<%= @match.posting.company.logo %>"
+    chatBtn.href = baseUrl + "/matches/<%= @match.id %>";
     message.innerHTML = "<strong style='background-color: #6F35E2'><%= @match.posting.company.name %></strong> wants to connect with you."
     continueBtn.addEventListener("click", (event) => {
       activeCard.remove();
