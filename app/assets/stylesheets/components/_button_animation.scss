@@ -3,12 +3,12 @@ $button-bg: $fuschia;
 $button-text-color: #fff;
 $baby-blue: #f8faff;
 
-body{
-  font-size: 16px;
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  text-align: center;
-  background-color: $baby-blue;
-}
+// body{
+//   font-size: 16px;
+//   font-family: 'Helvetica', 'Arial', sans-serif;
+//   text-align: center;
+//   background-color: $baby-blue;
+// }
 
 .bubbly-button{
   // font-family: 'Helvetica', 'Arial', sans-serif;
@@ -77,7 +77,7 @@ body{
 
   &:active{
     transform: scale(0.9);
-    background-color: darken($button-bg, 5%);
+    // background-color: darken($button-bg, 5%);
     box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
   }
 
