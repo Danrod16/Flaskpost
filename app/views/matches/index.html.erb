@@ -1,19 +1,21 @@
-<% if @matches.count == 0 %>
-  <h3 style="text-align: center; margin-top: 20px;">Sorry! You don't have any matches yet :(</h3>
-<% else %>
-  <div class="inbox">
-    <% @matches.each do |match| %>
-      <%= link_to match_path(match) do %>
-        <div class="card-product">
-          <img src=<%= "#{match.posting.photo}" %> />
-          <div class="card-product-infos">
-            <h2><%= "#{match.posting.job_title}" %> (<%= "#{match.posting.experience}" %>) </h2>
-            <p style="text-align: left;"><strong><%= "#{match.posting.locations[0]}" %></strong></br>
-            <%= "Your minimum salary: € #{FormatMoney.euro_thousand_separate(match.profile.salary_min)}" %></p>
+<div class="container">
+  <% if @matches.count > 0 %>
+    <div class="inbox">
+      <% @matches.each do |match| %>
+        <%= link_to match_path(match) do %>
+          <div class="card-product">
+            <img src=<%= "#{match.posting.company.logo}" %> />
+            <div class="card-product-infos">
+              <h2><%= "#{match.posting.job_title}" %> (<%= "#{match.posting.experience}" %>) </h2>
+              <p style="text-align: left;"><strong><%= "#{match.posting.locations[0]}" %></strong></br>
+              <%= "€ #{FormatMoney.euro_thousand_separate(match.profile.salary_min)}" %></p>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-  <h4 style="margin-top: 50px;">Don't leave your match waiting too long! Recruiters love to feel valued ;)</h4>
-<% end %>
+  <% else %>
+    <h3 style="text-align: center; margin-top: 20px;">Sorry! You don't have any matches yet :(</h3>
+    </div>
+    <h4 style="margin-top: 50px;">Don't leave your match waiting too long! Recruiters love to feel valued ;)</h4>
+  <% end %>
+</div>
