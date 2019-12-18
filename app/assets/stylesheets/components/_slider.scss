@@ -1,0 +1,25 @@
+.rangeslider{
+  width: 100%;
+}
+
+.myslider {
+  -webkit-appearance: none;
+  background: #6F35E2;
+  width: 100%;
+  height: 3px;
+  opacity: 2;
+  border-radius: 5px;
+}
+
+.myslider:hover {
+  opacity: 1;
+}
+
+.myslider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: #6F35E2  ;
+  width: 15px;
+  height: 15px;
+  border-radius: 20px;
+}

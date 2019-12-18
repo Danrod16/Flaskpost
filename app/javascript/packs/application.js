@@ -1,7 +1,9 @@
 import "bootstrap";
 // import { Visual } from '../purple_cloud'
+import { changePillClass } from '../forms/pill_active';
+changePillClass();
 
-// ----- swipe functionality -----
+// ----- begin swipe functionality -----
 import { makeFirstCardActive } from '../swipe/activate_card';
 import { changeButtonLinks } from '../swipe/button_links';
 
@@ -14,3 +16,5 @@ if (document.getElementById("carouselExampleCaptions")) {
 }
 
 // global.makeFirstCardActive = makeFirstCardActive
+
+// ----- end swipe functionality -----
