@@ -52,14 +52,24 @@
 .swipe-answer {
   height: 8vh;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 20px;
   align-items: center;
 }
 
 .answer-btn {
-  width: 150px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   padding-bottom: 13px;
   padding-top: 13px;
+  margin-left: 40px;
+  margin-right: 40px;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    color: white;
+  }
 }

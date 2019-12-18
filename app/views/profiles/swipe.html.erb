@@ -36,9 +36,17 @@
 
   <!-- accept and decline buttons -->
   <div class="swipe-answer">
-    <%= link_to 'NOPE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @cards.first.id, user_intention: 'declined'}), method: :post, remote: true, id: "decline", class: "btn-main answer-btn bubbly-button" %>
-    <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @cards.first.id, user_intention: 'accepted'}), method: :post, remote: true, id: "accept", class: "btn-main answer-btn bubbly-button" %>
+    <%= link_to "H", accept_decline_matches_path({profile_id: @profile.id, posting_id: @cards.first.id, user_intention: 'declined'}), method: :post, remote: true, id: "decline", class: "btn-main answer-btn bubbly-button"%>
+      <!-- <i class="fas fa-thumbs-down"</i> -->
+    <%# end %>
+
+
+    <%= link_to accept_decline_matches_path({profile_id: @profile.id, posting_id: @cards.first.id, user_intention: 'accepted'}), method: :post, remote: true, id: "accept", class: "btn-main answer-btn bubbly-button" do %>
+      <i class="fas fa-thumbs-up"></i>
+    <% end %>
   </div>
+
+
 
 
   <!-- popup for instant match -->
