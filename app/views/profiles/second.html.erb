@@ -12,7 +12,7 @@
   <%= simple_form_for @profile, url: wizard_path do |f| %>
 
     <fieldset class="form-group check_boxes optional profile_languages two">
-      <legend class="col-form-label pt-0 font-weight-bold <%= @profile.errors.messages.keys.include?("languages".to_sym)? "error_message" : "" %>">Select your languages</legend>
+      <legend class="col-form-label pt-0 font-weight-bold <%= @profile.errors.messages.keys.include?("languages".to_sym)? "error_message" : "" %>">What languages do you speak?</legend>
       <input type="hidden" name="profile[languages][]" value="">
 
       <div class="category-choices">
@@ -38,7 +38,7 @@
     </fieldset>
 
     <fieldset class="form-group check_boxes optional profile_locations two">
-      <legend class="col-form-label pt-0 font-weight-bold <%= @profile.errors.messages.keys.include?("locations".to_sym)? "error_message" : "" %>">Pick your locations</legend>
+      <legend class="col-form-label pt-0 font-weight-bold <%= @profile.errors.messages.keys.include?("locations".to_sym)? "error_message" : "" %>">Where would you like to work?</legend>
       <input type="hidden" name="profile[locations][]" value="">
 
       <div class="category-choices">
