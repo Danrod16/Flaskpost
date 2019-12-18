@@ -41,14 +41,6 @@ class Profile < ApplicationRecord
     User.find(self.user_id) if active?
   end
 
-  def active_or_first?
-    status.include? "first" || active?
-  end
-
-  def active_or_second?
-    status.include?('second') || active?
-  end
-
   def compute_score
     stats = []
     types = ["contract_types", "languages", "locations", "experience"]
@@ -61,6 +53,14 @@ class Profile < ApplicationRecord
 
     self.score = ((stats.sum.to_f / stats.count.to_f) * 100).round.to_i
     save
+  end
+
+  def active_or_first?
+    status.include?("first") || active?
+  end
+
+  def active_or_second?
+    status.include?('second') || active?
   end
 
   def active_or_third?
