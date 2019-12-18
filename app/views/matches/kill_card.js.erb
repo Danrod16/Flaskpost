@@ -1,10 +1,13 @@
 // import { changeButtonLinks } from '../../javascript/swipe/button_links';
 
+var carousel = document.getElementById("carouselExampleCaptions");
 var activeCard = document.querySelector(".active");
 var popup = document.getElementById("popup");
 var continueBtn = document.getElementById("continue");
 var companyAvatar = document.getElementById("company-avatar")
-var message = document.getElementById("message")
+var message = document.getElementById("message");
+var stats = document.getElementById("show-stats");
+
 
 if(activeCard.nextElementSibling) {
   var nextCard = activeCard.nextElementSibling
@@ -36,8 +39,14 @@ var changeButtonLinks = () => {
 
 
 var goToNextCard = () => {
-  nextCard.classList.add("active");
-  changeButtonLinks();
+  if(nextCard == activeCard) {
+    carousel.innerHTML = "";
+    stats.classList.remove("d-none")
+
+  } else {
+    nextCard.classList.add("active");
+    changeButtonLinks();
+  }
 };
 
 // var kill_card =() => {
