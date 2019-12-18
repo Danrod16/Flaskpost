@@ -49,19 +49,20 @@
 
 .message_content {
   margin-bottom: 0;
-}
-input.form-control {
-  border: 1px solid #cccaca;
-  box-shadow: none;
-  font-size: 14px;
-  color: #868686;
-  position: absolute;
-  bottom: 21px;
-  left: 0px;
-  &:focus {
-    outline: none;
-    border: 1px solid blue;
+
+  .form-control {
+    border: 1px solid #cccaca;
     box-shadow: none;
+    font-size: 14px;
+    color: #868686;
+    position: absolute;
+    bottom: 21px;
+    left: 0px;
+    &:focus {
+      outline: none;
+      border: 1px solid blue;
+      box-shadow: none;
+    }
   }
 }
 .chat-header {
