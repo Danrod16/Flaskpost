@@ -7,17 +7,12 @@
   </div>
 
   <div class="onboarding-header">
-    <h1 id="page-two">A few details...</h1>
+    <h1 id="page-two-header">A few details...</h1>
   </div>
-
   <%= simple_form_for @profile, url: wizard_path do |f| %>
-    <%#= f.input :languages, label: 'Select your languages', collection: Profile::LANGUAGES, as: :check_boxes %>
-    <%#= f.input :locations, label: 'Select your locations', collection: Profile::LOCATIONS, as: :check_boxes %>
-    <%#= f.input :contract_types, label: "Contract type:", collection: Profile::CONTRACTS, as: :check_boxes  %>
-    <%#= f.input :salary_min, label: 'Your desired salary', as: :integer  %>
 
     <fieldset class="form-group check_boxes optional profile_languages two">
-      <legend class="col-form-label pt-0 font-weight-bold">Select your languages</legend>
+      <legend class="col-form-label pt-0 font-weight-bold <%= @profile.errors.messages.keys.include?("languages".to_sym)? "error_message" : "" %>">Select your languages</legend>
       <input type="hidden" name="profile[languages][]" value="">
 
       <div class="category-choices">
@@ -43,7 +38,7 @@
     </fieldset>
 
     <fieldset class="form-group check_boxes optional profile_locations two">
-      <legend class="col-form-label pt-0 font-weight-bold">Pick your locations</legend>
+      <legend class="col-form-label pt-0 font-weight-bold <%= @profile.errors.messages.keys.include?("locations".to_sym)? "error_message" : "" %>">Pick your locations</legend>
       <input type="hidden" name="profile[locations][]" value="">
 
       <div class="category-choices">
@@ -69,7 +64,7 @@
     </fieldset>
 
     <fieldset class="form-group check_boxes optional profile_contract_types two">
-      <legend class="col-form-label pt-0 font-weight-bold">Contract type</legend>
+      <legend class="col-form-label pt-0 font-weight-bold <%= @profile.errors.messages.keys.include?("contract_types".to_sym)? "error_message" : "" %>">Contract type</legend>
       <input type="hidden" name="profile[contract_types][]" value="">
 
       <div class="category-choices">
@@ -94,30 +89,30 @@
       </div>
     </fieldset>
 
-      <div class="form-group select required profile_salary_min form-group-valid rangeslider">
-        <label class="integer optional font-weight-bold"
-        for="profile_salary_min"
-        >
-        What's your desired salary?
-        </label>
-        <input
+    <div class="form-group select required profile_salary_min form-group-valid rangeslider">
+      <label class="integer optional font-weight-bold salary-title"
+      for="profile_salary_min"
+      >
+      What's your desired salary?
+      </label>
+      <input
         class="form-control is-valid multi-range myslider"
         type="range"
         min="1000"
         max="100000"
-        value=""
+        value="<%= @profile.salary_min || 50_000 %>"
         step="100"
         name="profile[salary_min]"
         id="salaryInputId"
         oninput="salaryOutputId.value = salaryInputId.value"
-        >
-        <output
+      >
+      <output
         name="salaryOutputName"
         id="salaryOutputId"
-        >
-        50,000
-        </output>
-      </div>
+      >
+        <%= @profile.salary_min || 50_000 %>
+      </output>
+    </div>
 
 
     <%= f.submit "NEXT", class: "btn btn-main form-button"%>

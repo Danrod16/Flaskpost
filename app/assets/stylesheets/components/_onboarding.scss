@@ -43,6 +43,9 @@
   .form-control.is-invalid {
     background-image: none;
   }
+  .form-button {
+    margin-top: 0px;
+  }
 }
 
 .third {
@@ -55,9 +58,13 @@
   }
 }
 
-#page-two {
+#page-two-header {
   margin-top: 20px;
   margin-bottom: 10px;
+}
+
+.salary-title {
+  margin-bottom: 18px;
 }
 
 .form-button {
@@ -129,4 +136,8 @@
     color: white;
     opacity: 1;
   }
+}
+
+.error_message {
+  color: red;
 }
