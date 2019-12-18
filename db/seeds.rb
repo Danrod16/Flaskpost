@@ -933,21 +933,24 @@ def create_demo_users
     password: "12341234",
     first_name: "Martin",#
     last_name: "Potié",
-    company_id: nil)
+    company_id: nil,
+    facebook_picture_url: "https://ca.slack-edge.com/T02NE0241-UPE65SNGH-9d2aa9469cef-512")
   save_new_user
   @new_user = User.new(
     email: "kevin@liebholz.eu",
     password: "12341234",
     first_name: "Kevin",#
     last_name: "Liebholz",
-    company_id: nil)
+    company_id: nil,
+    facebook_picture_url: "https://ca.slack-edge.com/T02NE0241-UP947CJ0K-cfc8176b8fec-512")
   save_new_user
   @new_user = User.new(
     email: "angustatchell@gmail.com",
     password: "12341234",
     first_name: "Angus",#
     last_name: "Tatchell",
-    company_id: nil)
+    company_id: nil,
+    facebook_picture_url: "https://ca.slack-edge.com/T02NE0241-UP7RNRH6E-595b27c6de93-512")
   save_new_user
 end
 
