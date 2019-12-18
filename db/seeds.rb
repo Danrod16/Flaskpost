@@ -1060,9 +1060,10 @@ def seed_database(clean)
     puts "Seeding Matches..."
     puts "SEEDED #{Match.count} Matches"
     puts " "
+    puts "MATCHES:"
 
     matches.each do |match|
-      puts "#{match.profile.user.first_name} = #{match.posting.company.name}"
+      puts "#{match.profile.user.first_name} = #{match.posting.company.name} => #{match.posting.company.users.sample.email}"
     end
 end
 
