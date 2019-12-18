@@ -1,4 +1,10 @@
+
 <%= render 'show_stats' %>
+
+<%# content_for :meta_title, "#{@card.job_title} is on #{DEFAULT_META["meta_profile_name"]}" %>
+<%# content_for :meta_description, @card.description %>
+<%# content_for :meta_image, cl_image_path(@card.photo.path) %>
+
 
 <% unless @cards.empty? %>
 

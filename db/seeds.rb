@@ -25,28 +25,28 @@
     first_name: "Andrés",
     last_name: "Ramos",
     photo: "https://res.cloudinary.com/kl3000/image/upload/v1575630984/user_profile_images/T02NE0241-UPLK9PZ2R-381c9c64d4d1-512_vx01ze.jpg",
-    locations: ["Barcelona", "Berlin", "London", "Paris", "Amsterdam", "Madrid"],
+    locations: ["Barcelona", "Berlin", "London", "Paris", "Amsterdam", "Remote"],
     languages: ["English", "Spanish"]
   },
   {
     first_name: "Angelica",
     last_name: "De Moffarts",
     photo: "https://res.cloudinary.com/kl3000/image/upload/v1575631032/user_profile_images/T02NE0241-UP96TAG67-9eb3437bec64-512_tlonji.jpg",
-    locations: ["Amsterdam", "London", "Paris", "Barcelona", "Madrid"],
+    locations: ["Amsterdam", "London", "Paris", "Barcelona", "Remote"],
     languages: ["English", "French", "Dutch"]
   },
   {
     first_name: "Avalon",
     last_name: "Van Der Horst",
     photo: "https://res.cloudinary.com/kl3000/image/upload/v1575631328/user_profile_images/T02NE0241-U8314BQ82-01c1dcf7eca3-512_jmkpyi.jpg",
-    locations: ["Amsterdam", "Barcelona", "Berlin", "Paris", "Madrid"],
+    locations: ["Amsterdam", "Barcelona", "Berlin", "Paris", "Remote"],
     languages: ["English", "Dutch", "Spanish"]
   },
   {
     first_name: "Ben",
     last_name: "Toosey",
     photo: "https://res.cloudinary.com/kl3000/image/upload/v1575631375/user_profile_images/T02NE0241-UPL535Y6Q-cc4875c7306c-512_ht297e.jpg",
-    locations: ["London", "Barcelona", "Madrid", "Valencia"],
+    locations: ["London", "Barcelona", "Remote", "Valencia"],
     languages: ["English", "Spanish", "Catalan"]
   },
   {
@@ -67,7 +67,7 @@
     first_name: "Christos",
     last_name: "Kaltaveridis",
     photo: "https://res.cloudinary.com/kl3000/image/upload/v1575631481/user_profile_images/T02NE0241-UPL897MJ8-e50ac5a48da9-512_iop3oz.png",
-    locations: ["London", "Edinburgh", "Barcelona", "Athens"],
+    locations: ["London", "Dublin", "Barcelona", "Athens"],
     languages: ["English", "Greek"]
   },
   {
@@ -130,7 +130,7 @@
     first_name: "Gus",
     last_name: "De Vita",
     photo: "https://res.cloudinary.com/kl3000/image/upload/v1575631854/user_profile_images/T02NE0241-U0CAK1T88-81f976504e1c-512_b8tobm.jpg",
-    locations: ["Barcelona", "Madrid"],
+    locations: ["Barcelona", "Remote"],
     languages: ["English", "Portugese", "Spanish"]
   },
   {
@@ -144,7 +144,7 @@
     first_name: "Iñaki",
     last_name: "Mediavilla",
     photo: "https://res.cloudinary.com/kl3000/image/upload/v1575631965/user_profile_images/T02NE0241-UP7R4UMTL-a8948787a53c-512_pa33xz.png",
-    locations: ["Barcelona", "Valencia", "Madrid"],
+    locations: ["Barcelona", "Valencia", "Remote"],
     languages: ["English", "Spanish"]
   },
   {
@@ -172,14 +172,14 @@
     first_name: "Miguel Ángel",
     last_name: "Marfil Rubio",
     photo: "https://res.cloudinary.com/kl3000/image/upload/v1575632434/user_profile_images/T02NE0241-UPE7M99U1-32151dfec812-512_xfqpoh.jpg",
-    locations: ["Barcelona", "Valencia", "Madrid"],
+    locations: ["Barcelona", "Valencia", "Remote"],
     languages: ["English", "Spanish", "Catalan"]
   },
   {
     first_name: "Mireia",
     last_name: "Palmero",
     photo: "https://res.cloudinary.com/kl3000/image/upload/v1575632531/user_profile_images/T02NE0241-UPNEUMKCP-2be77693c771-512_c0wedv.jpg",
-    locations: ["Barcelona", "Valencia", "Madrid"],
+    locations: ["Barcelona", "Valencia", "Remote"],
     languages: ["English", "Spanish"]
   },
   {
@@ -207,7 +207,7 @@
     first_name: "Pablo",
     last_name: "Maisuls",
     photo: "https://res.cloudinary.com/kl3000/image/upload/v1575632840/user_profile_images/T02NE0241-UPL530BJ8-71dcd1eab182-512_snomcx.png",
-    locations: ["Barcelona", "Valencia", "Madrid"],
+    locations: ["Barcelona", "Valencia", "Remote"],
     languages: ["English", "Spanish"]
   },
   {
@@ -221,7 +221,7 @@
     first_name: "Sandra",
     last_name: "Carmona Serrat",
     photo: "https://res.cloudinary.com/kl3000/image/upload/v1575633072/user_profile_images/T02NE0241-UPNR00MJS-3f78e18209ea-512_pzuxot.jpg",
-    locations: ["Barcelona", "Valencia", "Madrid"],
+    locations: ["Barcelona", "Valencia", "Remote"],
     languages: ["English", "Spanish", "Catalan"]
   },
   {
@@ -287,8 +287,8 @@
     name: "Google",
     domain: "google.com",
     address: "San Francisco",
-    locations: ["Madrid", "London", "Paris", "Berlin", "Rome", "Athens", "Amsterdam"],
-    languages: ["English", "French", "German", "Dutch", "Italian", "Greek"],
+    locations: ["Remote", "London", "Berlin", "Amsterdam", "Paris", "Barcelona", "Dublin"],
+    languages: ["English", "French", "German", "Spanish", "Italian", "Greek", "Dutch"],
     photo_logo: "https://storage.googleapis.com/gd-wagtail-prod-assets/original_images/evolving_google_identity_share.jpg",
     photo_banner: "https://media.blogto.com/articles/2019918-google.jpg?w=1200&cmd=resize_then_crop&height=630&quality=70"
   },
@@ -296,8 +296,8 @@
     name: "Facebook",
     domain: "facebook.com",
     address: "San Francisco",
-    locations: ["Madrid", "London", "Paris", "Berlin", "Rome", "Athens", "Amsterdam"],
-    languages: ["English", "French", "German", "Dutch", "Italian", "Greek"],
+    locations: ["Remote", "London", "Berlin", "Amsterdam", "Paris", "Barcelona", "Dublin"],
+    languages: ["English", "French", "German", "Spanish", "Italian", "Greek", "Dutch"],
     photo_logo: "https://about.fb.com/wp-content/uploads/2019/11/facebook_wordmark.gif",
     photo_banner: "https://www.designboom.com/wp-content/uploads/2018/09/frank-gehry-facebook-campus-menlo-park-MPK-21-california-designboom-1800.jpg"
   },
@@ -305,16 +305,16 @@
     name: "Twitter",
     domain: "twitter.com",
     address: "San Francisco",
-    locations: ["Madrid", "London", "Paris", "Berlin", "Rome", "Athens", "Amsterdam"],
-    languages: ["English", "French", "German", "Dutch", "Italian", "Greek"],
+    locations: ["Remote", "London", "Berlin", "Amsterdam", "Paris", "Barcelona", "Dublin"],
+    languages: ["English", "French", "German", "Spanish", "Italian", "Greek", "Dutch"],
     photo_logo: "https://s3.amazonaws.com/img.mynetdiary.com/src/logo_twitter.png",
     photo_banner: "https://d1l6lhgof63zdh.cloudfront.net/twitter-office-cCc4SUHbqk.jpg"
   },
   {
     name: "Skyscanner",
     domain: "skyscanner.net",
-    address: "Edinburgh",
-    locations: ["London", "Edinburgh"],
+    address: "Dublin",
+    locations: ["London", "Dublin"],
     languages: ["English"],
     photo_logo: "https://mundoxdescubrir.com/wp-content/uploads/2019/02/logo-skyscanner-1.png",
     photo_banner: "https://pbs.twimg.com/media/Cb1KI7gUcAYYTjy.jpg"
@@ -332,8 +332,8 @@
     name: "AirBnB",
     domain: "airbnb.com",
     address: "San Francisco",
-    locations: ["Madrid", "London", "Berlin"],
-    languages: ["English"],
+    locations: ["Remote", "London", "Berlin"],
+    languages: ["English", "Spanish", "German"],
     photo_logo: "http://www.brandemia.org/sites/default/files/sites/default/files/bnb_billboard_01-2000x1125.jpg",
     photo_banner: "https://images.adsttc.com/media/images/59ef/fef7/b22e/3819/9400/0018/newsletter/999_47.jpg?1508900596"
   },
@@ -341,7 +341,7 @@
     name: "Microsoft Iberia",
     domain: "microsoft.com",
     address: "Barcelona",
-    locations: ["Barcelona", "Madrid"],
+    locations: ["Barcelona", "Remote"],
     languages: ["English", "Spanish"],
     photo_logo: "http://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE2qVsJ?ver=3f74",
     photo_banner: "https://www.tmagazine.es/app/uploads/2017/06/oficina_microsoft_barcelona_03.jpg"
@@ -350,7 +350,7 @@
     name: "Yego",
     domain: "yego.es",
     address: "Barcelona",
-    locations: ["Barcelona", "Valencia", "Madrid"],
+    locations: ["Barcelona", "Valencia", "Remote"],
     languages: ["Spanish"],
     photo_logo: "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/c3/d6/03/c3d60344-cc7b-c6fd-fbc1-a564be66391b/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-85-220.png/1200x630wa.png",
     photo_banner: "https://estaticos.elperiodico.com/resources/jpg/4/2/motos-start-up-yego-1543576955924.jpg"
@@ -359,7 +359,7 @@
     name: "ThoughtWorks",
     domain: "thoughtworks.com",
     address: "London",
-    locations: ["Barcelona", "New York", "Chicago", "Paris", "Berlin", "London", "Amsterdam", "Rome", "Vienna"],
+    locations: ["Barcelona", "Paris", "Berlin", "London", "Amsterdam"],
     languages: ["English"],
     photo_logo: "https://sonarplusd.com/system/attached_images/21482/medium/ThoughtWorks-Alta.jpg?1519817056",
     photo_banner: "https://dynamic.thoughtworks.com/landing_pages/image-a72caa3b17c5fd3e7b195b588470ea5f.jpeg"
@@ -413,7 +413,7 @@
     name: "Cabify",
     domain: "cabify.com",
     address: "Madrid",
-    locations: ["Madrid", "Barcelona"],
+    locations: ["Remote", "Barcelona"],
     languages: ["English", "Spanish"],
     photo_logo: "https://upload.wikimedia.org/wikipedia/commons/5/58/Cabify-logo-purple.png",
     photo_banner: "http://www.ilumina.pe/wp-content/uploads/2015/02/Cabify-3-1130x400.jpg"
@@ -422,7 +422,7 @@
     name: "Le Wagon",
     domain: "lewagon.com",
     address: "Paris",
-    locations: ["Paris", "Barcelona", "Amsterdam", "Madrid", "Berlin", "Milan"],
+    locations: ["Paris", "Barcelona", "Amsterdam", "Remote", "Berlin", "Milan"],
     languages: ["English", "French"],
     photo_logo: "https://mk0mindspacemexmwc0q.kinstacdn.com/wp-content/uploads/sites/2/2017/03/white_logo_red_font.png",
     photo_banner: "https://res.cloudinary.com/wagon/image/upload/c_fill,q_auto,w_2880/v1574180426/fnfzqw8xiqfhctgmq9jf.webp"
@@ -741,11 +741,11 @@
   }
 ]
 
-@domains = ["gmail.com", "hotmail.com", "outlook.com"]
+@domains = ["gmail.com"]#, "hotmail.com", "outlook.com"]
 @contract_types = ["Full-Time", "Part-Time", "Freelance"]
 @experience = ["Junior", "Mid", "Senior"]
-@languages = ["English", "French", "Spanish", "German", "Italian"]
-@locations = ["Edinburgh", "London", "Amsterdam", "Barcelona", "Madrid", "Berlin", "Paris"]
+@languages = ["English", "French", "German", "Spanish", "Italian", "Greek", "Dutch"]
+@locations = ["Remote", "London", "Berlin", "Amsterdam", "Paris", "Barcelona", "Dublin"]
 
 # REFACTORED METHODS
 
@@ -835,7 +835,7 @@ def create_profiles_from_user(n_profiles)
       field: @selected_profile[:field],
       job_title: @selected_profile[:job_title],
       contract_types: @contract_types.sample(rand(1..@contract_types.length)),
-      experience: @selected_user[:experience],
+      experience: @selected_profile[:experience],
       languages: @selected_user[:languages],
       locations: @selected_user[:locations],
       description: @selected_profile[:description],
@@ -913,9 +913,25 @@ def create_users_with_companies(n_users)
     save_new_user
 
     unless User.last.company_id
-      @new_user[experience: @experience.shuffle]
       create_profiles_from_user(rand(1..4))
     end
+  end
+end
+
+def generate_matches(n_matches)
+  @shuffled_postings_list = Posting.all.shuffle
+
+  n_matches.times do
+
+    @selected_posting_index = @shuffled_postings_list.length - 1
+    @selected_posting = @shuffled_postings_list[@selected_posting_index]
+    @shuffled_postings_list.delete_at(@selected_posting_index)
+
+    @new_match = Match.new(
+      profile_id: Profile.last.id,
+      posting_id: @selected_posting.id,
+      status: 'accepted')
+    @new_match.save
   end
 end
 
@@ -933,22 +949,31 @@ def create_demo_users
     password: "12341234",
     first_name: "Martin",#
     last_name: "Potié",
-    company_id: nil)
+    company_id: nil,
+    facebook_picture_url: "https://ca.slack-edge.com/T02NE0241-UPE65SNGH-9d2aa9469cef-512")
   save_new_user
+    create_profiles_from_user(3)
+    generate_matches(rand(1..6))
   @new_user = User.new(
     email: "kevin@liebholz.eu",
     password: "12341234",
     first_name: "Kevin",#
     last_name: "Liebholz",
-    company_id: nil)
+    company_id: nil,
+    facebook_picture_url: "https://ca.slack-edge.com/T02NE0241-UP947CJ0K-cfc8176b8fec-512")
   save_new_user
+    create_profiles_from_user(3)
+    generate_matches(rand(1..6))
   @new_user = User.new(
     email: "angustatchell@gmail.com",
     password: "12341234",
     first_name: "Angus",#
     last_name: "Tatchell",
-    company_id: nil)
+    company_id: nil,
+    facebook_picture_url: "https://ca.slack-edge.com/T02NE0241-UP7RNRH6E-595b27c6de93-512")
   save_new_user
+    create_profiles_from_user(3)
+    generate_matches(rand(1..6))
 end
 
 def clear_database
@@ -1005,6 +1030,7 @@ def seed_database(clean)
     seekers = User.where(company_id: nil)
     postings = Posting.all.sort
     companies = Company.all
+    matches = Match.all
 
     puts " "
     puts "SEEDED #{User.count} Users"
@@ -1030,9 +1056,15 @@ def seed_database(clean)
       puts "#{Posting.where(company_id: company.id).count} posting(s) - #{company.name}"
     end
 
-    # puts " "
-    # puts "Seeding Matches..."
-    # puts "SEEDED #{Match.count} Matches"
+    puts " "
+    puts "Seeding Matches..."
+    puts "SEEDED #{Match.count} Matches"
+    puts " "
+    puts "MATCHES:"
+
+    matches.each do |match|
+      puts "#{match.profile.user.first_name} = #{match.posting.company.name} => #{match.posting.company.users.sample.email}"
+    end
 end
 
 seed_database("clean")
