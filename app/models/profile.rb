@@ -37,6 +37,10 @@ class Profile < ApplicationRecord
     status == 'active'
   end
 
+  def self.filter_by_custom(attribute, query)
+    Profile.all.select { |p| p.send(attribute)&.include?(query) }
+  end
+
   def user
     User.find(self.user_id) if active?
   end

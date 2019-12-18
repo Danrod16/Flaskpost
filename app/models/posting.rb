@@ -13,4 +13,9 @@ class Posting < ApplicationRecord
 
   validates :description, length: { maximum: 180, minimum: 60 }
   validates :salary_max, numericality: { only_integer: true }
+
+  def self.filter_by_custom(attribute, query)
+    Posting.all.select { |p| p.send(attribute)&.include?(query) }
+  end
+
 end
