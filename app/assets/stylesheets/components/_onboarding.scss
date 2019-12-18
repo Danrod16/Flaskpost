@@ -33,10 +33,15 @@
 .second {
   .form-control.is-valid {
     background-image: none;
+    background: #6F35E2;
     border-color: #6F35E2;
+    padding-right: 0;
+    &:focus {
+      box-shadow: none;
+    }
   }
   .form-control.is-invalid {
-    background-image: none
+    background-image: none;
   }
 }
 

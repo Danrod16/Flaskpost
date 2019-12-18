@@ -94,24 +94,31 @@
       </div>
     </fieldset>
 
-
-      <div class="form-group integer optional profile_salary_min form-group-valid rangeslider">
+      <div class="form-group select required profile_salary_min form-group-valid rangeslider">
         <label class="integer optional font-weight-bold"
         for="profile_salary_min"
         >
         What's your desired salary?
         </label>
         <input
-        class="form-control is-valid numeric integer optional myslider"
+        class="form-control is-valid multi-range myslider"
         type="range"
         min="1000"
         max="100000"
+        value=""
         step="100"
-        value="121323"
         name="profile[salary_min]"
-        id="profile_salary_min sliderRange"
+        id="salaryInputId"
+        oninput="salaryOutputId.value = salaryInputId.value"
         >
+        <output
+        name="salaryOutputName"
+        id="salaryOutputId"
+        >
+        50,000
+        </output>
       </div>
+
 
     <%= f.submit "NEXT", class: "btn btn-main form-button"%>
   <% end %>
