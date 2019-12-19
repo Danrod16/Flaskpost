@@ -29,8 +29,11 @@
   &.right {
     flex-direction: row-reverse;
     .message-content {
-      background-color: #4fe68c;
-      color: white;
+      background-color: rgba(255, 255, 255, 0);
+      border-style: solid;
+      border-color: #BF9FFF;
+      border-width: 1px;
+      color: #BF9FFF;
     }
   }
 }
