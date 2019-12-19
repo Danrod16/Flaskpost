@@ -1,52 +1,36 @@
-      <% if user_signed_in? %>
-        <ul class="nav">
-          <li class="nav-item dropdown">
-            <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-            <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-            <%#= link_to destroy_user_session_path, method: :delete do %>
-          </li>
-          <li class="nav-item">
-            <%= link_to profiles_path do %>
-                <%= image_tag "https://res.cloudinary.com/therainycloud/image/upload/v1576084648/Screenshot_2019-12-11_at_18.17.05_ueqvra.png", style: "height: 40px; width: auto; margin-bottom: 3px;" %>
-              <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to matches_path do %>
-            <i class="fas fa-comment nav-inbox" style="font-size: 30px;"></i>
-            <p class="nav-notif">1</p>
-            <% end  %>
-          </li>
-        </ul>
+<% if user_signed_in? %>
+  <ul class="nav">
+    <li class="nav-item dropdown">
+      <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+      <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <%= link_to "logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+      </div>
+    </li>
 
-      <% else %>
-          <div class="navbar-expand-sm navbar-light navbar-shuffle">
-            <ul class="navbar-nav mr-auto" style="justify-content: space-between;">
-              <%= link_to "/", class: "navbar-brand" do %>
-                <%= image_tag "https://res.cloudinary.com/therainycloud/image/upload/v1576074962/Shuffle._2_xgjapz.png" %>
-              <% end %>
-              <li class="nav-item">
-                <%= link_to "Login", new_user_session_path, class: "nav-link", style: "color: #6F35E2; padding-right: 15px; font-weight:lighter" %>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <li class="nav-item">
+      <%= link_to profiles_path do %>
+        <%= image_tag "https://res.cloudinary.com/therainycloud/image/upload/v1576084648/Screenshot_2019-12-11_at_18.17.05_ueqvra.png", style: "height: 40px; width: auto; margin-bottom: 4px;" %>
       <% end %>
+    </li>
 
+    <li class="nav-item">
+      <%= link_to matches_path do %>
+        <i class="fas fa-comment nav-inbox" style="font-size: 30px; padding-top: 14px;"></i>
+        <p class="nav-notif"></p>
+      <% end  %>
+    </li>
+  </ul>
+<% else %>
+  <div class="navbar-expand-sm navbar-light navbar-shuffle">
+    <ul class="navbar-nav mr-auto" style="justify-content: space-between;">
+      <%= link_to "/", class: "navbar-brand" do %>
+        <%= image_tag "https://res.cloudinary.com/therainycloud/image/upload/v1576074962/Shuffle._2_xgjapz.png" %>
+      <% end %>
+      <li class="nav-item">
+        <%= link_to "Login", new_user_session_path, class: "nav-link", style: "color: #6F35E2; padding-right: 15px; font-weight:lighter" %>
+      </li>
+    </ul>
+  </div>
+<% end %>
 
-<!-- <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-  </li>
-</ul> -->
