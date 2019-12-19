@@ -1,7 +1,7 @@
 .card-category {
   background-size: cover;
   background-position: center;
-  height: 250px;
+  height: 290px;
   display: flex;
   justify-content: left;
   align-items: flex-end;
@@ -24,19 +24,10 @@
 }
 
 .card-edit {
-  margin-left: 40px;
-  // position: absolute;
-  // bottom: -5px;
-  // left: 14px;
-}
-
-@media only screen and (max-width: 450px) {
-  .card-edit {
-    margin-left: 25px;
-    position: absolute;
-    bottom: -5px;
-    left: 14px;
-  }
+  margin-left: 25px;
+  position: absolute;
+  bottom: -7px;
+  left: 14px;
 }
 
 
