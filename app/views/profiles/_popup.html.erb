@@ -1,0 +1,14 @@
+<div id="popup-match" class="popup popup-match">
+  <div class="popup-content">
+    <h2>You have a match!</h2>
+    <p id="message"></p>
+    <div class="match-parties">
+      <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+      <%= image_tag avatar_url, class: "avatar-xl avatar-bordered"%>
+      <i class="far fa-comments" style="color: white;"></i>
+      <img src="jsChange" alt="", id="company-avatar", class="avatar-xl avatar-bordered popup-avatar">
+    </div>
+    <a id="continue" class="btn btn-main" style="font-weight: bold">Continue Swiping</a></br>
+    <%= link_to "Go to Chat", match_messages_path("jsChange"), id: "chat-link", class: "btn btn-main", target: "_blank", style: "font-weight: bold" %>
+  </div>
+</div>

@@ -20,9 +20,50 @@
   margin-bottom: 0;
 }
 
-#page-two {
+.first {
+  .form-control.is-valid {
+    background-image: none;
+    border-color: #6F35E2;
+  }
+  .form-control.is-invalid {
+    background-image: none
+  }
+}
+
+.second {
+  .form-control.is-valid {
+    background: -webkit-linear-gradient(left, rgba(111,53,226,0) 0%,rgba(111,53,226,0.6) 15%,rgba(111,53,226,1) 50%,rgba(111,53,226,0.6) 85%,rgba(111,53,226,0) 100%);
+    border-color: white;
+    padding-right: 0;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .form-control.is-invalid {
+    background-image: none;
+  }
+  .form-button {
+    margin-top: 0px;
+  }
+}
+
+.third {
+  .form-control.is-valid {
+    background-image: none;
+    border-color: #6F35E2;
+  }
+  .form-control.is-invalid {
+    background-image: none
+  }
+}
+
+#page-two-header {
   margin-top: 20px;
   margin-bottom: 10px;
+}
+
+.salary-title {
+  margin-bottom: 18px;
 }
 
 .form-button {
@@ -94,4 +135,10 @@
     color: white;
     opacity: 1;
   }
+}
+
+.error_message {
+  color: red;
+  text-decoration: underline;
+  font-weight: 100;
 }
