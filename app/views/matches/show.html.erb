@@ -30,7 +30,7 @@
 
     <div id="create-message">
       <%= simple_form_for [ @match, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
-        <input class="form-control text required" name="message[content]" id="message_content">
+        <input class="form-control text required" name="message[content]" id="message_content" placeholder="Type message here...">
       <% end %>
     </div>
 
