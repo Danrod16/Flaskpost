@@ -137,18 +137,18 @@ class ProfilesController < ApplicationController
     # There will also be  save cards on 'position',
     # that will always result in an instant match.
 
-    fraction = 0.3
+    # fraction = 0.3
 
     save_cards = []
     save_cards << @cards[0]
     save_cards << @cards [2]
-    save_cards << @cards [3]
+    save_cards << @cards [4]
 
-    rest_cards = []
-    @cards.each { |card| rest_cards << card }
-    rest_cards.delete_at(0)
-    rest_cards.delete_at(1)
-    rest_cards.delete_at(1)
+    # rest_cards = []
+    # @cards.each { |card| rest_cards << card }
+    # rest_cards.delete_at(0)
+    # rest_cards.delete_at(1)
+    # rest_cards.delete_at(1)
 
     save_cards.each do |card|
       if Match.where(profile_id: @profile.id, posting_id: card.id).empty?
@@ -156,10 +156,10 @@ class ProfilesController < ApplicationController
       end
     end
 
-    rest_cards.each do |card|
-      if Match.where(profile_id: @profile.id, posting_id: card.id).empty? && (rand <= fraction)
-        Match.create(profile_id: @profile.id, posting_id: card.id, status: "pending", status_recruiter: "accepted")
-      end
-    end
+    # rest_cards.each do |card|
+    #   if Match.where(profile_id: @profile.id, posting_id: card.id).empty? && (rand <= fraction)
+    #     Match.create(profile_id: @profile.id, posting_id: card.id, status: "pending", status_recruiter: "accepted")
+    #   end
+    # end
   end
 end
