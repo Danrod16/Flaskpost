@@ -92,9 +92,11 @@ class ProfilesController < ApplicationController
     Posting.where(
       'field ILIKE :profile_field
       AND job_title ILIKE :profile_job_title
+      AND experience = :profile_experience
       AND salary_max >= :profile_salary_min',
       profile_field: @profile.field,
       profile_job_title: @profile.job_title,
+      profile_experience: @profile.experience,
       profile_salary_min: @profile.salary_min
     )
   end
