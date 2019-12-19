@@ -24,8 +24,19 @@
 }
 
 .card-edit {
-  margin-left: 24px;
-  position: absolute;
-  bottom: -5px;
-  left: 14px;
+  margin-left: 40px;
+  // position: absolute;
+  // bottom: -5px;
+  // left: 14px;
 }
+
+@media only screen and (max-width: 450px) {
+  .card-edit {
+    margin-left: 25px;
+    position: absolute;
+    bottom: -5px;
+    left: 14px;
+  }
+}
+
+
