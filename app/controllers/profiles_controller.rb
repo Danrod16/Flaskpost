@@ -61,6 +61,8 @@ class ProfilesController < ApplicationController
     filter_for_languages
     filter_for_liked_cards
     filter_for_declined_cards
+
+    fake_matches
   end
 
   def stats
@@ -124,6 +126,38 @@ class ProfilesController < ApplicationController
   def filter_for_declined_cards
     @cards = @cards.reject do |card|
       Match.where(profile_id: @profile.id, posting_id: card.id, status: "declined").exists?
+    end
+  end
+
+  def fake_matches
+    # creating fake matches in which the status_recruiter = 'accepted'
+    # in each deck. Resulting in instant matches to chat with.
+    # There will also be  save cards on 'position',
+    # that will always result in an instant match.
+
+    fraction = 0.3
+
+    save_cards = []
+    save_cards << @cards[0]
+    save_cards << @cards [2]
+    save_cards << @cards [3]
+
+    rest_cards = []
+    @cards.each { |card| rest_cards << card }
+    rest_cards.delete_at(0)
+    rest_cards.delete_at(1)
+    rest_cards.delete_at(1)
+
+    save_cards.each do |card|
+      if Match.where(profile_id: @profile.id, posting_id: card.id).empty?
+        Match.create(profile_id: @profile.id, posting_id: card.id, status: "pending", status_recruiter: "accepted")
+      end
+    end
+
+    rest_cards.each do |card|
+      if Match.where(profile_id: @profile.id, posting_id: card.id).empty? && (rand <= fraction)
+        Match.create(profile_id: @profile.id, posting_id: card.id, status: "pending", status_recruiter: "accepted")
+      end
     end
   end
 end
