@@ -13,7 +13,7 @@
   <%= simple_form_for @profile, url: wizard_path do |f| %>
     <%= f.input :field, label:'Choose your field of interest:', collection: Profile::INDUSTRIES, prompt: "e.g. IT", label_html: { class: 'font-weight-bold' }%>
     <%= f.input :job_title, label: 'Define your job title:', collection: Profile::JOBS, prompt: "e.g. Full Stack Developer", label_html: { class: 'font-weight-bold' } %>
-    <%= f.input :experience, label: 'Choose your skill level', collection: Profile::EXPERIENCES, prompt: "e.g. Junior", label_html: { class: 'font-weight-bold' } %>
+    <%= f.input :experience, label: 'Choose your skill level:', collection: Profile::EXPERIENCES, prompt: "e.g. Junior", label_html: { class: 'font-weight-bold' } %>
     <%= f.submit "NEXT", class: "btn btn-main form-button" %>
   <% end %>
 </div>
