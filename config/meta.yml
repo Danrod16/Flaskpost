@@ -1,5 +1,5 @@
 meta_posting_name: "Posting Name"
-meta_title: "Posting name"
-meta_description: "Relevant description"
-meta_image: "cover.png" # should exist in `app/assets/images/`
+meta_title: "Shuffle - Ditch your desk, shuffle your deck!"
+meta_description: "Connect with the right companies in a matter of minutes"
+meta_image: "https://res.cloudinary.com/therainycloud/image/upload/v1576751049/Copy_of_Shuffle._r6o73z.png" # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"   # required for Twitter Cards
