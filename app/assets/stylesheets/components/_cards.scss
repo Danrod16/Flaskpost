@@ -15,12 +15,16 @@
 }
 
 .card-category > p {
-    background-color: #05e3ff;
-    /* border-radius: 5px; */
-    color: black;
-    padding: 1px 5px;
-    max-width: 71px;
-    line-height: 14px;
+    color: white;
+    padding: 7px 5px;
+    max-width: 112px;
+    font-size: 14px;
+    font-weight: bolder;
+    position: absolute;
+    left: 12px;
+    bottom: 28px;
+    transform: rotate(-3deg);
+    line-height: 19px;
 }
 
 .card-edit {

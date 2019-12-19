@@ -9,20 +9,20 @@
     <div class="card-container">
        <%= link_to swipe_path(user_id: current_user.id, profile_id: profile.id) do %>
         <% if profile.job_title == "Full-Stack Developer" %>
-          <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576236747/1_lhnuaa.png); position: relative;">
-            <p style="font-size: 12px; font-weight: 100; position: absolute;left: 37px; top: 15px;"><%= profile.job_title %></p>
+          <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576769331/Fullstack_Test_gc1hml.png); position: relative;">
+            <p><%= profile.job_title %></p>
           </div>
         <% elsif profile.job_title == "Front-End Developer"%>
-          <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576236748/3_papj1r.png); position: relative;">
-            <p style="font-size: 12px; font-weight: 100; position: absolute;left: 37px; top: 15px;"><%= profile.job_title %></p>
+          <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576768955/Frontend_Test_Card_i265su.jpg); position: relative;">
+            <p><%= profile.job_title %></p>
           </div>
         <% elsif profile.job_title == "Back-End Developer"%>
-          <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576236748/2_mm1zej.png); position: relative;">
-            <p style="font-size: 12px; font-weight: 100; position: absolute;left: 37px; top: 15px;"><%= profile.job_title %></p>
+          <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576769328/Backend_Test_lsr5lm.png); position: relative;">
+            <p><%= profile.job_title %></p>
           </div>
         <% else %>
-          <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576237319/Untitled_design_13_geherm.png); position: relative;">
-            <p style="font-size: 12px; font-weight: 100; position: absolute;left: 37px; top: 15px;"><%= profile.job_title %></p>
+          <div class="card-category" style="background-image: url(https://res.cloudinary.com/therainycloud/image/upload/v1576769494/DefaultTest2_nfwwr0.png); position: relative;">
+            <p><%= profile.job_title %></p>
           </div>
         <% end %>
       <% end  %>
@@ -33,7 +33,7 @@
     <% end  %>
 
       <%= link_to new_profile_path do %>
-        <div class="card-category" style="align-items: center; justify-content: center; display-flex: vertical;">
+        <div class="card-category card-plus" style="align-items: center; justify-content: center; display-flex: vertical;">
           <%= image_tag "https://res.cloudinary.com/therainycloud/image/upload/v1576129127/Create_a_new_Job_hunting_deck_mkivjs.png", class: "quick-fix-class" %>
         </div>
       <% end %>
