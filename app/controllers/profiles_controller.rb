@@ -62,7 +62,7 @@ class ProfilesController < ApplicationController
     filter_for_liked_cards
     filter_for_declined_cards
 
-    fake_matches if @cards.count == 5
+    fake_matches if (@cards.count == 5) && (current_user.id == 255)
   end
 
   def stats
@@ -140,9 +140,9 @@ class ProfilesController < ApplicationController
     # fraction = 0.3
 
     save_cards = []
-    save_cards << @cards[0]
-    save_cards << @cards [2]
-    save_cards << @cards [4]
+    save_cards << @cards.last
+    # save_cards << @cards [2]
+    # save_cards << @cards [4]
 
     # rest_cards = []
     # @cards.each { |card| rest_cards << card }
