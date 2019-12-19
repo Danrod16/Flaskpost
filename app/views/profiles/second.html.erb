@@ -64,7 +64,7 @@
     </fieldset>
 
     <fieldset class="form-group check_boxes optional profile_contract_types two">
-      <legend class="col-form-label pt-0 font-weight-bold <%= @profile.errors.messages.keys.include?("contract_types".to_sym)? "error_message" : "" %>">Contract type</legend>
+      <legend class="col-form-label pt-0 font-weight-bold <%= @profile.errors.messages.keys.include?("contract_types".to_sym)? "error_message" : "" %>">Contract type?</legend>
       <input type="hidden" name="profile[contract_types][]" value="">
 
       <div class="category-choices">
@@ -101,7 +101,7 @@
         min="1000"
         max="100000"
         value="<%= @profile.salary_min || 50_000 %>"
-        step="100"
+        step="1000"
         name="profile[salary_min]"
         id="salaryInputId"
         oninput="salaryOutputId.value = salaryInputId.value"
