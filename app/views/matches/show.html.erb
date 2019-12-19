@@ -18,15 +18,11 @@
     </div>
 
     <div class="messages">
-      <% if @match.messages.count > 0 %>
-        <% @match.messages.each do |message| %>
-          <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
-        <% end %>
-      <% else %>
-        <p style="margin-top: 80px;">Make a good first impression! This could be your future employer :D</p>
+      <% @match.messages.each do |message| %>
+        <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
       <% end %>
     </div>
-    </div>
+  </div>
 
     <div id="create-message">
       <%= simple_form_for [ @match, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>

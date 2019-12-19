@@ -289,7 +289,8 @@
     address: "San Francisco",
     locations: ["Remote", "London", "Berlin", "Amsterdam", "Paris", "Barcelona", "Dublin"],
     languages: ["English", "French", "German", "Spanish", "Italian", "Greek", "Dutch"],
-    photo_logo: "https://storage.googleapis.com/gd-wagtail-prod-assets/original_images/evolving_google_identity_share.jpg",
+    description: "Google's software engineers develop the next-generation technologies that change how billions of users connect, explore, and interact with information and one another.",
+    photo_logo: "https://expresswriters.com/wp-content/uploads/2015/09/google-new-logo-1030x541.jpg",
     photo_banner: "https://media.blogto.com/articles/2019918-google.jpg?w=1200&cmd=resize_then_crop&height=630&quality=70"
   },
   {
@@ -298,6 +299,7 @@
     address: "San Francisco",
     locations: ["Remote", "London", "Berlin", "Amsterdam", "Paris", "Barcelona", "Dublin"],
     languages: ["English", "French", "German", "Spanish", "Italian", "Greek", "Dutch"],
+    description: "People are at the heart of every connection we build. We design products and deliver services that bring the world closer together — one connection at a time.",
     photo_logo: "https://about.fb.com/wp-content/uploads/2019/11/facebook_wordmark.gif",
     photo_banner: "https://www.designboom.com/wp-content/uploads/2018/09/frank-gehry-facebook-campus-menlo-park-MPK-21-california-designboom-1800.jpg"
   },
@@ -307,7 +309,8 @@
     address: "San Francisco",
     locations: ["Remote", "London", "Berlin", "Amsterdam", "Paris", "Barcelona", "Dublin"],
     languages: ["English", "French", "German", "Spanish", "Italian", "Greek", "Dutch"],
-    photo_logo: "https://s3.amazonaws.com/img.mynetdiary.com/src/logo_twitter.png",
+    description: "We serve the public conversation because it’s the best way to connect, debate, learn, and solve problems.",
+    photo_logo: "https://f0.pngfuel.com/png/246/931/twitter-logo-png-clip-art.png",
     photo_banner: "https://d1l6lhgof63zdh.cloudfront.net/twitter-office-cCc4SUHbqk.jpg"
   },
   {
@@ -316,7 +319,8 @@
     address: "Dublin",
     locations: ["London", "Dublin"],
     languages: ["English"],
-    photo_logo: "https://mundoxdescubrir.com/wp-content/uploads/2019/02/logo-skyscanner-1.png",
+    description: "Skyscanner is a leading global travel search site and app, a place where people are inspired to plan and book direct from millions of travel options at the best prices.",
+    photo_logo: "https://www.weekmen.com/wp-content/uploads/2017/01/logo-Skyscanner-1024x1024.jpg",
     photo_banner: "https://pbs.twimg.com/media/Cb1KI7gUcAYYTjy.jpg"
   },
   {
@@ -325,7 +329,8 @@
     address: "Amsterdam",
     locations: ["Amsterdam", "London"],
     languages: ["English", "Dutch"],
-    photo_logo: "https://www.vilacvetka.com/wp-content/uploads/2015/04/booking.com-logo-2.png",
+    description: "Booking.com is one of the world’s largest travel e-commerce companies, built on data-driven innovation",
+    photo_logo: "https://i.ytimg.com/vi/i6RMc-Y739g/maxresdefault.jpg",
     photo_banner: "https://assets.phenompeople.com/CareerConnectResources/BOOKUS/en_us/common/image_gallery/locations%20cover-1546603551068.jpg"
   },
   {
@@ -334,25 +339,28 @@
     address: "San Francisco",
     locations: ["Remote", "London", "Berlin"],
     languages: ["English", "Spanish", "German"],
+    description: "Create a world where anyone can belong anywhere. It’s an audacious, incredibly rewarding mission that our increasingly diverse team is dedicated to achieving.",
     photo_logo: "http://www.brandemia.org/sites/default/files/sites/default/files/bnb_billboard_01-2000x1125.jpg",
     photo_banner: "https://images.adsttc.com/media/images/59ef/fef7/b22e/3819/9400/0018/newsletter/999_47.jpg?1508900596"
   },
   {
-    name: "Microsoft Iberia",
+    name: "Microsoft",
     domain: "microsoft.com",
     address: "Barcelona",
     locations: ["Barcelona", "Remote"],
     languages: ["English", "Spanish"],
-    photo_logo: "http://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE2qVsJ?ver=3f74",
+    description: "At Microsoft, you’ll be empowered to work on things that you’re passionate about. You’ll be given autonomy. Your ideas will matter",
+    photo_logo: "https://thedesignlove.com/wp-content/uploads/2018/02/Case-Study-The-Microsoft-Logo-Evolution-5.jpg",
     photo_banner: "https://www.tmagazine.es/app/uploads/2017/06/oficina_microsoft_barcelona_03.jpg"
   },
   {
-    name: "Yego",
+    name: "YEGO",
     domain: "yego.es",
     address: "Barcelona",
     locations: ["Barcelona", "Valencia", "Remote"],
     languages: ["Spanish"],
-    photo_logo: "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/c3/d6/03/c3d60344-cc7b-c6fd-fbc1-a564be66391b/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-85-220.png/1200x630wa.png",
+    description: "Would you like to contribute to the development of the next generation of mobility services? YEGO enables anyone to ride electric scooters available in the city.",
+    photo_logo: "https://www.smobility.es/media/logo-yego.png",
     photo_banner: "https://estaticos.elperiodico.com/resources/jpg/4/2/motos-start-up-yego-1543576955924.jpg"
   },
   {
@@ -361,7 +369,8 @@
     address: "London",
     locations: ["Barcelona", "Paris", "Berlin", "London", "Amsterdam"],
     languages: ["English"],
-    photo_logo: "https://sonarplusd.com/system/attached_images/21482/medium/ThoughtWorks-Alta.jpg?1519817056",
+    description: "If you're really bright, passionate about world-changing software and want to do something amazing, join us.",
+    photo_logo: "https://directory-cdn.anymailfinder.com/1274ac48-9342-4391-b6e0-03296ddf22c5",
     photo_banner: "https://dynamic.thoughtworks.com/landing_pages/image-a72caa3b17c5fd3e7b195b588470ea5f.jpeg"
   },
   {
@@ -370,7 +379,8 @@
     address: "Barcelona",
     locations: ["Barcelona"],
     languages: ["Spanish"],
-    photo_logo: "https://canelapr.com/wp-content/uploads/2017/06/ecooltra-logo.jpg",
+    description: "eCooltra is not a place for everyone: Here we look for passionate, innovative, fun, professional, responsible, committed and creative people.",
+    photo_logo: "https://www.bicing.barcelona/sites/default/files/styles/generic/public/2018-09/Ecooltra%20logo%20quadrat_0.png?itok=nx2BezgW",
     photo_banner: "https://images.unsplash.com/photo-1510074377623-8cf13fb86c08?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80"
   },
   {
@@ -379,16 +389,18 @@
     address: "London",
     locations: ["London"],
     languages: ["English"],
-    photo_logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Logo_Revolut.png",
+    description: "We are underdogs. We keep learning. We innovate. Everyday is a new fight. Technology is our weapon.",
+    photo_logo: "https://pageflows.imgix.net/media/logos/revo.jpg?auto=compress&ixlib=python-1.1.2&s=25277681549f33be022f43b7d5f0619b",
     photo_banner: "https://www.officelovin.com/wp-content/uploads/2018/10/revolut-office-london-8.jpg"
   },
   {
     name: "N26",
     domain: "n26.com",
     address: "Berlin",
-    locations: ["Berlin", "Vienna", "Frankfurt"],
+    locations: ["Berlin", "Barcelona", "Paris"],
     languages: ["English", "German"],
-    photo_logo: "http://fintechaustria.org/wp-content/uploads/2018/07/n26-logo.png",
+    description: "Our vision is to build a bank the world loves to use. Technology and design empower everything we do. N26 is Europe’s first Mobile Bank with a full European banking license.",
+    photo_logo: "https://logodownload.org/wp-content/uploads/2019/10/n26-logo-4.png",
     photo_banner: "https://i.pinimg.com/originals/3e/e7/59/3ee759fc1f91915612bee0bec1acfc5a.jpg"
   },
   {
@@ -397,7 +409,8 @@
     address: "Barcelona",
     locations: ["Barcelona"],
     languages: ["English", "Spanish"],
-    photo_logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Typeform_Logo.svg/1200px-Typeform_Logo.svg.png",
+    description: "If you're the owner of an active brain, interesting thoughts, and a good soul, we would like to hear from you.",
+    photo_logo: "https://media.glassdoor.com/companyupdate/w600/991912/typeform-companyupdate-1538559234474.jpg",
     photo_banner: "https://www.indexventures.com/media/images/typeformnewoffice_GyBpo0d.original.jpegquality-60.png"
   },
   {
@@ -406,6 +419,7 @@
     address: "Amsterdam",
     locations: ["Barcelona", "Amsterdam"],
     languages: ["English", "Dutch"],
+    description: "Innovate and iterate the technology used for a billion sessions, every month. We lead the world in innovating adtech and programmatic technology.",
     photo_logo: "https://pbs.twimg.com/profile_images/1047789743335989248/a-QyWwKU_400x400.jpg",
     photo_banner: "http://filippopoli.com/wp-content/uploads/2018/09/06-arbeats-marfeel-office_pl_4092.jpg"
   },
@@ -415,7 +429,8 @@
     address: "Madrid",
     locations: ["Remote", "Barcelona"],
     languages: ["English", "Spanish"],
-    photo_logo: "https://upload.wikimedia.org/wikipedia/commons/5/58/Cabify-logo-purple.png",
+    description: "Do you want to change the world? At Cabify, that's what we're doing. We aim to make cities better places to live by improving mobility",
+    photo_logo: "https://www.frogx3.com/wp-content/uploads/2017/02/cabify_logo_despues-simbolo.jpg",
     photo_banner: "http://www.ilumina.pe/wp-content/uploads/2015/02/Cabify-3-1130x400.jpg"
   },
   {
@@ -424,7 +439,8 @@
     address: "Paris",
     locations: ["Paris", "Barcelona", "Amsterdam", "Remote", "Berlin", "Milan"],
     languages: ["English", "French"],
-    photo_logo: "https://mk0mindspacemexmwc0q.kinstacdn.com/wp-content/uploads/sites/2/2017/03/white_logo_red_font.png",
+    description: "Le Wagon is a global community with campuses all around the world. Each city has its own ecosystem and our team is here to make you feel at home!",
+    photo_logo: "https://dwj199mwkel52.cloudfront.net/assets/lewagon-logo-square-fe76916e1b923ade71e253ae6dc031d936e5e8eebac4e26b0fbac650ea6ee360.png",
     photo_banner: "https://res.cloudinary.com/wagon/image/upload/c_fill,q_auto,w_2880/v1574180426/fnfzqw8xiqfhctgmq9jf.webp"
   },
   {
@@ -433,7 +449,8 @@
     address: "Barcelona",
     locations: ["Barcelona"],
     languages: ["Spanish"],
-    photo_logo: "https://media.licdn.com/dms/image/C4D0BAQG7h7FmPFXZTA/company-logo_200_200/0?e=2159024400&v=beta&t=UnYwVD5kc1F7ZJSx8ppGKgdxn4S1YMlO8xoyxT9QpXo",
+    description: "Here at badi we are on a mission to create a product that people love! We use new technologies, amazing UX/UI, Data and AI to reshape the real estate market worldwide!",
+    photo_logo: "http://www.brandemia.org/sites/default/files/badi_nuevo_logo.jpg",
     photo_banner: "https://media.licdn.com/dms/image/C4D1BAQGQ2wvKazVYvw/company-background_10000/0?e=2159024400&v=beta&t=Us_NRc8h8n6ohaWnzxsqJQrC_hDRkOZUCeYQdmGpS1M"
   },
 ]
@@ -809,7 +826,7 @@ def create_postings_from_company(n_postings)
       experience: @selected_posting[:experience],
       languages: @selected_company[:languages],
       locations: @selected_company[:locations],
-      description: @selected_posting[:description],
+      description: @selected_company[:description],
       salary_max: @selected_posting[:salary_max],
       company_id: @new_company.id,
       photo: @selected_company[:photo_banner])
@@ -817,7 +834,7 @@ def create_postings_from_company(n_postings)
     if @new_posting.valid?
       @new_posting.save # saving new company
     else
-      p @new_posting.errors.messages
+      puts "#{@new_posting.company.name} #{@new_posting.errors.messages}"
     end
   end
 end
@@ -902,7 +919,7 @@ def create_users_with_companies(n_users)
       else # if company does not exist, a new company will be created
         create_new_company
         create_new_user_with_(@new_company.id)
-        create_postings_from_company(rand(1..(@postings_list.count))) # unless Posting.where(company_id: @new_company.id).count > @postings_list.length
+        create_postings_from_company(rand(9..(@postings_list.count))) # unless Posting.where(company_id: @new_company.id).count > @postings_list.length
       end
 
     else # remaining new users will not be associated with a company (applicants)
@@ -919,6 +936,7 @@ def create_users_with_companies(n_users)
 end
 
 def generate_matches(n_matches)
+  # @matching_postings_list =
   @shuffled_postings_list = Posting.all.shuffle
 
   n_matches.times do
@@ -953,7 +971,7 @@ def create_demo_users
     facebook_picture_url: "https://ca.slack-edge.com/T02NE0241-UPE65SNGH-9d2aa9469cef-512")
   save_new_user
     create_profiles_from_user(3)
-    generate_matches(rand(1..6))
+    # generate_matches(rand(1..6))
   @new_user = User.new(
     email: "kevin@liebholz.eu",
     password: "12341234",
@@ -973,7 +991,7 @@ def create_demo_users
     facebook_picture_url: "https://ca.slack-edge.com/T02NE0241-UP7RNRH6E-595b27c6de93-512")
   save_new_user
     create_profiles_from_user(3)
-    generate_matches(rand(1..6))
+    generate_matches(20)
 end
 
 def clear_database
@@ -1063,7 +1081,7 @@ def seed_database(clean)
     puts "MATCHES:"
 
     matches.each do |match|
-      puts "#{match.profile.user.first_name} = #{match.posting.company.name} => #{match.posting.company.users.sample.email}"
+      puts "#{match.profile.user.email} = #{match.posting.company.name} => #{match.posting.company.users.sample.email}"
     end
 end
 
