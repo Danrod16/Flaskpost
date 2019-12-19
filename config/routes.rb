@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   get "/bridge", to: "profiles#bridge_route", as: "user_root"
   root to: 'pages#home'
+  mount ActionCable.server => "/cable"
 
 
   resources :companies, only: [:new, :create]
