@@ -2,6 +2,7 @@
   justify-content: space-between;
   background: white;
   padding: 8px 5px;
+  padding-left: 0;
   position: fixed;
   width: 100%;
   top: 0;
@@ -13,7 +14,7 @@
 }
 
 .navbar-shuffle .navbar-brand img {
-  width: 100px;
+  width: 130px;
   height: 30px;
   object-fit: cover;
 }
