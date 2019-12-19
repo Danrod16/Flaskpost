@@ -62,7 +62,7 @@ class ProfilesController < ApplicationController
     filter_for_liked_cards
     filter_for_declined_cards
 
-    fake_matches unless @cards.empty?
+    fake_matches if @cards.count == 5
   end
 
   def stats
