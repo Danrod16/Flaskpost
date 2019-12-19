@@ -62,7 +62,6 @@ class ProfilesController < ApplicationController
     filter_for_liked_cards
     filter_for_declined_cards
 
-
     fake_matches
   end
 
@@ -131,8 +130,35 @@ class ProfilesController < ApplicationController
   end
 
   def fake_matches
-    @cards.each do |card|
-      if Match.where(profile_id: @profile.id, posting_id: card.id).empty? && (rand() > 0.5)
+    # creating fake matches in which the status_recruiter = 'accepted'
+    # for 'fraction'% of cards in each deck.
+    # Resulting in 'fraction'% instant matches to chat with.
+    # There will also be a save card on 'position',
+    # that will always result in an instant match.
+
+    fraction = 0.5
+
+    save_cards = []
+    save_cards << @cards[0]
+    save_cards << @cards [2]
+    save_cards << @cards [3]
+
+    rest_cards = @cards
+    rest_cards.delete_at(0)
+    rest_cards.delete_at(2)
+    rest_cards.delete_at(3)
+
+    raise
+
+    save_cards.each do |card|
+      if Match.where(profile_id: @profile.id, posting_id: card.id).empty?
+        Match.create(profile_id: @profile.id, posting_id: card.id, status: "pending", status_recruiter: "accepted")
+      end
+    end
+
+
+    rest_cards.each do |card|
+      if Match.where(profile_id: @profile.id, posting_id: card.id).empty? && (rand < fraction)
         Match.create(profile_id: @profile.id, posting_id: card.id, status: "pending", status_recruiter: "accepted")
       end
     end
