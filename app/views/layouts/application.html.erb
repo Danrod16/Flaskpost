@@ -34,8 +34,12 @@
   <%# if user_signed_in? %>
     <%#= render 'shared/layouts' %>
   <%# else %>
-  <%= render 'shared/navbar' %>
-  <%= yield %>
+  <div class="phone">
+    <div class="phone__screen">
+    <%= render 'shared/navbar' %>
+    <%= yield %>
+    </div>
+  </div>
   <%# end %>
   <%= javascript_include_tag 'application' %>
   <%= yield :after_js %>
