@@ -11,15 +11,41 @@
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .phone {
-  background: #ccc;
+    background: white;
   box-shadow: 0 0 3em rgba(black,0.7);
   height: 100%;
   left: 50%;
-  max-height: 568px;
-  max-width: 320px;
+  max-height: 736px;
+  max-width: 414px;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+  }
+   &:after, &:before {
+    display: none;
+    position: absolute;
+    pointer-event: none;
+  }
+   &:before {
+    background: rgba(black,0.8);
+    bottom: 0;
+    color: rgba(white,0.4);
+    display: none;
+    font-size: 5em;
+    line-height: 6;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 0;
+    z-index: 2;
+  }
+  .phone__screen {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-top: 3em;
+  position: relative;
   width: 100%;
   }
 }
@@ -27,12 +53,12 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .phone {
-    background: #ccc;
+    background: white;
   box-shadow: 0 0 3em rgba(black,0.7);
   height: 100%;
   left: 50%;
-  max-height: 568px;
-  max-width: 320px;
+  max-height: 736px;
+  max-width: 414px;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -69,15 +95,41 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .phone {
-  background: #ccc;
+    background: white;
   box-shadow: 0 0 3em rgba(black,0.7);
   height: 100%;
   left: 50%;
-  max-height: 568px;
-  max-width: 320px;
+  max-height: 736px;
+  max-width: 414px;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+  }
+   &:after, &:before {
+    display: none;
+    position: absolute;
+    pointer-event: none;
+  }
+   &:before {
+    background: rgba(black,0.8);
+    bottom: 0;
+    color: rgba(white,0.4);
+    display: none;
+    font-size: 5em;
+    line-height: 6;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 0;
+    z-index: 2;
+  }
+  .phone__screen {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-top: 3em;
+  position: relative;
   width: 100%;
   }
 }
