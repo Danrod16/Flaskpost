@@ -31,18 +31,17 @@ html_doc = Nokogiri.HTML(html_file)
   company = Company.new(name: name, logo: logo)
   company.save
   puts name
-  # # ----------job title -----------
-  # job_title = card.search('.label-category')text.strip
-  # #----------salary ----------------
-  # salary = card.search('span .text-dark').text.strip.split(" ")
-  # salary_range = (salary[4][0,2]).to_i
-  # salary_max = salary_range * 1000
-  # # --------- experience ---------
-  # #new posting
-  # posting = Posting.new(job_title: job_title, salary_max: salary_max, location: location)
+  # ----------job title -----------
+  job_title = card.search('.label-category')text.strip
+  #----------salary ----------------
+  salary = card.search('span .text-dark').text.strip.split(" ")
+  salary_range = (salary[4][0,2]).to_i
+  salary_max = salary_range * 1000
+  # --------- experience ---------
+  #new posting
+  posting = Posting.new(job_title: job_title, salary_max: salary_max, location: location)
 end
 
-binding.pry
 
 
 
