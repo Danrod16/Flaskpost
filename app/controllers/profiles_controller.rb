@@ -56,13 +56,23 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:profile_id])
     @cards = cards_from_database
 
-    filter_for_contract_types
-    filter_for_locations
-    filter_for_languages
-    filter_for_liked_cards
-    filter_for_declined_cards
+    # filter_for_contract_types
+    # filter_for_locations
+    # filter_for_languages
+    # filter_for_liked_cards
+    # filter_for_declined_cards
 
     fake_matches if (@cards.count == 5) && (current_user.id == 255)
+  end
+
+  def fetch_jobs
+    @profile = Profile.find(params[:profile_id])
+    @locations = @profile.locations
+    @keyword = @profile.job_title
+    @locations.each do |location|
+      JobsApiService.new(@keyword, location, @profile).call
+    end
+    redirect_to swipe_path(user_id: current_user.id, profile_id: @profile.id)
   end
 
   def stats
@@ -90,8 +100,8 @@ class ProfilesController < ApplicationController
 
   def cards_from_database
     Posting.where(
-      'field ILIKE :profile_field
-      AND job_title ILIKE :profile_job_title
+      'field @@ :profile_field
+      AND job_title @@ :profile_job_title
       AND experience = :profile_experience
       AND salary_max >= :profile_salary_min',
       profile_field: @profile.field,
@@ -99,23 +109,24 @@ class ProfilesController < ApplicationController
       profile_experience: @profile.experience,
       profile_salary_min: @profile.salary_min
     )
+    Posting.all
   end
 
   def filter_for_contract_types
     @cards = @cards.filter do |card|
-      @profile.contract_types.any? { |contract_type| card.contract_types.include?(contract_type) }
+      @profile.contract_types.any? { |contract_type| card.contract_types&.include?(contract_type) || card.contract_types.nil? }
     end
   end
 
   def filter_for_locations
     @cards = @cards.filter do |card|
-      @profile.languages.any? { |language| card.languages.include?(language) }
+      @profile.languages.any? { |language| card.languages&.include?(language) || card.languages.nil? }
     end
   end
 
   def filter_for_languages
     @cards = @cards.filter do |card|
-      @profile.locations.any? { |location| card.locations.include?(location) }
+      @profile.locations.any? { |location| card.locations&.include?(location) || card.locations.nil? }
     end
   end
 

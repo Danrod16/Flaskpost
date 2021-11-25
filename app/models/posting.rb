@@ -1,18 +1,14 @@
 class Posting < ApplicationRecord
   belongs_to :company
-  has_many :matches
+  has_many :matches, dependent: :destroy
 
-  validates :job_title, presence: true, allow_blank: false
-  validates :field, presence: true, allow_blank: false
-  validates :contract_types, presence: true, allow_blank: false
-  validates :experience, presence: true, allow_blank: false
-  validates :languages, presence: true, allow_blank: false
-  validates :locations, presence: true, allow_blank: false
-  validates :description, presence: true, allow_blank: false
-  validates :salary_max, presence: true, allow_blank: false
-
-  validates :description, length: { maximum: 180, minimum: 60 }
-  validates :salary_max, numericality: { only_integer: true }
+  validates :job_title, presence: true
+  # validates :contract_types
+  # validates :experience
+  # validates :languages
+  validates :locations, presence: true
+  # validates :description
+  # validates :salary_max
 
   def self.filter_by_custom(attribute, query)
     Posting.all.select { |p| p.send(attribute)&.include?(query) }
