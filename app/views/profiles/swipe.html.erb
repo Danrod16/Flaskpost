@@ -1,5 +1,5 @@
 
-<%= render 'show_stats' %>
+<%= render 'show_stats', profile:@profile %>
 
 <%# content_for :meta_title, "#{@card.job_title} is on #{DEFAULT_META["meta_profile_name"]}" %>
 <%# content_for :meta_description, @card.description %>
@@ -20,7 +20,11 @@
               </div>
               <div class="swipe-description">
                 <h2><%= card.job_title %></h2>
+                <% if card.experience %>
                 <h4><%= card.company.name %> (<%= "#{card.experience}" %>)</h4>
+                <% else %>
+                <h4><%= card.company.name %></h4>
+                <% end %>
                 <p><%= card.description %></p>
               </div>
             </div>
@@ -43,6 +47,7 @@
   <!-- accept and decline buttons -->
   <div class="swipe-answer">
     <%= link_to 'NOPE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @cards.first.id, user_intention: 'declined'}), method: :post, remote: true, id: "decline", class: "btn-main answer-btn bubbly-button answer-btn-ghost", style: "text-decoration: none"%>
+    <%= @cards.count %>
     <%= link_to 'LIKE', accept_decline_matches_path({profile_id: @profile.id, posting_id: @cards.first.id, user_intention: 'accepted'}), method: :post, remote: true, id: "accept", class: "btn-main answer-btn bubbly-button", style: "text-decoration: none"%>
   </div>
 

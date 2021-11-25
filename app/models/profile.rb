@@ -2,7 +2,7 @@ class Profile < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   # belongs_to :user // REPLACED BY 'USER' METHOD BELOW
-  has_many :matches
+  has_many :matches, dependent: :destroy
 
   # FORM COLLECTION ARRAYS
   INDUSTRIES = ["Information Technology", "Health Care", "Retail", "Financial Services", "Automotive", "Education", "Advertising", "Government Administration", "Real Estate", "Telecommunications", "Energy", "Food & Beverages", "Management Consulting", "Pharmaceuticals", "Logistics", "Architecture", "Fashion", "Non-profit", "Media", "Legal Services", "Tourism", "Aviation", "Recruitment", "Graphic Design", "Public Relations", "Philanthropy" ].sort

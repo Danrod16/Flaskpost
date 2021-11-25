@@ -42,6 +42,15 @@
   h2, h4, p {
     text-align: left;
     color: white;
+  overflow:hidden;
+  line-height: 2rem;
+  max-height: 8rem;
+  -webkit-box-orient: vertical;
+  display: block;
+  display: -webkit-box;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
   }
 
   h2 {

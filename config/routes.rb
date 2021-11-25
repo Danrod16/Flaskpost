@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index, :new, :create, :update] do
     resources "builder", controller: 'profiles'
   end
-
+  get 'fetch-jobs', to: 'profiles#fetch_jobs'
   resources :matches, only: [:index, :show] do
     collection do
       post '/accept_decline', to: 'matches#accept_decline', as: :accept_decline
