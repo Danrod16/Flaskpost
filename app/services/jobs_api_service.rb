@@ -15,11 +15,8 @@ class JobsApiService
   end
 
   def payload
-     headers = {
-      Authorization: 'cdbc09e80ceb6d16e8a24076c07148946384ce6c'
-     }
-     baseUrl = "https://findwork.dev/api/jobs/?location=london&search=full-stack&sort_by=relevance"
      puts "fetching jobs"
+     baseUrl = "https://findwork.dev/api/jobs/?location=#{@location}&search=#{@keyword}&sort_by=relevance"
     response = Faraday.get(baseUrl) do |req|
       req.params['limit'] = 100
       req.headers['Authorization'] = ENV['FIND_WORK_API']

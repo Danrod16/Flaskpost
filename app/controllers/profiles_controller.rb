@@ -61,7 +61,6 @@ class ProfilesController < ApplicationController
     # filter_for_languages
     # filter_for_liked_cards
     # filter_for_declined_cards
-
     fake_matches if (@cards.count == 5) && (current_user.id == 255)
   end
 
